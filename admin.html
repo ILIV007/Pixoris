@@ -3,155 +3,309 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pixoris | پنل ادمین</title>
+  <title>Pixoris | پنل مدیریت</title>
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body data-page="admin">
   <div class="site-shell">
     <div class="pixel-decor" aria-hidden="true">
-  <div class="decor-column decor-left">
-    <div class="decor-item d1"><img src="assets/decor-wanda.png" alt="" /></div>
-    <div class="decor-item d2"><img src="assets/decor-kratos.png" alt="" /></div>
-    <div class="decor-item d3"><img src="assets/decor-ghostrider.png" alt="" /></div>
-    <div class="decor-item d4"><img src="assets/decor-samurai.png" alt="" /></div>
-    <div class="decor-item d5"><img src="assets/decor-knight.png" alt="" /></div>
-    <div class="decor-item d6"><img src="assets/decor-frog-dog.png" alt="" /></div>
-    <div class="decor-item d7"><img src="assets/decor-cat-yarn.png" alt="" /></div>
-  </div>
-  <div class="decor-column decor-right">
-    <div class="decor-item d8"><img src="assets/decor-assassin.png" alt="" /></div>
-    <div class="decor-item d9"><img src="assets/decor-luffy.png" alt="" /></div>
-    <div class="decor-item d10"><img src="assets/decor-wolverine.png" alt="" /></div>
-    <div class="decor-item d11"><img src="assets/decor-batman.png" alt="" /></div>
-    <div class="decor-item d12"><img src="assets/decor-luffy-alt.png" alt="" /></div>
-    <div class="decor-item d13"><img src="assets/decor-deadpool.png" alt="" /></div>
-    <div class="decor-item d14"><img src="assets/decor-spiderman.png" alt="" /></div>
-  </div>
-</div>
-<audio id="bgAudio" loop preload="auto" src="assets/background-music.mp3"></audio>
-<div class="pixel-overlay">
-  <div class="scan"></div>
-  <div class="pellet p1"></div>
-  <div class="pellet p2"></div>
-  <div class="pellet p3"></div>
-  <div class="cherry-runner">🍒</div>
-  <div class="pacman-runner"></div>
-  <div class="ghost-runner ghost-1"></div>
-  <div class="ghost-runner ghost-2"></div>
-  <div class="ghost-runner ghost-3"></div>
-</div>
-    <header class="topbar">
-  <div class="container topbar-inner">
-    <a class="brand" href="index.html">
-      <img class="brand-logo" src="assets/logo-pixoris-small.png" alt="Pixoris logo" />
-      <div class="brand-text">
-        <h1>Pixoris</h1>
-        <p>Gaming • Cinema • Shop</p>
+      <div class="decor-column decor-left">
+        <div class="decor-item d1"><img src="assets/decor-wanda.png" alt="" /></div>
+        <div class="decor-item d2"><img src="assets/decor-kratos.png" alt="" /></div>
+        <div class="decor-item d3"><img src="assets/decor-ghostrider.png" alt="" /></div>
+        <div class="decor-item d4"><img src="assets/decor-samurai.png" alt="" /></div>
+        <div class="decor-item d5"><img src="assets/decor-knight.png" alt="" /></div>
+        <div class="decor-item d6"><img src="assets/decor-frog-dog.png" alt="" /></div>
+        <div class="decor-item d7"><img src="assets/decor-cat-yarn.png" alt="" /></div>
       </div>
-    </a>
-    <nav class="nav-links">
-      <a href="index.html" data-page="home">خانه</a>
-      <a href="news.html" data-page="news">خبرها</a>
-      <a href="shop.html" data-page="shop">آنلاین‌شاپ</a>
-      <a href="analysis.html" data-page="analysis">تحلیل</a>
-      <a href="about.html" data-page="about">درباره ما</a>
-      <a href="cart.html" data-page="cart" class="cart-link">سبد خرید <span data-cart-count>0</span></a>
-    </nav>
-    <div class="header-actions">
-      <a class="auth-entry" href="login.html" data-auth-entry>
-        <span class="auth-pixel"></span>
-        <span class="auth-label">ورود / عضویت</span>
-      </a>
-      <button class="pac-toggle" data-pac-toggle type="button">
-        <span class="pac-icon"></span>
-        <span class="label">Pac Mode</span>
-      </button>
-      <button class="sound-toggle muted" data-sound-toggle type="button" aria-label="play or pause music">
-        <span class="speaker-pixel"></span>
-        <span class="sound-label">Music Off</span>
-      </button>
-      <a class="cart-mini" href="cart.html" aria-label="سبد خرید">🛒 <span data-cart-count>0</span></a>
-      <button class="menu-btn" data-menu-btn type="button">☰</button>
+      <div class="decor-column decor-right">
+        <div class="decor-item d8"><img src="assets/decor-assassin.png" alt="" /></div>
+        <div class="decor-item d9"><img src="assets/decor-luffy.png" alt="" /></div>
+        <div class="decor-item d10"><img src="assets/decor-wolverine.png" alt="" /></div>
+        <div class="decor-item d11"><img src="assets/decor-batman.png" alt="" /></div>
+        <div class="decor-item d12"><img src="assets/decor-luffy-alt.png" alt="" /></div>
+        <div class="decor-item d13"><img src="assets/decor-deadpool.png" alt="" /></div>
+        <div class="decor-item d14"><img src="assets/decor-spiderman.png" alt="" /></div>
+      </div>
     </div>
-  </div>
-  <div class="container mobile-nav">
-    <a href="index.html" data-page="home">خانه</a>
-    <a href="news.html" data-page="news">خبرها</a>
-    <a href="shop.html" data-page="shop">آنلاین‌شاپ</a>
-    <a href="analysis.html" data-page="analysis">تحلیل</a>
-    <a href="about.html" data-page="about">درباره ما</a>
-    <a href="cart.html" data-page="cart">سبد خرید</a>
-    <a href="login.html" data-page="login">ورود / عضویت</a>
-    <a href="admin.html" data-page="admin">پنل ادمین</a>
-  </div>
-</header>
+    <audio id="bgAudio" loop preload="auto" src="assets/background-music.mp3"></audio>
+    <div class="pixel-overlay">
+      <div class="scan"></div>
+      <div class="pellet p1"></div>
+      <div class="pellet p2"></div>
+      <div class="pellet p3"></div>
+      <div class="cherry-runner">🍒</div>
+      <div class="pacman-runner"></div>
+      <div class="ghost-runner ghost-1"></div>
+      <div class="ghost-runner ghost-2"></div>
+      <div class="ghost-runner ghost-3"></div>
+    </div>
+
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="index.html">
+          <img class="brand-logo" src="assets/logo-pixoris-small.png" alt="Pixoris logo" />
+          <div class="brand-text">
+            <h1>Pixoris</h1>
+            <p>Admin CMS</p>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html" data-page="home">خانه</a>
+          <a href="news.html" data-page="news">خبرها</a>
+          <a href="shop.html" data-page="shop">فروشگاه</a>
+          <a href="admin.html" data-page="admin" class="active">پنل مدیریت</a>
+        </nav>
+        <div class="header-actions">
+          <button class="pac-toggle" data-pac-toggle type="button">
+            <span class="pac-icon"></span>
+            <span class="label">Pac Mode</span>
+          </button>
+          <button class="sound-toggle muted" data-sound-toggle type="button" aria-label="play or pause music">
+            <span class="speaker-pixel"></span>
+            <span class="sound-label">Music Off</span>
+          </button>
+          <button class="menu-btn" data-menu-btn type="button">☰</button>
+        </div>
+      </div>
+      <div class="container mobile-nav">
+        <a href="index.html" data-page="home">خانه</a>
+        <a href="news.html" data-page="news">خبرها</a>
+        <a href="shop.html" data-page="shop">فروشگاه</a>
+        <a href="admin.html" data-page="admin">پنل مدیریت</a>
+      </div>
+    </header>
+
     <main>
-<section class="hero compact-hero">
-  <div class="container">
-    <article class="hero-panel reveal">
-      <span class="eyebrow">🛠 Admin Panel</span>
-      <h2 class="hero-title">پنل مدیریت <span class="shine-text">Pixoris</span></h2>
-      <p class="hero-desc">این پنل از ورود کاربران جداست و برای مدیریت محتوای سایت، محصولات و سفارش‌ها طراحی شده است.</p>
-    </article>
-  </div>
-</section>
+      <!-- Login Screen -->
+      <section class="section" id="admin-login-screen">
+        <div class="container" style="max-width: 480px;">
+          <article class="panel auth-panel reveal" style="padding: 40px;">
+            <div style="text-align: center; margin-bottom: 24px;">
+              <h2 style="font-size: 28px;">🔐 ورود به پنل مدیریت</h2>
+              <p style="color: var(--muted); margin-top: 8px;">Pixoris CMS v2.0</p>
+            </div>
+            <form class="auth-form" data-admin-login-form>
+              <label>
+                نام کاربری
+                <input type="text" name="adminUser" placeholder="admin" required>
+              </label>
+              <label>
+                رمز عبور
+                <input type="password" name="adminPass" placeholder="••••••••" required>
+              </label>
+              <button class="btn auth-submit" type="submit">ورود به پنل</button>
+            </form>
+          </article>
+        </div>
+      </section>
 
-<section class="section compact-section">
-  <div class="container admin-layout">
-    <article class="panel admin-login-card reveal">
-      <h2>ورود ادمین</h2>
-      <p>این بخش نمایشی است. در نسخه بک‌اند واقعی، ورود ادمین باید با دیتابیس و احراز هویت امن انجام شود.</p>
-      <form class="auth-form" data-admin-form>
-        <label>
-          نام کاربری ادمین
-          <input type="text" name="adminUser" placeholder="admin" required>
-        </label>
-        <label>
-          رمز عبور
-          <input type="password" name="adminPass" placeholder="••••••••" required>
-        </label>
-        <button class="btn" type="submit">ورود به پنل</button>
-      </form>
-    </article>
+      <!-- CMS Dashboard -->
+      <section class="section admin-cms" id="admin-cms-screen" style="display: none;">
+        <div class="container">
+          <div class="admin-layout">
+            <!-- Sidebar -->
+            <aside class="admin-sidebar reveal">
+              <h3>🎮 Pixoris CMS</h3>
+              <nav>
+                <a href="#" class="active" data-admin-tab="dashboard"><span>📊</span> داشبورد</a>
+                <a href="#" data-admin-tab="posts"><span>📝</span> مقالات</a>
+                <a href="#" data-admin-tab="new-post"><span>➕</span> مقاله جدید</a>
+                <a href="#" data-admin-tab="categories"><span>📂</span> دسته‌بندی‌ها</a>
+                <a href="#" data-admin-tab="media"><span>🖼</span> رسانه</a>
+                <a href="#" data-admin-tab="settings"><span>⚙️</span> تنظیمات</a>
+                <a href="#" data-admin-logout style="color: var(--pink);"><span>🚪</span> خروج</a>
+              </nav>
+            </aside>
 
-    <section class="admin-dashboard reveal" data-admin-dashboard>
-      <article class="admin-stat">
-        <span>محصولات</span>
-        <strong>24</strong>
-        <p>مدیریت موجودی، قیمت و تصویر</p>
-      </article>
-      <article class="admin-stat">
-        <span>سفارش‌ها</span>
-        <strong>12</strong>
-        <p>بررسی وضعیت پرداخت و ارسال</p>
-      </article>
-      <article class="admin-stat">
-        <span>خبرها</span>
-        <strong>38</strong>
-        <p>ویرایش، انتشار و دسته‌بندی محتوا</p>
-      </article>
-      <article class="admin-stat">
-        <span>کاربران</span>
-        <strong>156</strong>
-        <p>نمایش کاربران ثبت‌نام‌شده</p>
-      </article>
-    </section>
-  </div>
-</section>
-</main>
+            <!-- Content Area -->
+            <div class="admin-content">
+              <!-- Dashboard -->
+              <div class="admin-tab" data-tab="dashboard">
+                <h2 style="margin-bottom: 20px;">📊 داشبورد</h2>
+                <div class="admin-dashboard">
+                  <article class="admin-stat">
+                    <span>مقالات</span>
+                    <strong data-stat="totalPosts">0</strong>
+                    <p>تعداد کل مقالات</p>
+                  </article>
+                  <article class="admin-stat">
+                    <span>منتشر شده</span>
+                    <strong data-stat="published" style="color: var(--green);">0</strong>
+                    <p>مقالات فعال</p>
+                  </article>
+                  <article class="admin-stat">
+                    <span>پیش‌نویس</span>
+                    <strong data-stat="drafts" style="color: var(--yellow);">0</strong>
+                    <p>در انتظار انتشار</p>
+                  </article>
+                  <article class="admin-stat">
+                    <span>بازدید</span>
+                    <strong data-stat="totalViews">0</strong>
+                    <p>کل بازدیدها</p>
+                  </article>
+                </div>
+                <div class="panel" style="margin-top: 20px; padding: 20px;">
+                  <h3 style="margin-bottom: 12px;">📈 آخرین فعالیت‌ها</h3>
+                  <div data-admin-activity style="color: var(--muted); font-size: 13px;">
+                    <p>در حال بارگذاری...</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Posts List -->
+              <div class="admin-tab" data-tab="posts" style="display: none;">
+                <div class="section-head" style="margin-bottom: 20px;">
+                  <h2>📝 مقالات</h2>
+                  <button class="btn" data-admin-tab-trigger="new-post">➕ مقاله جدید</button>
+                </div>
+                <div class="panel" style="padding: 20px; overflow-x: auto;">
+                  <table class="posts-table" style="min-width: 700px;">
+                    <thead>
+                      <tr>
+                        <th>عنوان</th>
+                        <th>دسته‌بندی</th>
+                        <th>وضعیت</th>
+                        <th>بازدید</th>
+                        <th>تاریخ</th>
+                        <th>عملیات</th>
+                      </tr>
+                    </thead>
+                    <tbody data-admin-posts-list>
+                      <tr><td colspan="6" style="text-align: center; color: var(--muted);">در حال بارگذاری...</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- New Post -->
+              <div class="admin-tab" data-tab="new-post" style="display: none;">
+                <h2 style="margin-bottom: 20px;">➕ مقاله جدید</h2>
+                <div class="panel" style="padding: 24px;">
+                  <form data-post-form>
+                    <div class="editor-field">
+                      <label>عنوان مقاله</label>
+                      <input type="text" name="title" placeholder="مثلاً: معرفی بازی جدید..." required>
+                    </div>
+                    <div class="editor-field">
+                      <label>Slug (URL)</label>
+                      <input type="text" name="slug" placeholder="new-game-intro" required>
+                    </div>
+                    <div class="editor-field">
+                      <label>دسته‌بندی</label>
+                      <select name="category_id" required>
+                        <option value="">انتخاب دسته‌بندی...</option>
+                        <option value="1">Games</option>
+                        <option value="2">Movies</option>
+                        <option value="3">Technology</option>
+                        <option value="4">Anime</option>
+                        <option value="5">Reviews</option>
+                        <option value="6">Guides</option>
+                        <option value="7">News</option>
+                      </select>
+                    </div>
+                    <div class="editor-field">
+                      <label>تصویر شاخص</label>
+                      <div style="display: flex; gap: 10px; align-items: center;">
+                        <input type="text" name="image_url" placeholder="assets/uploads/image.webp" id="featured-image-input" style="flex: 1;">
+                        <button type="button" class="btn btn-sm" data-open-media>🖼 انتخاب</button>
+                      </div>
+                    </div>
+                    <div class="editor-field">
+                      <label>خلاصه (Excerpt)</label>
+                      <textarea name="excerpt" rows="3" placeholder="خلاصه کوتاه مقاله..."></textarea>
+                    </div>
+                    <div class="editor-field">
+                      <label>محتوای مقاله</label>
+                      <textarea id="rich-editor" name="content" rows="15" placeholder="محتوای کامل مقاله..."></textarea>
+                    </div>
+                    <div class="editor-field">
+                      <label>تگ‌ها (با کاما جدا کنید)</label>
+                      <input type="text" name="tags" placeholder="بازی، سینما، تکنولوژی">
+                    </div>
+                    <div class="editor-field" style="display: flex; gap: 12px; align-items: center;">
+                      <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" name="featured" style="width: auto;">
+                        <span>مقاله ویژه</span>
+                      </label>
+                      <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" name="published" checked style="width: auto;">
+                        <span>منتشر شود</span>
+                      </label>
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                      <button type="submit" class="btn">💾 ذخیره و انتشار</button>
+                      <button type="button" class="btn btn-outline" data-save-draft>📝 ذخیره پیش‌نویس</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Categories -->
+              <div class="admin-tab" data-tab="categories" style="display: none;">
+                <h2 style="margin-bottom: 20px;">📂 دسته‌بندی‌ها</h2>
+                <div class="panel" style="padding: 24px;">
+                  <form data-category-form style="display: grid; grid-template-columns: 1fr 1fr auto auto; gap: 10px; margin-bottom: 20px;">
+                    <input type="text" name="cat_name" placeholder="نام دسته‌بندی" required>
+                    <input type="text" name="cat_slug" placeholder="slug" required>
+                    <input type="color" name="cat_color" value="#4ee5ff" style="width: 60px; height: 44px; border-radius: 10px; border: 1px solid rgba(255,255,255,.1); background: transparent; cursor: pointer;">
+                    <button type="submit" class="btn btn-sm">➕</button>
+                  </form>
+                  <div data-categories-list>
+                    <p style="color: var(--muted);">در حال بارگذاری...</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Media -->
+              <div class="admin-tab" data-tab="media" style="display: none;">
+                <h2 style="margin-bottom: 20px;">🖼 کتابخانه رسانه</h2>
+                <div class="upload-zone" data-upload-zone>
+                  <div style="font-size: 40px;">📤</div>
+                  <p>عکس را اینجا بکشید یا کلیک کنید</p>
+                  <input type="file" data-file-input accept="image/*" style="display: none;">
+                </div>
+                <div class="media-grid" data-media-grid style="margin-top: 20px;">
+                  <p style="color: var(--muted); grid-column: 1/-1; text-align: center;">در حال بارگذاری...</p>
+                </div>
+              </div>
+
+              <!-- Settings -->
+              <div class="admin-tab" data-tab="settings" style="display: none;">
+                <h2 style="margin-bottom: 20px;">⚙️ تنظیمات</h2>
+                <div class="panel" style="padding: 24px;">
+                  <h3 style="margin-bottom: 16px;">API Endpoint</h3>
+                  <div class="editor-field">
+                    <label>آدرس API Worker</label>
+                    <input type="text" data-api-url value="https://dev.pixoris.workers.dev" style="direction: ltr;">
+                  </div>
+                  <button class="btn btn-sm" data-save-api style="margin-top: 10px;">💾 ذخیره</button>
+                  <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line);">
+                    <h3 style="margin-bottom: 12px;">⚠️ Danger Zone</h3>
+                    <button class="btn btn-danger btn-sm" data-clear-cache>🗑 پاک کردن کش</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
     <footer class="footer">
-  <div class="container footer-row">
-    <p>Pixoris © 2026 — رسانه گیم، سینما و آنلاین‌شاپ گیکی</p>
-    <div class="pill-list">
-      <span class="pill">Gaming</span>
-      <span class="pill">Cinema</span>
-      <span class="pill">Collectibles</span>
-    </div>
-  </div>
-</footer>
+      <div class="container footer-row">
+        <p>Pixoris CMS v2.0 © 2026</p>
+        <div class="pill-list">
+          <span class="pill">Gaming</span>
+          <span class="pill">Cinema</span>
+          <span class="pill">CMS</span>
+        </div>
+      </div>
+    </footer>
   </div>
   <div class="toast" data-toast></div>
   <script src="script.js"></script>
-
+  <script src="admin.js"></script>
 </body>
 </html>

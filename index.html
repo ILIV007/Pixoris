@@ -3,201 +3,206 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pixoris - رسانه گیم، سینما و فروشگاه گیکی" />
+  <meta property="og:title" content="Pixoris" />
+  <meta property="og:description" content="خبر، تحلیل و فروشگاه گیم/سینما" />
   <title>Pixoris | خانه</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body data-page="home">
   <div class="site-shell">
     <div class="pixel-decor" aria-hidden="true">
-  <div class="decor-column decor-left">
-    <div class="decor-item d1"><img src="assets/decor-wanda.png" alt="" /></div>
-    <div class="decor-item d2"><img src="assets/decor-kratos.png" alt="" /></div>
-    <div class="decor-item d3"><img src="assets/decor-ghostrider.png" alt="" /></div>
-    <div class="decor-item d4"><img src="assets/decor-samurai.png" alt="" /></div>
-    <div class="decor-item d5"><img src="assets/decor-knight.png" alt="" /></div>
-    <div class="decor-item d6"><img src="assets/decor-frog-dog.png" alt="" /></div>
-    <div class="decor-item d7"><img src="assets/decor-cat-yarn.png" alt="" /></div>
-  </div>
-  <div class="decor-column decor-right">
-    <div class="decor-item d8"><img src="assets/decor-assassin.png" alt="" /></div>
-    <div class="decor-item d9"><img src="assets/decor-luffy.png" alt="" /></div>
-    <div class="decor-item d10"><img src="assets/decor-wolverine.png" alt="" /></div>
-    <div class="decor-item d11"><img src="assets/decor-batman.png" alt="" /></div>
-    <div class="decor-item d12"><img src="assets/decor-luffy-alt.png" alt="" /></div>
-    <div class="decor-item d13"><img src="assets/decor-deadpool.png" alt="" /></div>
-    <div class="decor-item d14"><img src="assets/decor-spiderman.png" alt="" /></div>
-  </div>
-</div>
-<audio id="bgAudio" loop preload="auto" src="assets/background-music.mp3"></audio>
-<div class="pixel-overlay">
-  <div class="scan"></div>
-  <div class="pellet p1"></div>
-  <div class="pellet p2"></div>
-  <div class="pellet p3"></div>
-  <div class="cherry-runner">🍒</div>
-  <div class="pacman-runner"></div>
-  <div class="ghost-runner ghost-1"></div>
-  <div class="ghost-runner ghost-2"></div>
-  <div class="ghost-runner ghost-3"></div>
-</div>
+      <div class="decor-column decor-left">
+        <div class="decor-item d1"><img src="assets/decor-wanda.png" alt="" /></div>
+        <div class="decor-item d2"><img src="assets/decor-kratos.png" alt="" /></div>
+        <div class="decor-item d3"><img src="assets/decor-ghostrider.png" alt="" /></div>
+        <div class="decor-item d4"><img src="assets/decor-samurai.png" alt="" /></div>
+        <div class="decor-item d5"><img src="assets/decor-knight.png" alt="" /></div>
+        <div class="decor-item d6"><img src="assets/decor-frog-dog.png" alt="" /></div>
+        <div class="decor-item d7"><img src="assets/decor-cat-yarn.png" alt="" /></div>
+      </div>
+      <div class="decor-column decor-right">
+        <div class="decor-item d8"><img src="assets/decor-assassin.png" alt="" /></div>
+        <div class="decor-item d9"><img src="assets/decor-luffy.png" alt="" /></div>
+        <div class="decor-item d10"><img src="assets/decor-wolverine.png" alt="" /></div>
+        <div class="decor-item d11"><img src="assets/decor-batman.png" alt="" /></div>
+        <div class="decor-item d12"><img src="assets/decor-luffy-alt.png" alt="" /></div>
+        <div class="decor-item d13"><img src="assets/decor-deadpool.png" alt="" /></div>
+        <div class="decor-item d14"><img src="assets/decor-spiderman.png" alt="" /></div>
+      </div>
+    </div>
+    <audio id="bgAudio" loop preload="auto" src="assets/background-music.mp3"></audio>
+    <div class="pixel-overlay">
+      <div class="scan"></div>
+      <div class="pellet p1"></div>
+      <div class="pellet p2"></div>
+      <div class="pellet p3"></div>
+      <div class="cherry-runner">🍒</div>
+      <div class="pacman-runner"></div>
+      <div class="ghost-runner ghost-1"></div>
+      <div class="ghost-runner ghost-2"></div>
+      <div class="ghost-runner ghost-3"></div>
+    </div>
+
     <header class="topbar">
-  <div class="container topbar-inner">
-    <a class="brand" href="index.html">
-      <img class="brand-logo" src="assets/logo-pixoris-small.png" alt="Pixoris logo" />
-      <div class="brand-text">
-        <h1>Pixoris</h1>
-        <p>Gaming • Cinema • Shop</p>
+      <div class="container topbar-inner">
+        <a class="brand" href="index.html">
+          <img class="brand-logo" src="assets/logo-pixoris-small.png" alt="Pixoris logo" />
+          <div class="brand-text">
+            <h1>Pixoris</h1>
+            <p>Gaming • Cinema • Shop</p>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html" data-page="home">خانه</a>
+          <a href="news.html" data-page="news">خبرها</a>
+          <a href="shop.html" data-page="shop">آنلاین‌شاپ</a>
+          <a href="analysis.html" data-page="analysis">تحلیل</a>
+          <a href="about.html" data-page="about">درباره ما</a>
+          <a href="cart.html" data-page="cart" class="cart-link">سبد خرید <span data-cart-count>0</span></a>
+        </nav>
+        <div class="header-actions">
+          <a class="auth-entry" href="login.html" data-auth-entry>
+            <span class="auth-pixel"></span>
+            <span class="auth-label">ورود / عضویت</span>
+          </a>
+          <button class="pac-toggle" data-pac-toggle type="button">
+            <span class="pac-icon"></span>
+            <span class="label">Pac Mode</span>
+          </button>
+          <button class="sound-toggle muted" data-sound-toggle type="button" aria-label="play or pause music">
+            <span class="speaker-pixel"></span>
+            <span class="sound-label">Music Off</span>
+          </button>
+          <a class="cart-mini" href="cart.html" aria-label="سبد خرید">🛒 <span data-cart-count>0</span></a>
+          <button class="menu-btn" data-menu-btn type="button">☰</button>
+        </div>
       </div>
-    </a>
-    <nav class="nav-links">
-      <a href="index.html" data-page="home">خانه</a>
-      <a href="news.html" data-page="news">خبرها</a>
-      <a href="shop.html" data-page="shop">آنلاین‌شاپ</a>
-      <a href="analysis.html" data-page="analysis">تحلیل</a>
-      <a href="about.html" data-page="about">درباره ما</a>
-      <a href="cart.html" data-page="cart" class="cart-link">سبد خرید <span data-cart-count>0</span></a>
-    </nav>
-    <div class="header-actions">
-      <a class="auth-entry" href="login.html" data-auth-entry>
-        <span class="auth-pixel"></span>
-        <span class="auth-label">ورود / عضویت</span>
-      </a>
-      <button class="pac-toggle" data-pac-toggle type="button">
-        <span class="pac-icon"></span>
-        <span class="label">Pac Mode</span>
-      </button>
-      <button class="sound-toggle muted" data-sound-toggle type="button" aria-label="play or pause music">
-        <span class="speaker-pixel"></span>
-        <span class="sound-label">Music Off</span>
-      </button>
-      <a class="cart-mini" href="cart.html" aria-label="سبد خرید">🛒 <span data-cart-count>0</span></a>
-      <button class="menu-btn" data-menu-btn type="button">☰</button>
-    </div>
-  </div>
-  <div class="container mobile-nav">
-    <a href="index.html" data-page="home">خانه</a>
-    <a href="news.html" data-page="news">خبرها</a>
-    <a href="shop.html" data-page="shop">آنلاین‌شاپ</a>
-    <a href="analysis.html" data-page="analysis">تحلیل</a>
-    <a href="about.html" data-page="about">درباره ما</a>
-    <a href="cart.html" data-page="cart">سبد خرید</a>
-    <a href="login.html" data-page="login">ورود / عضویت</a>
-    <a href="admin.html" data-page="admin">پنل ادمین</a>
-  </div>
-</header>
+      <div class="container mobile-nav">
+        <a href="index.html" data-page="home">خانه</a>
+        <a href="news.html" data-page="news">خبرها</a>
+        <a href="shop.html" data-page="shop">آنلاین‌شاپ</a>
+        <a href="analysis.html" data-page="analysis">تحلیل</a>
+        <a href="about.html" data-page="about">درباره ما</a>
+        <a href="cart.html" data-page="cart">سبد خرید</a>
+        <a href="login.html" data-page="login">ورود / عضویت</a>
+        <a href="admin.html" data-page="admin">پنل ادمین</a>
+      </div>
+    </header>
+
     <main>
-<section class="hero home-hero-clean">
-  <div class="container hero-grid hero-grid-clean">
-    <article class="hero-panel reveal">
-      <span class="eyebrow">🎮 رسانه + فروشگاه گیکی</span>
-      <h2 class="hero-title">Pixoris؛ خبر، تحلیل و فروشگاه گیم/سینما در یک تجربه تمیزتر</h2>
-      <p class="hero-desc">صفحه اصلی خلوت‌تر شد: خبرها فقط به شکل منتخب نمایش داده می‌شوند و بخش‌های اصلی سایت با چیدمان شبیه محصولات، خواناتر و منظم‌تر شدند.</p>
-      <div class="hero-actions">
-        <a class="btn" href="shop.html">مشاهده محصولات</a>
-        <a class="btn btn-outline" href="news.html">خبرهای جدید</a>
-      </div>
-    </article>
-    <aside class="home-quick-panel reveal">
-      <a href="shop.html" class="quick-tile">
-        <img src="assets/hero-shop.svg" alt="">
-        <span>فروشگاه</span>
-        <strong>اکشن‌فیگور و مرچ</strong>
-      </a>
-      <a href="analysis.html" class="quick-tile">
-        <img src="assets/hero-cinema.svg" alt="">
-        <span>تحلیل</span>
-        <strong>گیم و سینما</strong>
-      </a>
-    </aside>
-  </div>
-</section>
+      <section class="hero home-hero-clean">
+        <div class="container hero-grid hero-grid-clean">
+          <article class="hero-panel reveal">
+            <span class="eyebrow">🎮 رسانه + فروشگاه گیکی</span>
+            <h2 class="hero-title">Pixoris؛ خبر، تحلیل و فروشگاه گیم/سینما در یک تجربه تمیزتر</h2>
+            <p class="hero-desc">جدیدترین اخبار بازی، سینما و تکنولوژی به همراه تحلیل‌های عمیق و فروشگاه تخصصی محصولات گیکی.</p>
+            <div class="hero-actions">
+              <a class="btn" href="shop.html">مشاهده محصولات</a>
+              <a class="btn btn-outline" href="news.html">خبرهای جدید</a>
+            </div>
+          </article>
+          <aside class="home-quick-panel reveal">
+            <a href="shop.html" class="quick-tile">
+              <img src="assets/hero-shop.svg" alt="">
+              <span>فروشگاه</span>
+              <strong>اکشن‌فیگور و مرچ</strong>
+            </a>
+            <a href="analysis.html" class="quick-tile">
+              <img src="assets/hero-cinema.svg" alt="">
+              <span>تحلیل</span>
+              <strong>گیم و سینما</strong>
+            </a>
+          </aside>
+        </div>
+      </section>
 
-<section class="section compact-section">
-  <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <h2>خبرهای منتخب</h2>
-        <p>پست‌ها با ظاهر جدید، متن واضح‌تر و فاصله بهتر نمایش داده می‌شوند.</p>
-      </div>
-      <a class="btn btn-outline" href="news.html">همه خبرها</a>
-    </div>
-    <div class="featured-posts">
-      <article class="post-card-clean post-wide reveal">
-        <a class="post-media" href="article.html?id=game-trailer"><img src="assets/card-game.svg" alt="Gaming news"></a>
-        <div class="post-content">
-          <div class="meta"><span class="tag">Game News</span><span>۶ دقیقه مطالعه</span></div>
-          <h3><a href="article.html?id=game-trailer">معرفی یک بازی اکشن جدید با تمرکز روی جهان پویا</a></h3>
-          <p>در این خبر به جزئیات گیم‌پلی، سیستم پیشرفت و ویژگی‌های گرافیکی بازی پرداخته‌ایم.</p>
-          <a class="read-more" href="article.html?id=game-trailer">خواندن خبر ←</a>
+      <section class="section compact-section">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <h2>خبرهای منتخب</h2>
+              <p>آخرین اخبار دنیای گیم و سینما</p>
+            </div>
+            <a class="btn btn-outline" href="news.html">همه خبرها</a>
+          </div>
+          <div class="featured-posts" data-featured-posts>
+            <!-- Dynamic content loaded from API -->
+            <article class="post-card-clean post-wide reveal">
+              <a class="post-media" href="article.html?id=game-trailer"><img src="assets/card-game.svg" alt="Gaming news" loading="lazy"></a>
+              <div class="post-content">
+                <div class="meta"><span class="tag">Game News</span><span>۶ دقیقه مطالعه</span></div>
+                <h3><a href="article.html?id=game-trailer">معرفی یک بازی اکشن جدید با تمرکز روی جهان پویا</a></h3>
+                <p>در این خبر به جزئیات گیم‌پلی، سیستم پیشرفت و ویژگی‌های گرافیکی بازی پرداخته‌ایم.</p>
+                <a class="read-more" href="article.html?id=game-trailer">خواندن خبر ←</a>
+              </div>
+            </article>
+            <article class="post-card-clean reveal">
+              <a class="post-media" href="article.html?id=cinema-adaptation"><img src="assets/card-cinema.svg" alt="Cinema article" loading="lazy"></a>
+              <div class="post-content">
+                <div class="meta"><span class="tag">Cinema</span><span>۸ دقیقه مطالعه</span></div>
+                <h3><a href="article.html?id=cinema-adaptation">چرا بعضی اقتباس‌های سینمایی از بازی‌ها موفق می‌شوند؟</a></h3>
+                <p>متن کامل زیر کارت قرار گرفته تا پست‌ها شلوغ و فشرده دیده نشوند.</p>
+              </div>
+            </article>
+          </div>
         </div>
-      </article>
-      <article class="post-card-clean reveal">
-        <a class="post-media" href="article.html?id=cinema-adaptation"><img src="assets/card-cinema.svg" alt="Cinema article"></a>
-        <div class="post-content">
-          <div class="meta"><span class="tag">Cinema</span><span>۸ دقیقه مطالعه</span></div>
-          <h3><a href="article.html?id=cinema-adaptation">چرا بعضی اقتباس‌های سینمایی از بازی‌ها موفق می‌شوند؟</a></h3>
-          <p>متن کامل زیر کارت قرار گرفته تا پست‌ها شلوغ و فشرده دیده نشوند.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
+      </section>
 
-<section class="section compact-section">
-  <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <h2>محصولات منتخب فروشگاه</h2>
-        <p>چیدمان اصلی سایت برای بخش‌های غیرخبری شبیه کارت‌های محصول شد.</p>
-      </div>
-      <a class="btn btn-outline" href="shop.html">رفتن به فروشگاه</a>
-    </div>
-    <div class="product-showcase-grid">
-      <article class="product-tile reveal">
-        <a class="product-media" href="product.html?id=cyber-hero"><img src="assets/card-shop.svg" alt=""></a>
-        <div class="product-tile-body">
-          <span class="tag">Figure</span>
-          <h3>اکشن‌فیگور Cyber Hero</h3>
-          <p>مناسب کلکسیون و دکور گیمینگ.</p>
-          <strong class="product-price"><span>قیمت:</span> ۱,۴۹۰,۰۰۰ تومان</strong>
+      <section class="section compact-section">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <h2>محصولات منتخب فروشگاه</h2>
+              <p>چیدمان اصلی سایت برای بخش‌های غیرخبری شبیه کارت‌های محصول شد.</p>
+            </div>
+            <a class="btn btn-outline" href="shop.html">رفتن به فروشگاه</a>
+          </div>
+          <div class="product-showcase-grid" data-latest-posts>
+            <article class="product-tile reveal">
+              <a class="product-media" href="product.html?id=cyber-hero"><img src="assets/card-shop.svg" alt="" loading="lazy"></a>
+              <div class="product-tile-body">
+                <span class="tag">Figure</span>
+                <h3>اکشن‌فیگور Cyber Hero</h3>
+                <p>مناسب کلکسیون و دکور گیمینگ.</p>
+                <strong class="product-price"><span>قیمت:</span> ۱,۴۹۰,۰۰۰ تومان</strong>
+              </div>
+            </article>
+            <article class="product-tile reveal">
+              <a class="product-media" href="product.html?id=neon-poster"><img src="assets/hero-cinema.svg" alt="" loading="lazy"></a>
+              <div class="product-tile-body">
+                <span class="tag">Poster</span>
+                <h3>پوستر Neon Frame</h3>
+                <p>چاپ پریمیوم برای اتاق گیم و سینما.</p>
+                <strong class="product-price"><span>قیمت:</span> ۳۲۰,۰۰۰ تومان</strong>
+              </div>
+            </article>
+            <article class="product-tile reveal">
+              <a class="product-media" href="product.html?id=pixel-box"><img src="assets/hero-gaming.svg" alt="" loading="lazy"></a>
+              <div class="product-tile-body">
+                <span class="tag">Merch</span>
+                <h3>Pixel Box Collection</h3>
+                <p>پک سورپرایزی با تم آرکید و پیکسلی.</p>
+                <strong class="product-price"><span>قیمت:</span> ۶۹۰,۰۰۰ تومان</strong>
+              </div>
+            </article>
+          </div>
         </div>
-      </article>
-      <article class="product-tile reveal">
-        <a class="product-media" href="product.html?id=neon-poster"><img src="assets/hero-cinema.svg" alt=""></a>
-        <div class="product-tile-body">
-          <span class="tag">Poster</span>
-          <h3>پوستر Neon Frame</h3>
-          <p>چاپ پریمیوم برای اتاق گیم و سینما.</p>
-          <strong class="product-price"><span>قیمت:</span> ۳۲۰,۰۰۰ تومان</strong>
-        </div>
-      </article>
-      <article class="product-tile reveal">
-        <a class="product-media" href="product.html?id=pixel-box"><img src="assets/hero-gaming.svg" alt=""></a>
-        <div class="product-tile-body">
-          <span class="tag">Merch</span>
-          <h3>Pixel Box Collection</h3>
-          <p>پک سورپرایزی با تم آرکید و پیکسلی.</p>
-          <strong class="product-price"><span>قیمت:</span> ۶۹۰,۰۰۰ تومان</strong>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
+      </section>
+    </main>
 
-</main>
     <footer class="footer">
-  <div class="container footer-row">
-    <p>Pixoris © 2026 — رسانه گیم، سینما و آنلاین‌شاپ گیکی</p>
-    <div class="pill-list">
-      <span class="pill">Gaming</span>
-      <span class="pill">Cinema</span>
-      <span class="pill">Collectibles</span>
-    </div>
-  </div>
-</footer>
+      <div class="container footer-row">
+        <p>Pixoris © 2026 — رسانه گیم، سینما و آنلاین‌شاپ گیکی</p>
+        <div class="pill-list">
+          <span class="pill">Gaming</span>
+          <span class="pill">Cinema</span>
+          <span class="pill">Collectibles</span>
+        </div>
+      </div>
+    </footer>
   </div>
   <div class="toast" data-toast></div>
   <script src="script.js"></script>
-
 </body>
 </html>
