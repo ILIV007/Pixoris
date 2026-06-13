@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixoris | خانه</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="home">
+  <div class="site-shell">
+    <div class="pixel-decor" aria-hidden="true">
+  <div class="decor-column decor-left">
+    <div class="decor-item d1"><img src="assets/decor-wanda.png" alt="" /></div>
+    <div class="decor-item d2"><img src="assets/decor-kratos.png" alt="" /></div>
+    <div class="decor-item d3"><img src="assets/decor-ghostrider.png" alt="" /></div>
+    <div class="decor-item d4"><img src="assets/decor-samurai.png" alt="" /></div>
+    <div class="decor-item d5"><img src="assets/decor-knight.png" alt="" /></div>
+    <div class="decor-item d6"><img src="assets/decor-frog-dog.png" alt="" /></div>
+    <div class="decor-item d7"><img src="assets/decor-cat-yarn.png" alt="" /></div>
+  </div>
+  <div class="decor-column decor-right">
+    <div class="decor-item d8"><img src="assets/decor-assassin.png" alt="" /></div>
+    <div class="decor-item d9"><img src="assets/decor-luffy.png" alt="" /></div>
+    <div class="decor-item d10"><img src="assets/decor-wolverine.png" alt="" /></div>
+    <div class="decor-item d11"><img src="assets/decor-batman.png" alt="" /></div>
+    <div class="decor-item d12"><img src="assets/decor-luffy-alt.png" alt="" /></div>
+    <div class="decor-item d13"><img src="assets/decor-deadpool.png" alt="" /></div>
+    <div class="decor-item d14"><img src="assets/decor-spiderman.png" alt="" /></div>
+  </div>
+</div>
+<audio id="bgAudio" loop preload="auto" src="assets/background-music.mp3"></audio>
+<div class="pixel-overlay">
+  <div class="scan"></div>
+  <div class="pellet p1"></div>
+  <div class="pellet p2"></div>
+  <div class="pellet p3"></div>
+  <div class="cherry-runner">🍒</div>
+  <div class="pacman-runner"></div>
+  <div class="ghost-runner ghost-1"></div>
+  <div class="ghost-runner ghost-2"></div>
+  <div class="ghost-runner ghost-3"></div>
+</div>
+    <header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="assets/logo-pixoris-small.png" alt="Pixoris logo" />
+      <div class="brand-text">
+        <h1>Pixoris</h1>
+        <p>Gaming • Cinema • Shop</p>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" data-page="home">خانه</a>
+      <a href="news.html" data-page="news">خبرها</a>
+      <a href="shop.html" data-page="shop">آنلاین‌شاپ</a>
+      <a href="analysis.html" data-page="analysis">تحلیل</a>
+      <a href="about.html" data-page="about">درباره ما</a>
+      <a href="cart.html" data-page="cart" class="cart-link">سبد خرید <span data-cart-count>0</span></a>
+    </nav>
+    <div class="header-actions">
+      <a class="auth-entry" href="login.html" data-auth-entry>
+        <span class="auth-pixel"></span>
+        <span class="auth-label">ورود / عضویت</span>
+      </a>
+      <button class="pac-toggle" data-pac-toggle type="button">
+        <span class="pac-icon"></span>
+        <span class="label">Pac Mode</span>
+      </button>
+      <button class="sound-toggle muted" data-sound-toggle type="button" aria-label="play or pause music">
+        <span class="speaker-pixel"></span>
+        <span class="sound-label">Music Off</span>
+      </button>
+      <a class="cart-mini" href="cart.html" aria-label="سبد خرید">🛒 <span data-cart-count>0</span></a>
+      <button class="menu-btn" data-menu-btn type="button">☰</button>
+    </div>
+  </div>
+  <div class="container mobile-nav">
+    <a href="index.html" data-page="home">خانه</a>
+    <a href="news.html" data-page="news">خبرها</a>
+    <a href="shop.html" data-page="shop">آنلاین‌شاپ</a>
+    <a href="analysis.html" data-page="analysis">تحلیل</a>
+    <a href="about.html" data-page="about">درباره ما</a>
+    <a href="cart.html" data-page="cart">سبد خرید</a>
+    <a href="login.html" data-page="login">ورود / عضویت</a>
+  </div>
+</header>
+    <main>
+<section class="hero">
+  <div class="container hero-grid">
+    <article class="hero-panel reveal">
+      <span class="eyebrow">🎮 پلتفرم خبری + فروشگاهی + تحلیلی</span>
+      <h2 class="hero-title">دنیای <span class="shine-text">Pixoris</span>؛ جایی برای خبر، تحلیل و آیتم‌های خفن گیمینگ</h2>
+      <p class="hero-desc">نسخه جدید سایت حالا چندصفحه‌ای‌تر شده: خبر تکی، محصول تکی و سبد خرید واقعی با LocalStorage دارد. Pac Mode هم با انیمیشن کامل کار می‌کند.</p>
+      <div class="hero-actions">
+        <a class="btn" href="news.html">ورود به خبرها</a>
+        <a class="btn btn-outline" href="shop.html">رفتن به فروشگاه</a>
+      </div>
+      <div class="hero-image">
+        <img src="assets/hero-gaming.svg" alt="Pixoris gaming hero" />
+      </div>
+      <div class="floating-badge">
+        <strong>Pac Mode فعال</strong>
+        <span>انیمیشن Pac-Man، حالت پیکسلی و بازگشت با روح‌ها</span>
+      </div>
+    </article>
+    <div class="hero-side">
+      <article class="panel side-card reveal">
+        <div class="side-thumb"><img src="assets/hero-cinema.svg" alt="Cinema thumb" /></div>
+        <h3>خبر تکی و تحلیل‌ها</h3>
+        <p>روی هر خبر کلیک کن تا وارد صفحه جزئیات همان مطلب شوی.</p>
+      </article>
+      <article class="panel side-card reveal">
+        <div class="side-thumb"><img src="assets/hero-shop.svg" alt="Shop thumb" /></div>
+        <h3>محصول تکی + سبد خرید</h3>
+        <p>محصولات صفحه اختصاصی دارند و دکمه خرید به سبد اضافه می‌کند.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="ticker reveal">
+      <div class="ticker-track">
+        <span class="ticker-item">🔥 تریلر بازی جهان‌باز جدید منتشر شد</span>
+        <span class="ticker-item">🎬 تحلیل پایان‌بندی سریال علمی-تخیلی هفته</span>
+        <span class="ticker-item">🛒 مجموعه جدید اکشن‌فیگورها وارد فروشگاه شد</span>
+        <span class="ticker-item">🎮 ۵ بازی مستقل که نباید از دست بدهی</span>
+        <span class="ticker-item">🍿 اقتباس‌های گیمی؛ موفق یا ناامیدکننده؟</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <h2>سر تیتر خبرها</h2>
+        <p>کارت‌ها حالا به صفحه خبر تکی وصل هستند</p>
+      </div>
+      <a class="btn btn-outline" href="news.html">همه خبرها</a>
+    </div>
+    <div class="cards-grid">
+      <article class="card reveal">
+        <a class="media-thumb" href="article.html?id=game-trailer"><img src="assets/card-game.svg" alt="Gaming news" /></a>
+        <div class="card-body">
+          <div class="meta"><span class="tag">Game News</span><span>6 دقیقه مطالعه</span></div>
+          <h3><a href="article.html?id=game-trailer">نسخه‌ی جدید یک بازی تیراندازی با سیستم بتل‌پس خلاقانه معرفی شد</a></h3>
+          <p>به‌روزرسانی‌های فصلی، شخصی‌سازی بیشتر و نقشه‌های پویاتر، تجربه‌ای تازه برای گیمرها می‌سازد.</p>
+          <a class="read-more" href="article.html?id=game-trailer">ادامه مطلب ←</a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <a class="media-thumb" href="article.html?id=cinema-adaptation"><img src="assets/card-cinema.svg" alt="Cinema article" /></a>
+        <div class="card-body">
+          <div class="meta"><span class="tag">Cinema</span><span>8 دقیقه مطالعه</span></div>
+          <h3><a href="article.html?id=cinema-adaptation">چرا بعضی فیلم‌های اقتباسی از بازی‌ها بالاخره جواب می‌دهند؟</a></h3>
+          <p>بررسی تفاوت اقتباس‌های موفق با نمونه‌های ناموفق؛ از جهان‌سازی تا درک روح اثر اصلی.</p>
+          <a class="read-more" href="article.html?id=cinema-adaptation">ادامه مطلب ←</a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <a class="media-thumb" href="product.html?id=cyber-hero"><img src="assets/card-shop.svg" alt="Shop item" /></a>
+        <div class="card-body">
+          <div class="meta"><span class="tag">Shop</span><span>ارسال ویژه</span></div>
+          <h3><a href="product.html?id=cyber-hero">لاین جدید اکشن‌فیگورهای سایبرپانکی در Pixoris Store</a></h3>
+          <p>کیفیت ساخت بالا، بسته‌بندی کلکسیونی و محدودیت موجودی؛ مناسب ویترین و دکور گیمینگ.</p>
+          <a class="read-more" href="product.html?id=cyber-hero">مشاهده محصول ←</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <h2>امکانات نسخه جدید</h2>
+        <p>چیزهایی که برای مرحله بعد اضافه شد</p>
+      </div>
+    </div>
+    <div class="grid-3">
+      <article class="card reveal"><div class="card-body"><div class="meta"><span class="tag">Article Page</span></div><h3>صفحه خبر تکی</h3><p>هر خبر صفحه اختصاصی دارد و با آدرس query مثل article.html?id=game-trailer باز می‌شود.</p></div></article>
+      <article class="card reveal"><div class="card-body"><div class="meta"><span class="tag">Product Page</span></div><h3>صفحه محصول تکی</h3><p>هر محصول تصویر، قیمت، ویژگی و دکمه افزودن به سبد خرید دارد.</p></div></article>
+      <article class="card reveal"><div class="card-body"><div class="meta"><span class="tag">Cart</span></div><h3>سبد خرید</h3><p>افزودن، کم‌وزیاد کردن تعداد، حذف محصول و جمع کل با JavaScript انجام می‌شود.</p></div></article>
+    </div>
+  </div>
+</section>
+</main>
+    <footer class="footer">
+  <div class="container footer-row">
+    <p>Pixoris © 2026 — رسانه گیم، سینما و آنلاین‌شاپ گیکی</p>
+    <div class="pill-list">
+      <span class="pill">Gaming</span>
+      <span class="pill">Cinema</span>
+      <span class="pill">Collectibles</span>
+    </div>
+  </div>
+</footer>
+  </div>
+  <div class="toast" data-toast></div>
+  <script src="script.js"></script>
+
+</body>
+</html>
