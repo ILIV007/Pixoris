@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
       body: [
         'این بازی با تمرکز روی مبارزات سریع، طراحی مراحل نیمه‌باز و سیستم شخصی‌سازی عمیق معرفی شده است. طبق اطلاعات اولیه، سازندگان تلاش کرده‌اند تجربه‌ای بین اکشن سینمایی و گیم‌پلی رقابتی خلق کنند.',
         'در تریلر جدید، نورپردازی نئونی، محیط‌های شهری و طراحی دشمنان بیش از هر چیز جلب توجه می‌کند. نکته جذاب‌تر این است که بازی قرار است چند حالت مختلف برای بازیکنان تک‌نفره و چندنفره داشته باشد.',
-        'پیکسورا در هفته‌های آینده جزئیات بیشتری از گیم‌پلی، سیستم پیشرفت و محتوای پس از انتشار منتشر خواهد کرد.'
+        'پیکسوریس در هفته‌های آینده جزئیات بیشتری از گیم‌پلی، سیستم پیشرفت و محتوای پس از انتشار منتشر خواهد کرد.'
       ]
     },
     'cinema-adaptation': {
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'Shop News',
       time: '4 دقیقه مطالعه',
       image: 'assets/card-shop.svg',
-      intro: 'فروشگاه پیکسورا پیش‌فروش یک اکشن‌فیگور محدود با طراحی سایبرپانکی و بسته‌بندی کلکسیونی را شروع کرده است.',
+      intro: 'فروشگاه پیکسوریس پیش‌فروش یک اکشن‌فیگور محدود با طراحی سایبرپانکی و بسته‌بندی کلکسیونی را شروع کرده است.',
       body: [
         'این فیگور برای طرفداران طراحی نئونی، شخصیت‌های آینده‌نگر و دکورهای گیمینگ ساخته شده است.',
         'موجودی اولیه محدود خواهد بود و سفارش‌ها براساس زمان ثبت در اولویت ارسال قرار می‌گیرند.',
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
       body: [
         'کاربر فقط خبر نمی‌خواند؛ او می‌خواهد بخشی از دنیای مورد علاقه‌اش را لمس کند، بخرد و در فضای خودش نمایش دهد.',
         'مرچ، فیگور و پوستر به برند کمک می‌کنند از یک سایت خبری ساده به یک جامعه طرفداری تبدیل شود.',
-        'برای پیکسورا، این ترکیب می‌تواند یک مزیت جدی نسبت به رسانه‌های صرفاً محتوایی باشد.'
+        'برای پیکسوریس، این ترکیب می‌تواند یک مزیت جدی نسبت به رسانه‌های صرفاً محتوایی باشد.'
       ]
     }
   };
@@ -247,11 +247,6 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'کاربر عادی',
       desc: 'امکان خرید، دیدن خبرها، استفاده از Pac Mode و مدیریت سبد خرید.',
       access: ['مشاهده خبرها و تحلیل‌ها', 'افزودن محصول به سبد خرید', 'استفاده از سبد خرید و Pac Mode']
-    },
-    manager: {
-      title: 'مدیر سایت',
-      desc: 'دسترسی سطح بالا برای مدیریت سایت، محصولات، سفارش‌ها و کاربران.',
-      access: ['مدیریت محصولات و قیمت‌ها', 'مدیریت سفارش‌ها و کاربران', 'مدیریت خبرها و تنظیمات سایت']
     }
   };
 
@@ -622,70 +617,112 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-/* Pixoris v1.3 COMPLETE: audio persistence + resume across pages */
+
+
+
+/* Pixoris v1.4 DEBUGGED: stronger audio persistence */
 window.addEventListener('load', () => {
   const audio = document.getElementById('bgAudio');
   const soundBtn = document.querySelector('[data-sound-toggle]');
   if (!audio) return;
 
-  const getSavedTime = () => parseFloat(localStorage.getItem('pixoris_audio_time') || '0');
-  const isEnabled = () => localStorage.getItem('pixorisSoundEnabled') === 'on';
+  const SOUND_KEY = 'pixorisSoundEnabled';
+  const TIME_KEY = 'pixorisAudioTime';
+
+  const migrateOldKeys = () => {
+    if (!localStorage.getItem(SOUND_KEY) && localStorage.getItem('pixorisSoundEnabled')) {
+      localStorage.setItem(SOUND_KEY, localStorage.getItem('pixorisSoundEnabled'));
+    }
+    if (!localStorage.getItem(TIME_KEY)) {
+      const oldTime = localStorage.getItem('pixoris_audio_time') || localStorage.getItem('pixoris_audio_time');
+      if (oldTime) localStorage.setItem(TIME_KEY, oldTime);
+    }
+  };
+
+  migrateOldKeys();
+
+  const enabled = () => localStorage.getItem(SOUND_KEY) === 'on';
+
   const saveTime = () => {
     try {
-      if (!Number.isNaN(audio.currentTime)) {
+      if (!Number.isNaN(audio.currentTime) && audio.currentTime > 0) {
+        localStorage.setItem(TIME_KEY, String(audio.currentTime));
         localStorage.setItem('pixoris_audio_time', String(audio.currentTime));
       }
     } catch (e) {}
   };
 
-  const applyLabel = () => {
+  const savedTime = () => {
+    const t = parseFloat(localStorage.getItem(TIME_KEY) || localStorage.getItem('pixoris_audio_time') || '0');
+    return Number.isNaN(t) ? 0 : t;
+  };
+
+  const setLabel = () => {
     if (!soundBtn) return;
     const label = soundBtn.querySelector('.sound-label');
-    soundBtn.classList.toggle('muted', !isEnabled());
-    if (label) label.textContent = isEnabled() ? 'Music On' : 'Music Off';
+    const on = enabled();
+    soundBtn.classList.toggle('muted', !on);
+    if (label) label.textContent = on ? 'Music On' : 'Music Off';
   };
 
-  const resumePlayback = async () => {
-    const desiredTime = getSavedTime();
-    const enabled = isEnabled();
-    audio.loop = true;
-    audio.volume = 0.55;
-    audio.muted = !enabled;
+  const restoreTime = () => {
+    const t = savedTime();
     try {
-      if (!Number.isNaN(desiredTime) && desiredTime > 0) {
-        if (!audio.duration || desiredTime < audio.duration - 0.25) {
-          audio.currentTime = desiredTime;
-        }
+      if (t > 0 && (!audio.duration || t < audio.duration - 0.35)) {
+        audio.currentTime = t;
       }
     } catch (e) {}
-    if (enabled) {
-      try { await audio.play(); } catch (e) {}
-    } else {
-      try { audio.pause(); } catch (e) {}
-    }
-    applyLabel();
   };
 
-  if (audio.readyState >= 1) resumePlayback();
-  else audio.addEventListener('loadedmetadata', resumePlayback, { once: true });
+  const applyAudioState = async () => {
+    audio.loop = true;
+    audio.volume = 0.55;
+    restoreTime();
+    if (enabled()) {
+      audio.muted = false;
+      try { await audio.play(); } catch (e) {}
+    } else {
+      audio.muted = true;
+      try { audio.pause(); } catch (e) {}
+    }
+    setLabel();
+  };
+
+  if (audio.readyState >= 1) applyAudioState();
+  else audio.addEventListener('loadedmetadata', applyAudioState, { once: true });
 
   audio.addEventListener('timeupdate', saveTime);
+  window.addEventListener('pagehide', saveTime);
   window.addEventListener('beforeunload', saveTime);
-  document.querySelectorAll('a[href]').forEach(link => link.addEventListener('click', saveTime, { capture: true }));
+  document.querySelectorAll('a[href]').forEach(link => {
+    link.addEventListener('pointerdown', saveTime, { capture: true });
+    link.addEventListener('click', saveTime, { capture: true });
+  });
 
   if (soundBtn) {
     soundBtn.addEventListener('click', () => {
-      setTimeout(async () => {
-        if (isEnabled()) {
-          audio.muted = false;
-          try { await audio.play(); } catch (e) {}
-        } else {
-          saveTime();
-          try { audio.pause(); } catch (e) {}
-          audio.muted = true;
-        }
-        applyLabel();
-      }, 0);
+      setTimeout(() => {
+        localStorage.setItem(SOUND_KEY, localStorage.getItem('pixorisSoundEnabled') || (enabled() ? 'on' : 'off'));
+        applyAudioState();
+      }, 40);
     });
   }
+});
+
+/* Pixoris v1.4 DEBUGGED: separated admin demo panel */
+document.addEventListener('DOMContentLoaded', () => {
+  const adminForm = document.querySelector('[data-admin-form]');
+  const dashboard = document.querySelector('[data-admin-dashboard]');
+  if (!adminForm || !dashboard) return;
+
+  adminForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    dashboard.classList.add('admin-unlocked');
+    const toast = document.querySelector('[data-toast]');
+    if (toast) {
+      toast.textContent = 'پنل ادمین باز شد ✅';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+  });
 });

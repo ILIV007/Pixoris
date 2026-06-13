@@ -82,21 +82,22 @@
     <a href="about.html" data-page="about">درباره ما</a>
     <a href="cart.html" data-page="cart">سبد خرید</a>
     <a href="login.html" data-page="login">ورود / عضویت</a>
+    <a href="admin.html" data-page="admin">پنل ادمین</a>
   </div>
 </header>
     <main>
-<section class="hero">
+<section class="hero compact-hero">
   <div class="container">
     <article class="hero-panel reveal auth-hero">
       <span class="eyebrow">👤 حساب کاربری Pixoris</span>
-      <h2 class="hero-title">ورود / <span class="shine-text">عضویت</span></h2>
-      <p class="hero-desc">دو نقش داریم: <strong>کاربر عادی</strong> و <strong>مدیر سایت</strong>. برای عضویت، جیمیل، رمز عبور و نام کاربری وارد می‌شود. برای ورود، فقط نام کاربری و رمز عبور لازم است.</p>
+      <h2 class="hero-title">ورود / <span class="shine-text">عضویت کاربر</span></h2>
+      <p class="hero-desc">این بخش فقط برای کاربر عادی است. پنل ادمین از صفحه‌ای جدا مدیریت می‌شود و با ورود کاربرها قاطی نیست.</p>
     </article>
   </div>
 </section>
 
-<section class="section">
-  <div class="container auth-grid">
+<section class="section compact-section">
+  <div class="container auth-grid user-auth-grid">
     <article class="panel auth-panel reveal">
       <div class="auth-tabs">
         <button class="auth-tab active" data-auth-tab="login">ورود</button>
@@ -119,34 +120,20 @@
           <input type="password" name="password" placeholder="رمز عبور" minlength="4" required>
         </label>
 
-        <div class="role-picker" data-register-only hidden>
-          <button type="button" class="role-option active" data-role="user">
-            <strong>کاربر عادی</strong>
-            <span>خرید محصول، دیدن خبرها، استفاده از سبد خرید و Pac Mode</span>
-          </button>
-          <button type="button" class="role-option" data-role="manager">
-            <strong>مدیر سایت</strong>
-            <span>مدیریت سایت، محصولات، سفارش‌ها و کاربران</span>
-          </button>
-        </div>
-
         <button class="btn auth-submit" type="submit">ورود به حساب</button>
       </form>
     </article>
 
     <aside class="panel auth-panel reveal" data-account-panel>
-      <h2>سناریوهای ورود</h2>
+      <h2>حساب کاربری عادی</h2>
       <div class="role-info-card">
         <h3>کاربر عادی</h3>
-        <p>کاربر می‌تواند ثبت‌نام کند، وارد حساب شود، محصول به سبد خرید اضافه کند و محتوای سایت را ببیند.</p>
+        <p>کاربر می‌تواند خبرها و تحلیل‌ها را ببیند، محصول به سبد خرید اضافه کند و تجربه شخصی‌شده‌تری از Pixoris داشته باشد.</p>
       </div>
       <div class="role-info-card">
-        <h3>مدیر سایت</h3>
-        <p>مدیر سایت نقش بالاتر است و در نسخه واقعی می‌تواند محصولات، سفارش‌ها، خبرها و کاربران را مدیریت کند.</p>
-      </div>
-      <div class="role-info-card">
-        <h3>نحوه کار نسخه نمایشی</h3>
-        <p>ثبت‌نام و ورود فعلاً داخل مرورگر با LocalStorage ذخیره می‌شود؛ یعنی برای نسخه واقعی باید به بک‌اند وصل شود.</p>
+        <h3>پنل ادمین جداست</h3>
+        <p>برای مدیریت سایت، محصولات و سفارش‌ها از صفحه مخصوص ادمین استفاده می‌شود.</p>
+        <a class="btn btn-outline" href="admin.html">رفتن به پنل ادمین</a>
       </div>
     </aside>
   </div>

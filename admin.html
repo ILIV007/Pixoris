@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pixoris | سبد خرید</title>
+  <title>Pixoris | پنل ادمین</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body data-page="cart">
+<body data-page="admin">
   <div class="site-shell">
     <div class="pixel-decor" aria-hidden="true">
   <div class="decor-column decor-left">
@@ -86,18 +86,56 @@
   </div>
 </header>
     <main>
-<section class="hero">
+<section class="hero compact-hero">
   <div class="container">
-    <article class="hero-panel reveal" style="min-height: 300px;">
-      <span class="eyebrow">🛒 Cart</span>
-      <h2 class="hero-title">سبد خرید <span class="shine-text">Pixoris</span></h2>
-      <p class="hero-desc">اینجا می‌تونی تعداد محصولات رو کم‌وزیاد کنی، حذف کنی و جمع کل رو ببینی.</p>
+    <article class="hero-panel reveal">
+      <span class="eyebrow">🛠 Admin Panel</span>
+      <h2 class="hero-title">پنل مدیریت <span class="shine-text">Pixoris</span></h2>
+      <p class="hero-desc">این پنل از ورود کاربران جداست و برای مدیریت محتوای سایت، محصولات و سفارش‌ها طراحی شده است.</p>
     </article>
   </div>
 </section>
-<section class="section">
-  <div class="container">
-    <div class="cart-page reveal" data-cart-page></div>
+
+<section class="section compact-section">
+  <div class="container admin-layout">
+    <article class="panel admin-login-card reveal">
+      <h2>ورود ادمین</h2>
+      <p>این بخش نمایشی است. در نسخه بک‌اند واقعی، ورود ادمین باید با دیتابیس و احراز هویت امن انجام شود.</p>
+      <form class="auth-form" data-admin-form>
+        <label>
+          نام کاربری ادمین
+          <input type="text" name="adminUser" placeholder="admin" required>
+        </label>
+        <label>
+          رمز عبور
+          <input type="password" name="adminPass" placeholder="••••••••" required>
+        </label>
+        <button class="btn" type="submit">ورود به پنل</button>
+      </form>
+    </article>
+
+    <section class="admin-dashboard reveal" data-admin-dashboard>
+      <article class="admin-stat">
+        <span>محصولات</span>
+        <strong>24</strong>
+        <p>مدیریت موجودی، قیمت و تصویر</p>
+      </article>
+      <article class="admin-stat">
+        <span>سفارش‌ها</span>
+        <strong>12</strong>
+        <p>بررسی وضعیت پرداخت و ارسال</p>
+      </article>
+      <article class="admin-stat">
+        <span>خبرها</span>
+        <strong>38</strong>
+        <p>ویرایش، انتشار و دسته‌بندی محتوا</p>
+      </article>
+      <article class="admin-stat">
+        <span>کاربران</span>
+        <strong>156</strong>
+        <p>نمایش کاربران ثبت‌نام‌شده</p>
+      </article>
+    </section>
   </div>
 </section>
 </main>
