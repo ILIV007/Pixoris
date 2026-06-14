@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pixoris | پنل مدیریت</title>
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body data-page="admin">
   <div class="site-shell">
@@ -84,7 +83,7 @@
           <article class="panel auth-panel reveal" style="padding: 40px;">
             <div style="text-align: center; margin-bottom: 24px;">
               <h2 style="font-size: 28px;">🔐 ورود به پنل مدیریت</h2>
-              <p style="color: var(--muted); margin-top: 8px;">Pixoris CMS v2.0</p>
+              <p style="color: var(--muted); margin-top: 8px;">Pixoris CMS v2.1</p>
             </div>
             <form class="auth-form" data-admin-login-form>
               <label>
@@ -216,10 +215,36 @@
                       <label>خلاصه (Excerpt)</label>
                       <textarea name="excerpt" rows="3" placeholder="خلاصه کوتاه مقاله..."></textarea>
                     </div>
+
+                    <!-- Custom RTE -->
                     <div class="editor-field">
                       <label>محتوای مقاله</label>
-                      <textarea id="rich-editor" name="content" rows="15" placeholder="محتوای کامل مقاله..."></textarea>
+                      <div class="rte-toolbar" data-rte-toolbar>
+                        <button type="button" data-cmd="bold" title="Bold"><b>B</b></button>
+                        <button type="button" data-cmd="italic" title="Italic"><i>I</i></button>
+                        <button type="button" data-cmd="strikeThrough" title="Strike"><s>S</s></button>
+                        <span class="toolbar-sep"></span>
+                        <button type="button" data-cmd="formatBlock" data-val="H1" title="Heading 1">H1</button>
+                        <button type="button" data-cmd="formatBlock" data-val="H2" title="Heading 2">H2</button>
+                        <span class="toolbar-sep"></span>
+                        <button type="button" data-cmd="insertUnorderedList" title="Bullet List">• لیست</button>
+                        <button type="button" data-cmd="insertOrderedList" title="Numbered List">۱. لیست</button>
+                        <span class="toolbar-sep"></span>
+                        <button type="button" data-cmd="justifyRight" title="Align Right">راست</button>
+                        <button type="button" data-cmd="justifyCenter" title="Align Center">وسط</button>
+                        <button type="button" data-cmd="justifyLeft" title="Align Left">چپ</button>
+                        <span class="toolbar-sep"></span>
+                        <button type="button" data-cmd="insertImage" title="Insert Image">🖼</button>
+                        <button type="button" data-cmd="createLink" title="Insert Link">🔗</button>
+                        <span class="toolbar-sep"></span>
+                        <button type="button" data-cmd="undo" title="Undo">↩️</button>
+                        <button type="button" data-cmd="redo" title="Redo">↪️</button>
+                        <button type="button" data-cmd="removeFormat" title="Clear Formatting">🧹</button>
+                      </div>
+                      <div id="rich-editor" class="rte-editor"></div>
+                      <textarea name="content" style="display:none;" placeholder="محتوای کامل مقاله..."></textarea>
                     </div>
+
                     <div class="editor-field">
                       <label>تگ‌ها (با کاما جدا کنید)</label>
                       <input type="text" name="tags" placeholder="بازی، سینما، تکنولوژی">
@@ -295,7 +320,7 @@
 
     <footer class="footer">
       <div class="container footer-row">
-        <p>Pixoris CMS v2.0 © 2026</p>
+        <p>Pixoris CMS v2.1 © 2026</p>
         <div class="pill-list">
           <span class="pill">Gaming</span>
           <span class="pill">Cinema</span>
