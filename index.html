@@ -6,6 +6,9 @@
   <meta name="description" content="Pixoris - رسانه گیم، سینما و فروشگاه گیکی" />
   <meta property="og:title" content="Pixoris" />
   <meta property="og:description" content="خبر، تحلیل و فروشگاه گیم/سینما" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pixoris.pages.dev" />
+  <meta name="twitter:card" content="summary" />
   <title>Pixoris | خانه</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -127,24 +130,7 @@
             <a class="btn btn-outline" href="news.html">همه خبرها</a>
           </div>
           <div class="featured-posts" data-featured-posts>
-            <!-- Dynamic content loaded from API -->
-            <article class="post-card-clean post-wide reveal">
-              <a class="post-media" href="article.html?id=game-trailer"><img src="assets/card-game.svg" alt="Gaming news" loading="lazy"></a>
-              <div class="post-content">
-                <div class="meta"><span class="tag">Game News</span><span>۶ دقیقه مطالعه</span></div>
-                <h3><a href="article.html?id=game-trailer">معرفی یک بازی اکشن جدید با تمرکز روی جهان پویا</a></h3>
-                <p>در این خبر به جزئیات گیم‌پلی، سیستم پیشرفت و ویژگی‌های گرافیکی بازی پرداخته‌ایم.</p>
-                <a class="read-more" href="article.html?id=game-trailer">خواندن خبر ←</a>
-              </div>
-            </article>
-            <article class="post-card-clean reveal">
-              <a class="post-media" href="article.html?id=cinema-adaptation"><img src="assets/card-cinema.svg" alt="Cinema article" loading="lazy"></a>
-              <div class="post-content">
-                <div class="meta"><span class="tag">Cinema</span><span>۸ دقیقه مطالعه</span></div>
-                <h3><a href="article.html?id=cinema-adaptation">چرا بعضی اقتباس‌های سینمایی از بازی‌ها موفق می‌شوند؟</a></h3>
-                <p>متن کامل زیر کارت قرار گرفته تا پست‌ها شلوغ و فشرده دیده نشوند.</p>
-              </div>
-            </article>
+            <div class="skeleton" style="height:200px"></div>
           </div>
         </div>
       </section>
@@ -154,38 +140,45 @@
           <div class="section-head reveal">
             <div>
               <h2>محصولات منتخب فروشگاه</h2>
-              <p>چیدمان اصلی سایت برای بخش‌های غیرخبری شبیه کارت‌های محصول شد.</p>
+              <p>به‌صورت داینامیک از API بارگذاری می‌شود</p>
             </div>
             <a class="btn btn-outline" href="shop.html">رفتن به فروشگاه</a>
           </div>
+          <div class="product-showcase-grid" data-shop-preview>
+            <div class="skeleton" style="height:240px"></div>
+            <div class="skeleton" style="height:240px"></div>
+            <div class="skeleton" style="height:240px"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact-section">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <h2>پربازدیدترین‌ها</h2>
+              <p>محبوب‌ترین مطالب هفته</p>
+            </div>
+          </div>
+          <div class="trending-list" data-trending>
+            <div class="skeleton" style="height:60px"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact-section">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <h2>آخرین مطالب</h2>
+              <p>تازه‌ترین مقالات پیکسوریس</p>
+            </div>
+            <a class="btn btn-outline" href="news.html">همه مطالب</a>
+          </div>
           <div class="product-showcase-grid" data-latest-posts>
-            <article class="product-tile reveal">
-              <a class="product-media" href="product.html?id=cyber-hero"><img src="assets/card-shop.svg" alt="" loading="lazy"></a>
-              <div class="product-tile-body">
-                <span class="tag">Figure</span>
-                <h3>اکشن‌فیگور Cyber Hero</h3>
-                <p>مناسب کلکسیون و دکور گیمینگ.</p>
-                <strong class="product-price"><span>قیمت:</span> ۱,۴۹۰,۰۰۰ تومان</strong>
-              </div>
-            </article>
-            <article class="product-tile reveal">
-              <a class="product-media" href="product.html?id=neon-poster"><img src="assets/hero-cinema.svg" alt="" loading="lazy"></a>
-              <div class="product-tile-body">
-                <span class="tag">Poster</span>
-                <h3>پوستر Neon Frame</h3>
-                <p>چاپ پریمیوم برای اتاق گیم و سینما.</p>
-                <strong class="product-price"><span>قیمت:</span> ۳۲۰,۰۰۰ تومان</strong>
-              </div>
-            </article>
-            <article class="product-tile reveal">
-              <a class="product-media" href="product.html?id=pixel-box"><img src="assets/hero-gaming.svg" alt="" loading="lazy"></a>
-              <div class="product-tile-body">
-                <span class="tag">Merch</span>
-                <h3>Pixel Box Collection</h3>
-                <p>پک سورپرایزی با تم آرکید و پیکسلی.</p>
-                <strong class="product-price"><span>قیمت:</span> ۶۹۰,۰۰۰ تومان</strong>
-              </div>
-            </article>
+            <div class="skeleton" style="height:240px"></div>
+            <div class="skeleton" style="height:240px"></div>
+            <div class="skeleton" style="height:240px"></div>
           </div>
         </div>
       </section>

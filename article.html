@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pixoris | جزئیات خبر</title>
+  <title>Pixoris | مقاله</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body data-page="news">
@@ -95,7 +95,7 @@
           </article>
         </div>
       </section>
-      <section class="section">
+      <section class="section" data-related-section>
         <div class="container">
           <div class="section-head reveal">
             <div>
@@ -103,10 +103,8 @@
               <p>چند پیشنهاد دیگر از پیکسوریس</p>
             </div>
           </div>
-          <div class="grid-3">
-            <article class="card reveal"><div class="card-body"><div class="meta"><span class="tag">Game</span></div><h3><a href="article.html?id=graphics-gameplay">گرافیک یا گیم‌پلی؟</a></h3><p>کدام عامل تجربه بازی را ماندگار می‌کند؟</p></div></article>
-            <article class="card reveal"><div class="card-body"><div class="meta"><span class="tag">Cinema</span></div><h3><a href="article.html?id=cinema-adaptation">اقتـباس‌های گیمی</a></h3><p>راز موفقیت یا شکست فیلم‌های ساخته‌شده از بازی‌ها.</p></div></article>
-            <article class="card reveal"><div class="card-body"><div class="meta"><span class="tag">Shop</span></div><h3><a href="product.html?id=pixel-box">Pixel Box Collection</a></h3><p>یک پک جذاب برای عاشقان آیتم‌های پیکسلی.</p></div></article>
+          <div class="grid-3" data-related-articles>
+            <!-- Related articles from API -->
           </div>
         </div>
       </section>

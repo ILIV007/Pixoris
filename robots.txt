@@ -1,0 +1,12 @@
+# Pixoris robots.txt
+# https://pixoris.pages.dev
+
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /admin.js
+Disallow: /login.html
+Disallow: /cart.html
+
+# Sitemap
+Sitemap: https://pixoris.pages.dev/sitemap.xml
