@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Pixoris Debug Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .debug-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-top: 20px; }
+    .debug-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      transition: var(--transition);
+    }
+    .debug-card:hover { border-color: rgba(78,229,255,.3); }
+    .debug-card h3 { font-size: 14px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+    .debug-card .status-pill {
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .status-pill.ok { background: rgba(57,243,122,.18); color: var(--green); }
+    .status-pill.fail { background: rgba(255,78,156,.18); color: var(--pink); }
+    .status-pill.skip { background: rgba(255,216,76,.18); color: var(--yellow); }
+    .debug-card pre {
+      background: rgba(0,0,0,.4);
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 11px;
+      max-height: 220px;
+      overflow: auto;
+      direction: ltr;
+      text-align: left;
+      color: var(--cyan);
+    }
+    .debug-actions { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+    .debug-actions button {
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 12px;
+      transition: var(--transition);
+    }
+    .debug-actions button:hover { background: rgba(78,229,255,.1); border-color: var(--cyan); }
+    .debug-actions button.active { background: linear-gradient(135deg, var(--purple), var(--pink)); border-color: transparent; }
+    .timing { color: var(--yellow); font-size: 11px; margin-top: 6px; }
+    .hint { color: var(--muted); font-size: 11px; margin-top: 6px; line-height: 1.6; }
+  </style>
+</head>
+<body data-page="debug">
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="index.html">
+          <img class="brand-logo" src="assets/logo-pixoris-small.png" alt="Pixoris logo" />
+          <div class="brand-text">
+            <h1>Pixoris</h1>
+            <p>Debug Dashboard v3.0</p>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html">خانه</a>
+          <a href="admin.html">پنل ادمین</a>
+          <a href="debug.html" class="active">دیباگ</a>
+        </nav>
+        <div class="header-actions">
+          <button class="menu-btn" data-menu-btn type="button">☰</button>
+        </div>
+      </div>
+      <div class="container mobile-nav">
+        <a href="index.html">خانه</a>
+        <a href="admin.html">پنل ادمین</a>
+        <a href="debug.html">دیباگ</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="hero-panel reveal" style="padding: 24px; margin-bottom: 20px;">
+            <span class="eyebrow">🔧 System Diagnostic</span>
+            <h2 class="hero-title" style="font-size: 28px;">Pixoris Debug Dashboard</h2>
+            <p class="hero-desc">بررسی کامل سلامت سیستم: Worker، D1، GitHub، Auth، Schema و CMS CRUD.</p>
+            <div class="debug-actions">
+              <button data-debug-action="overview" class="active">📋 Overview</button>
+              <button data-debug-action="full">🔍 Full Diagnostic</button>
+              <button data-debug-action="schema">🗄 Schema</button>
+              <button data-debug-action="database">📊 Database</button>
+              <button data-debug-action="auth">🔐 Auth</button>
+              <button data-debug-action="github">🐙 GitHub</button>
+              <button data-debug-action="upload">📤 Test Upload</button>
+              <button data-debug-action="cms">📝 CMS CRUD Test</button>
+              <button data-debug-action="performance">⚡ Performance</button>
+            </div>
+            <div class="timing" id="last-response-time"></div>
+          </div>
+
+          <div class="debug-grid" id="debug-output">
+            <div class="debug-card">
+              <h3>آماده‌اید <span class="status-pill skip">waiting</span></h3>
+              <p class="hint">یکی از دکمه‌های بالا رو بزن تا بررسی شروع شه. پیشنهاد: اول "Full Diagnostic".</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-row">
+        <p>Pixoris Debug v3.0 © 2026</p>
+        <div class="pill-list">
+          <span class="pill">Diagnostic</span>
+          <span class="pill">Health Check</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="toast" data-toast></div>
+  <script>
+    const API_BASE = window.API_BASE || 'https://dev.pixoris.workers.dev';
+    const $ = (s) => document.querySelector(s);
+
+    const showToast = (msg) => {
+      const t = $('[data-toast]');
+      if (!t) return;
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2000);
+    };
+
+    const escapeHtml = (str) => String(str || '').replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+
+    const renderCard = (title, data) => {
+      const status = data.status || (data.ok ? 'ok' : 'fail');
+      const ms = data.ms ? ` · ${data.ms}ms` : '';
+      let body = '';
+      if (data.error) {
+        body += `<p style="color:var(--pink);font-size:12px;margin-bottom:8px">⚠ ${escapeHtml(data.error)}</p>`;
+      }
+      if (data.hint) {
+        body += `<p class="hint">💡 ${escapeHtml(data.hint)}</p>`;
+      }
+      // Show a clean summary
+      const summary = { ...data };
+      delete summary.status; delete summary.ms; delete summary.error; delete summary.hint;
+      body += `<pre>${escapeHtml(JSON.stringify(summary, null, 2))}</pre>`;
+      return `<div class="debug-card">
+        <h3>${escapeHtml(title)} <span class="status-pill ${status}">${status}${ms}</span></h3>
+        ${body}
+      </div>`;
+    };
+
+    const runDebug = async (action) => {
+      const endpoints = {
+        overview: '/api/debug',
+        full: '/api/debug/full',
+        schema: '/api/debug/schema',
+        database: '/api/debug/database',
+        auth: '/api/debug/auth',
+        github: '/api/debug/github',
+        upload: '/api/debug/upload',
+        cms: '/api/debug/cms',
+        performance: '/api/debug/performance',
+      };
+      const endpoint = endpoints[action];
+      if (!endpoint) return;
+      const output = $('#debug-output');
+      output.innerHTML = '<div class="debug-card"><h3>در حال بارگذاری... <span class="status-pill skip">loading</span></h3><p class="hint">لطفاً صبر کنید، برخی بررسی‌ها چند ثانیه طول می‌کشن.</p></div>';
+
+      const start = Date.now();
+      try {
+        const res = await fetch(`${API_BASE}${endpoint}`);
+        const elapsed = Date.now() - start;
+        const data = await res.json();
+        $('#last-response-time').textContent = `⏱ Response time: ${elapsed}ms · HTTP ${res.status}`;
+
+        if (action === 'overview') {
+          const cards = [];
+          cards.push(renderCard('Worker', { status: data.worker, version: data.version, timestamp: data.timestamp }));
+          cards.push(renderCard('Database', data.database_detail || { status: data.database }));
+          cards.push(renderCard('Schema', data.schema_detail || { status: data.schema }));
+          cards.push(renderCard('Auth (JWT)', { status: data.auth, jwt_secret: data.auth !== 'missing' }));
+          cards.push(renderCard('GitHub Storage', { status: data.github, configured: data.github !== 'missing' }));
+          output.innerHTML = cards.join('');
+        } else if (action === 'full') {
+          const cards = [];
+          for (const [key, value] of Object.entries(data)) {
+            if (['version', 'timestamp'].includes(key)) continue;
+            cards.push(renderCard(key, value));
+          }
+          output.innerHTML = cards.join('');
+        } else {
+          output.innerHTML = renderCard(action, data);
+        }
+        showToast('بررسی کامل شد ✅');
+      } catch (err) {
+        output.innerHTML = `<div class="debug-card"><h3>خطا <span class="status-pill fail">error</span></h3><p style="color:var(--pink)">${escapeHtml(err.message)}</p><p class="hint">مطمئن شو Worker در حال اجراست و API_BASE درست تنظیم شده.</p></div>`;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile menu
+      const menuBtn = $('[data-menu-btn]');
+      const mobileNav = document.querySelector('.mobile-nav');
+      if (menuBtn && mobileNav) menuBtn.addEventListener('click', () => mobileNav.classList.toggle('open'));
+
+      // Bind debug actions
+      document.querySelectorAll('[data-debug-action]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-debug-action]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          runDebug(btn.dataset.debugAction);
+        });
+      });
+
+      // Auto-run overview on load
+      runDebug('overview');
+    });
+  </script>
+</body>
+</html>

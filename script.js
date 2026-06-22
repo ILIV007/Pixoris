@@ -22,6 +22,8 @@ const toman = (num) => {
   try { return new Intl.NumberFormat('fa-IR').format(safe) + ' تومان'; }
   catch (e) { return safe.toLocaleString() + ' تومان'; }
 };
+// Expose toman globally so admin.js (loaded after) can use it without redeclaring
+window.toman = toman;
 
 const showToast = (msg, duration = 2000) => {
   const toast = $('[data-toast]');

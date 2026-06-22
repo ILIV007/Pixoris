@@ -580,10 +580,15 @@ const loadProducts = async () => {
   `).join('');
 };
 
-function toman(num) {
-  const safe = Number(num) || 0;
-  try { return new Intl.NumberFormat('fa-IR').format(safe) + ' ت'; }
-  catch { return safe.toLocaleString() + ' ت'; }
+// NOTE: `toman` is declared globally in script.js (loaded before admin.js).
+// We intentionally do NOT redeclare it here — that was the v2.2 bug that broke admin.js.
+// If script.js failed to load (rare), define a fallback on window so admin functions still work.
+if (typeof window.toman !== 'function') {
+  window.toman = (num) => {
+    const safe = Number(num) || 0;
+    try { return new Intl.NumberFormat('fa-IR').format(safe) + ' ت'; }
+    catch { return safe.toLocaleString() + ' ت'; }
+  };
 }
 
 const initProductForm = () => {
