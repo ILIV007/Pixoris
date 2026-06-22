@@ -120,6 +120,7 @@
                 <a href="#" data-admin-tab="media"><span>🖼</span> رسانه</a>
                 <a href="#" data-admin-tab="users" data-role-min="super_admin"><span>👥</span> کاربران</a>
                 <a href="#" data-admin-tab="audit" data-role-min="admin"><span>📜</span> لاگ رویدادها</a>
+                <a href="#" data-admin-tab="debug"><span>🧪</span> دیباگ سنتر</a>
                 <a href="#" data-admin-tab="settings"><span>⚙️</span> تنظیمات</a>
                 <a href="#" data-admin-logout style="color: var(--pink);"><span>🚪</span> خروج (<span data-admin-name>admin</span>)</a>
               </nav>
@@ -514,6 +515,49 @@
                       <tr><td colspan="5" style="text-align:center;color:var(--muted)">در حال بارگذاری...</td></tr>
                     </tbody>
                   </table>
+                </div>
+              </div>
+
+              <!-- Debug Center -->
+              <div class="admin-tab" data-tab="debug" style="display: none;">
+                <h2 style="margin-bottom: 20px;">🧪 Debug Center</h2>
+                <div class="panel" style="padding: 20px; margin-bottom: 16px;">
+                  <h3 style="margin-bottom: 12px;">🔍 System Health Check</h3>
+                  <p style="color: var(--muted); font-size: 13px; margin-bottom: 14px;">
+                    این بخش وضعیت Worker، D1، GitHub، Auth و Storage رو به‌صورت زنده نشون می‌ده.
+                    برای رفع مشکل آپلود، ابتدا "GitHub Test" رو بزن.
+                  </p>
+                  <div class="debug-actions" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+                    <button class="btn btn-sm" data-debug-run="overview">📋 Overview</button>
+                    <button class="btn btn-sm" data-debug-run="full">🔍 Full Diagnostic</button>
+                    <button class="btn btn-sm" data-debug-run="github">🐙 GitHub Test</button>
+                    <button class="btn btn-sm" data-debug-run="upload">📤 Test Upload</button>
+                    <button class="btn btn-sm" data-debug-run="schema">🗄 Schema Check</button>
+                    <button class="btn btn-sm" data-debug-run="cms">📝 CMS CRUD Test</button>
+                    <button class="btn btn-sm" data-debug-run="performance">⚡ Performance</button>
+                  </div>
+                  <div id="debug-result" style="background:rgba(0,0,0,.4);border-radius:10px;padding:14px;min-height:80px;font-family:'Courier New',monospace;font-size:12px;color:var(--cyan);direction:ltr;text-align:left;max-height:500px;overflow:auto;">
+                    <span style="color:var(--muted)">نتیجه اینجا نمایش داده می‌شه...</span>
+                  </div>
+                  <div id="debug-timing" style="margin-top:8px;font-size:11px;color:var(--yellow);"></div>
+                </div>
+
+                <div class="panel" style="padding: 20px;">
+                  <h3 style="margin-bottom: 12px;">📚 راهنمای رفع مشکل</h3>
+                  <div style="display:grid;gap:10px;font-size:13px;line-height:1.7;">
+                    <div style="padding:10px;border-radius:8px;background:rgba(255,78,156,.08);border:1px solid rgba(255,78,156,.2);">
+                      <strong style="color:var(--pink)">اگر GitHub 403 میده:</strong>
+                      <p style="color:var(--muted);margin-top:4px;">کنترل کن که GITHUB_TOKEN secrets ست شده باشه و دسترسی <code>repo:write</code> داشته باشه. v3.1 این مشکل رو با اضافه کردن User-Agent header حل کرده.</p>
+                    </div>
+                    <div style="padding:10px;border-radius:8px;background:rgba(255,216,76,.08);border:1px solid rgba(255,216,76,.2);">
+                      <strong style="color:var(--yellow)">اگر Schema ناسینک بود:</strong>
+                      <p style="color:var(--muted);margin-top:4px;">دستور <code>wrangler d1 execute pixoris-db --file=./schema.sql --remote</code> رو اجرا کن.</p>
+                    </div>
+                    <div style="padding:10px;border-radius:8px;background:rgba(78,229,255,.08);border:1px solid rgba(78,229,255,.2);">
+                      <strong style="color:var(--cyan)">اگر JWT_SECRET ست نبود:</strong>
+                      <p style="color:var(--muted);margin-top:4px;">دستور <code>wrangler secret put JWT_SECRET</code> رو اجرا کن (حداقل ۳۲ کاراکتر).</p>
+                    </div>
+                  </div>
                 </div>
               </div>
 

@@ -198,6 +198,7 @@ const initTabs = () => {
           loadCategoriesDropdown();
         }
         if (target === 'settings') loadSettings();
+        if (target === 'debug') initDebugCenter();
       }
     });
   });
@@ -932,6 +933,61 @@ const initLogout = () => {
     localStorage.removeItem('pixorisAdminToken');
     localStorage.removeItem('pixorisAdminRole');
     location.reload();
+  });
+};
+
+// ============= DEBUG CENTER (v3.1) =============
+const initDebugCenter = () => {
+  // Bind debug action buttons (only bind once)
+  const buttons = $$a('[data-debug-run]');
+  if (!buttons.length) return;
+  if (window._debugCenterBound) return;
+  window._debugCenterBound = true;
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const action = btn.dataset.debugRun;
+      const endpoints = {
+        overview: '/api/debug',
+        full: '/api/debug/full',
+        github: '/api/debug/github',
+        upload: '/api/debug/upload',
+        schema: '/api/debug/schema',
+        cms: '/api/debug/cms',
+        performance: '/api/debug/performance',
+      };
+      const endpoint = endpoints[action];
+      if (!endpoint) return;
+
+      const resultEl = $a('#debug-result');
+      const timingEl = $a('#debug-timing');
+      if (resultEl) resultEl.innerHTML = '<span style="color:var(--yellow)">⏳ در حال اجرای بررسی... (ممکنه چند ثانیه طول بکشه)</span>';
+      if (timingEl) timingEl.textContent = '';
+
+      const start = Date.now();
+      try {
+        const res = await fetch(`${window.API_BASE}${endpoint}`);
+        const elapsed = Date.now() - start;
+        const data = await res.json();
+        if (timingEl) timingEl.textContent = `⏱ ${elapsed}ms · HTTP ${res.status}`;
+        if (resultEl) {
+          // Colorize output
+          const json = JSON.stringify(data, null, 2);
+          const colorized = json
+            .replace(/"status":\s*"ok"/g, '<span style="color:var(--green)">"status": "ok"</span>')
+            .replace(/"status":\s*"fail"/g, '<span style="color:var(--pink)">"status": "fail"</span>')
+            .replace(/"status":\s*"skip"/g, '<span style="color:var(--yellow)">"status": "skip"</span>')
+            .replace(/true/g, '<span style="color:var(--green)">true</span>')
+            .replace(/false/g, '<span style="color:var(--pink)">false</span>')
+            .replace(/"error":\s*"([^"]+)"/g, '<span style="color:var(--pink)">"error": "$1"</span>');
+          resultEl.innerHTML = `<pre style="margin:0;white-space:pre-wrap;word-wrap:break-word;">${colorized}</pre>`;
+        }
+        showAdminToast(`بررسی ${action} کامل شد`);
+      } catch (err) {
+        if (resultEl) resultEl.innerHTML = `<span style="color:var(--pink)">❌ خطا: ${escapeAdminHtml(err.message)}</span>`;
+        showAdminToast('خطا در ارتباط با API');
+      }
+    });
   });
 };
 
