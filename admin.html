@@ -2,57 +2,111 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg" />
-  <link rel="apple-touch-icon" href="assets/logos/apple-touch-icon.png" />
-  <title>Pixoris CMS | پنل مدیریت</title>
+  <title>Pixoris | پنل مدیریت v2.2</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body data-page="admin">
   <div class="site-shell">
-    <div class="main-content">
-      <audio id="bgAudio" loop preload="auto" src="assets/audio/background-music.mp3"></audio>
+    <div class="pixel-decor" aria-hidden="true">
+      <div class="decor-column decor-left">
+        <div class="decor-item d1"><img src="assets/decor/decor-wanda.png" alt="" /></div>
+        <div class="decor-item d2"><img src="assets/decor/decor-kratos.png" alt="" /></div>
+        <div class="decor-item d3"><img src="assets/decor/decor-ghostrider.png" alt="" /></div>
+        <div class="decor-item d4"><img src="assets/decor/decor-samurai.png" alt="" /></div>
+        <div class="decor-item d5"><img src="assets/decor/decor-knight.png" alt="" /></div>
+        <div class="decor-item d6"><img src="assets/decor/decor-frog-dog.png" alt="" /></div>
+        <div class="decor-item d7"><img src="assets/decor/decor-cat-yarn.png" alt="" /></div>
+      </div>
+      <div class="decor-column decor-right">
+        <div class="decor-item d8"><img src="assets/decor/decor-assassin.png" alt="" /></div>
+        <div class="decor-item d9"><img src="assets/decor/decor-luffy.png" alt="" /></div>
+        <div class="decor-item d10"><img src="assets/decor/decor-wolverine.png" alt="" /></div>
+        <div class="decor-item d11"><img src="assets/decor/decor-batman.png" alt="" /></div>
+        <div class="decor-item d12"><img src="assets/decor/decor-luffy-alt.png" alt="" /></div>
+        <div class="decor-item d13"><img src="assets/decor/decor-deadpool.png" alt="" /></div>
+        <div class="decor-item d14"><img src="assets/decor/decor-spiderman.png" alt="" /></div>
+      </div>
+    </div>
+    <audio id="bgAudio" loop preload="auto" src="assets/audio/background-music.mp3"></audio>
+    <div class="pixel-overlay">
+      <div class="scan"></div>
+      <div class="pellet p1"></div>
+      <div class="pellet p2"></div>
+      <div class="pellet p3"></div>
+      <div class="cherry-runner">🍒</div>
+      <div class="pacman-runner"></div>
+      <div class="ghost-runner ghost-1"></div>
+      <div class="ghost-runner ghost-2"></div>
+      <div class="ghost-runner ghost-3"></div>
+    </div>
 
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="index.html">
+          <img class="brand-logo" src="assets/logos/logo-pixoris-small.png" alt="Pixoris logo" />
+          <div class="brand-text">
+            <h1>Pixoris</h1>
+            <p>Admin CMS v2.2 — <span data-admin-role>editor</span></p>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html" data-page="home">خانه</a>
+          <a href="news.html" data-page="news">خبرها</a>
+          <a href="shop.html" data-page="shop">فروشگاه</a>
+          <a href="admin.html" data-page="admin" class="active">پنل مدیریت</a>
+        </nav>
+        <div class="header-actions">
+          <button class="pac-toggle" data-pac-toggle type="button">
+            <span class="pac-icon"></span>
+            <span class="label">Pac Mode</span>
+          </button>
+          <button class="sound-toggle muted" data-sound-toggle type="button" aria-label="play or pause music">
+            <span class="speaker-pixel"></span>
+            <span class="sound-label">Music Off</span>
+          </button>
+          <button class="menu-btn" data-menu-btn type="button">☰</button>
+        </div>
+      </div>
+      <div class="container mobile-nav">
+        <a href="index.html" data-page="home">خانه</a>
+        <a href="news.html" data-page="news">خبرها</a>
+        <a href="shop.html" data-page="shop">فروشگاه</a>
+        <a href="admin.html" data-page="admin">پنل مدیریت</a>
+      </div>
+    </header>
+
+    <main>
       <!-- Login Screen -->
       <section class="section" id="admin-login-screen">
-        <div class="container" style="max-width: 440px;">
+        <div class="container" style="max-width: 480px;">
           <article class="panel auth-panel reveal" style="padding: 40px;">
             <div style="text-align: center; margin-bottom: 24px;">
-              <div style="font-size: 48px; margin-bottom: 12px;">🎮</div>
-              <h2 style="font-size: 24px;">ورود به پنل مدیریت</h2>
-              <p style="color: var(--muted); margin-top: 8px; font-size: 13px;">Pixoris CMS v4.5</p>
+              <h2 style="font-size: 28px;">🔐 ورود به پنل مدیریت</h2>
+              <p style="color: var(--muted); margin-top: 8px;">Pixoris CMS v2.2 — امن با PBKDF2</p>
             </div>
-            <form data-admin-login-form>
-              <div class="editor-field">
-                <label>نام کاربری</label>
-                <input type="text" name="adminUser" placeholder="admin / Iliya / Amirali" required autocomplete="username">
-              </div>
-              <div class="editor-field">
-                <label>رمز عبور</label>
-                <div class="password-input-wrapper">
-                  <input type="password" name="adminPass" placeholder="••••••••" required autocomplete="current-password" id="admin-password-input">
-                  <button type="button" class="password-toggle" data-password-toggle="admin-password-input" aria-label="نمایش/پنهان رمز">
-                    <span class="eye-icon eye-open">👁</span>
-                    <span class="eye-icon eye-closed" style="display:none">🙈</span>
-                  </button>
-                </div>
-              </div>
-              <button class="btn auth-submit" type="submit" style="width:100%;">ورود به پنل</button>
+            <form class="auth-form" data-admin-login-form>
+              <label>
+                نام کاربری
+                <input type="text" name="adminUser" placeholder="admin" required autocomplete="username">
+              </label>
+              <label>
+                رمز عبور
+                <input type="password" name="adminPass" placeholder="••••••••" required autocomplete="current-password">
+              </label>
+              <button class="btn auth-submit" type="submit">ورود به پنل</button>
             </form>
             <p style="color: var(--muted); font-size: 12px; margin-top: 16px; text-align: center;">
-              کاربران: <strong>admin</strong> / <strong>Iliya</strong> / <strong>Amirali</strong><br>
-              رمز پیش‌فرض: <code style="background:var(--bg-soft);padding:2px 6px;border-radius:4px">P!xoris2026</code>
+              رمز پیش‌فرض: pixoris2026 (اولین ورود به‌صورت PBKDF2 هش می‌شود)
             </p>
           </article>
         </div>
       </section>
 
       <!-- CMS Dashboard -->
-      <section class="admin-cms" id="admin-cms-screen" style="display: none;">
+      <section class="section admin-cms" id="admin-cms-screen" style="display: none;">
         <div class="container">
           <div class="admin-layout">
             <!-- Sidebar -->
@@ -67,7 +121,6 @@
                 <a href="#" data-admin-tab="media"><span>🖼</span> رسانه</a>
                 <a href="#" data-admin-tab="users" data-role-min="super_admin"><span>👥</span> کاربران</a>
                 <a href="#" data-admin-tab="audit" data-role-min="admin"><span>📜</span> لاگ رویدادها</a>
-                <a href="#" data-admin-tab="debug"><span>🧪</span> دیباگ سنتر</a>
                 <a href="#" data-admin-tab="settings"><span>⚙️</span> تنظیمات</a>
                 <a href="#" data-admin-logout style="color: var(--pink);"><span>🚪</span> خروج (<span data-admin-name>admin</span>)</a>
               </nav>
@@ -109,10 +162,34 @@
                     <strong data-stat="media">0</strong>
                     <p>فایل‌های آپلود شده</p>
                   </article>
+                  <article class="admin-stat">
+                    <span>کاربران</span>
+                    <strong data-stat="users">0</strong>
+                    <p>مدیران سایت</p>
+                  </article>
+                  <article class="admin-stat">
+                    <span>دسته‌بندی</span>
+                    <strong data-stat="categories">0</strong>
+                    <p>دسته‌بندی‌های فعال</p>
+                  </article>
+                </div>
+                <div class="admin-dashboard-grid">
+                  <div class="panel" style="padding: 20px;">
+                    <h3 style="margin-bottom: 12px;">📈 آخرین مقالات</h3>
+                    <div data-admin-activity style="color: var(--muted); font-size: 13px;">
+                      <p>در حال بارگذاری...</p>
+                    </div>
+                  </div>
+                  <div class="panel" style="padding: 20px;">
+                    <h3 style="margin-bottom: 12px;">🔥 پربازدیدترین</h3>
+                    <div data-dashboard-top style="color: var(--muted); font-size: 13px;">
+                      <p>در حال بارگذاری...</p>
+                    </div>
+                  </div>
                 </div>
                 <div class="panel" style="margin-top: 20px; padding: 20px;">
-                  <h3 style="margin-bottom: 12px;">📈 آخرین فعالیت‌ها</h3>
-                  <div data-admin-activity style="color: var(--muted); font-size: 13px;">
+                  <h3 style="margin-bottom: 12px;">🆕 آخرین به‌روزرسانی‌ها</h3>
+                  <div data-dashboard-latest style="color: var(--muted); font-size: 13px;">
                     <p>در حال بارگذاری...</p>
                   </div>
                 </div>
@@ -125,7 +202,7 @@
                   <button class="btn" data-admin-tab-trigger="new-post">➕ مقاله جدید</button>
                 </div>
                 <div class="panel" style="padding: 20px; overflow-x: auto;">
-                  <table class="posts-table" style="min-width: 700px;">
+                  <table class="posts-table" style="min-width: 800px;">
                     <thead>
                       <tr>
                         <th>عنوان</th>
@@ -156,11 +233,21 @@
                       <label>Slug (URL)</label>
                       <input type="text" name="slug" placeholder="new-game-intro" required dir="ltr">
                     </div>
-                    <div class="editor-field">
-                      <label>دسته‌بندی</label>
-                      <select name="category_id" required>
-                        <option value="">انتخاب دسته‌بندی...</option>
-                      </select>
+                    <div class="editor-grid-2">
+                      <div class="editor-field">
+                        <label>دسته‌بندی</label>
+                        <select name="category_id" required>
+                          <option value="">انتخاب دسته‌بندی...</option>
+                        </select>
+                      </div>
+                      <div class="editor-field">
+                        <label>وضعیت انتشار</label>
+                        <select name="status">
+                          <option value="draft">پیش‌نویس</option>
+                          <option value="published" selected>منتشر شود</option>
+                          <option value="scheduled">زمان‌بندی شده</option>
+                        </select>
+                      </div>
                     </div>
                     <div class="editor-field">
                       <label>تصویر شاخص</label>
@@ -170,34 +257,70 @@
                       </div>
                     </div>
                     <div class="editor-field">
+                      <label>متن جایگزین تصویر (alt)</label>
+                      <input type="text" name="featured_image_alt" placeholder="توضیح تصویر برای دسترسی‌پذیری">
+                    </div>
+                    <div class="editor-field">
                       <label>خلاصه (Excerpt)</label>
                       <textarea name="excerpt" rows="3" placeholder="خلاصه کوتاه مقاله..."></textarea>
                     </div>
+
+                    <!-- Enhanced RTE -->
                     <div class="editor-field">
                       <label>محتوای مقاله</label>
                       <div class="rte-toolbar" data-rte-toolbar>
                         <button type="button" data-cmd="bold" title="Bold"><b>B</b></button>
                         <button type="button" data-cmd="italic" title="Italic"><i>I</i></button>
                         <button type="button" data-cmd="strikeThrough" title="Strike"><s>S</s></button>
+                        <button type="button" data-cmd="underline" title="Underline"><u>U</u></button>
                         <span class="toolbar-sep"></span>
                         <button type="button" data-cmd="formatBlock" data-val="H1" title="Heading 1">H1</button>
                         <button type="button" data-cmd="formatBlock" data-val="H2" title="Heading 2">H2</button>
+                        <button type="button" data-cmd="formatBlock" data-val="H3" title="Heading 3">H3</button>
+                        <button type="button" data-cmd="formatBlock" data-val="P" title="Paragraph">¶</button>
                         <span class="toolbar-sep"></span>
                         <button type="button" data-cmd="insertUnorderedList" title="Bullet List">• لیست</button>
                         <button type="button" data-cmd="insertOrderedList" title="Numbered List">۱. لیست</button>
+                        <button type="button" data-cmd="insertQuote" title="Quote">❝ نقل</button>
+                        <button type="button" data-cmd="insertCodeBlock" title="Code Block">&lt;/&gt;</button>
+                        <button type="button" data-cmd="insertTable" title="Table">▦ جدول</button>
                         <span class="toolbar-sep"></span>
                         <button type="button" data-cmd="justifyRight" title="Align Right">راست</button>
                         <button type="button" data-cmd="justifyCenter" title="Align Center">وسط</button>
+                        <button type="button" data-cmd="justifyLeft" title="Align Left">چپ</button>
                         <span class="toolbar-sep"></span>
                         <button type="button" data-cmd="insertImage" title="Insert Image">🖼</button>
                         <button type="button" data-cmd="createLink" title="Insert Link">🔗</button>
                         <span class="toolbar-sep"></span>
                         <button type="button" data-cmd="undo" title="Undo">↩️</button>
                         <button type="button" data-cmd="redo" title="Redo">↪️</button>
+                        <button type="button" data-cmd="removeFormat" title="Clear Formatting">🧹</button>
                       </div>
                       <div id="rich-editor" class="rte-editor"></div>
-                      <textarea name="content" style="display:none;"></textarea>
+                      <textarea name="content" style="display:none;" placeholder="محتوای کامل مقاله..."></textarea>
                     </div>
+
+                    <!-- SEO Fields -->
+                    <details class="seo-details">
+                      <summary>🔍 تنظیمات SEO</summary>
+                      <div class="editor-field">
+                        <label>عنوان SEO</label>
+                        <input type="text" name="seo_title" placeholder="عنوان برای موتورهای جستجو (اختیاری)">
+                      </div>
+                      <div class="editor-field">
+                        <label>توضیحات SEO</label>
+                        <textarea name="seo_description" rows="2" placeholder="متا توضیحات..."></textarea>
+                      </div>
+                      <div class="editor-field">
+                        <label>Canonical URL</label>
+                        <input type="url" name="canonical_url" placeholder="https://..." dir="ltr">
+                      </div>
+                      <div class="editor-field">
+                        <label>کلمات کلیدی (با کاما)</label>
+                        <input type="text" name="meta_keywords" placeholder="game, news, pixoris" dir="ltr">
+                      </div>
+                    </details>
+
                     <div class="editor-field">
                       <label>تگ‌ها (با کاما جدا کنید)</label>
                       <input type="text" name="tags" placeholder="بازی، سینما، تکنولوژی">
@@ -206,13 +329,6 @@
                       <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
                         <input type="checkbox" name="featured" style="width: auto;">
                         <span>مقاله ویژه</span>
-                      </label>
-                      <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                        <span>وضعیت:</span>
-                        <select name="status" style="width: auto;">
-                          <option value="draft">پیش‌نویس</option>
-                          <option value="published" selected>منتشر شود</option>
-                        </select>
                       </label>
                     </div>
                     <div style="display: flex; gap: 10px; margin-top: 20px;">
@@ -227,17 +343,17 @@
               <div class="admin-tab" data-tab="categories" style="display: none;">
                 <h2 style="margin-bottom: 20px;">📂 دسته‌بندی‌ها</h2>
                 <div class="panel" style="padding: 24px;">
-                  <form data-category-form style="display: grid; grid-template-columns: 1fr 1fr auto auto auto auto; gap: 10px; margin-bottom: 20px;">
+                  <form data-category-form class="category-form">
                     <input type="text" name="cat_name" placeholder="نام دسته‌بندی" required>
                     <input type="text" name="cat_slug" placeholder="slug" required dir="ltr">
-                    <input type="color" name="cat_color" value="#4ee5ff" style="width: 60px; height: 44px; border-radius: 10px; border: 1px solid rgba(255,255,255,.1); background: transparent; cursor: pointer;">
+                    <input type="color" name="cat_color" value="#4ee5ff" class="cat-color-input">
                     <input type="number" name="cat_sort_order" placeholder="ترتیب" min="0" value="0" style="max-width: 80px;">
                     <label style="display:flex;align-items:center;gap:6px;font-size:13px;">
                       <input type="checkbox" name="cat_featured" style="width:auto"> ویژه
                     </label>
                     <button type="submit" class="btn btn-sm">➕ افزودن</button>
                   </form>
-                  <div data-categories-list>
+                  <div data-categories-list style="margin-top: 20px;">
                     <p style="color: var(--muted);">در حال بارگذاری...</p>
                   </div>
                 </div>
@@ -246,25 +362,7 @@
               <!-- Products -->
               <div class="admin-tab" data-tab="products" style="display: none;">
                 <h2 style="margin-bottom: 20px;">🛒 مدیریت محصولات</h2>
-                <div class="panel" style="padding: 20px; overflow-x: auto;">
-                  <table class="posts-table" style="min-width: 800px;">
-                    <thead>
-                      <tr>
-                        <th></th>
-                        <th>عنوان</th>
-                        <th>دسته</th>
-                        <th>قیمت</th>
-                        <th>موجودی</th>
-                        <th>وضعیت</th>
-                        <th>عملیات</th>
-                      </tr>
-                    </thead>
-                    <tbody data-admin-products-list>
-                      <tr><td colspan="7" style="text-align:center;color:var(--muted)">در حال بارگذاری...</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="panel" style="padding: 24px; margin-top: 20px;">
+                <div class="panel" style="padding: 24px; margin-bottom: 20px;">
                   <h3 style="margin-bottom: 16px;">افزودن/ویرایش محصول</h3>
                   <form data-product-form class="product-form-grid">
                     <div class="editor-field">
@@ -284,8 +382,16 @@
                       <input type="number" name="p_price" required min="0">
                     </div>
                     <div class="editor-field">
+                      <label>قیمت با تخفیف (اختیاری)</label>
+                      <input type="number" name="p_discount_price" min="0">
+                    </div>
+                    <div class="editor-field">
                       <label>موجودی</label>
                       <input type="number" name="p_stock" min="0" value="0">
+                    </div>
+                    <div class="editor-field">
+                      <label>SKU (کد محصول)</label>
+                      <input type="text" name="p_sku" dir="ltr">
                     </div>
                     <div class="editor-field">
                       <label>ترتیب نمایش</label>
@@ -307,10 +413,28 @@
                         <input type="checkbox" name="p_active" style="width:auto" checked> فعال
                       </label>
                     </div>
-                    <div style="grid-column: 1/-1;">
+                    <div style="grid-column: 1/-1">
                       <button type="submit" class="btn">➕ افزودن محصول</button>
                     </div>
                   </form>
+                </div>
+                <div class="panel" style="padding: 20px; overflow-x: auto;">
+                  <table class="posts-table" style="min-width: 800px;">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>عنوان</th>
+                        <th>دسته</th>
+                        <th>قیمت</th>
+                        <th>موجودی</th>
+                        <th>وضعیت</th>
+                        <th>عملیات</th>
+                      </tr>
+                    </thead>
+                    <tbody data-admin-products-list>
+                      <tr><td colspan="7" style="text-align:center;color:var(--muted)">در حال بارگذاری...</td></tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
 
@@ -323,14 +447,14 @@
                 <div class="upload-zone" data-upload-zone>
                   <div style="font-size: 40px;">📤</div>
                   <p>عکس را اینجا بکشید یا کلیک کنید</p>
-                  <input type="file" data-file-input accept="image/*" multiple style="display: none;">
+                  <input type="file" data-file-input accept="image/*" style="display: none;">
                 </div>
                 <div class="media-grid" data-media-grid style="margin-top: 20px;">
                   <p style="color: var(--muted); grid-column: 1/-1; text-align: center;">در حال بارگذاری...</p>
                 </div>
               </div>
 
-              <!-- Users -->
+              <!-- Users (super_admin only) -->
               <div class="admin-tab" data-tab="users" style="display: none;" data-role-min="super_admin">
                 <h2 style="margin-bottom: 20px;">👥 مدیریت کاربران</h2>
                 <div class="panel" style="padding: 24px; margin-bottom: 20px;">
@@ -379,9 +503,9 @@
                 </div>
               </div>
 
-              <!-- Audit Logs -->
+              <!-- Audit Logs (admin+) -->
               <div class="admin-tab" data-tab="audit" style="display: none;" data-role-min="admin">
-                <h2 style="margin-bottom: 20px;">📜 لاگ رویدادها</h2>
+                <h2 style="margin-bottom: 20px;">📜 لاگ رویدادها (۷ روز اخیر)</h2>
                 <div class="panel" style="padding: 20px; overflow-x: auto;">
                   <table class="posts-table" style="min-width: 800px;">
                     <thead>
@@ -394,52 +518,28 @@
                 </div>
               </div>
 
-              <!-- Debug Center -->
-              <div class="admin-tab" data-tab="debug" style="display: none;">
-                <h2 style="margin-bottom: 20px;">🧪 دیباگ سنتر</h2>
-                <div class="panel" style="padding: 20px; margin-bottom: 16px;">
-                  <h3 style="margin-bottom: 12px;">🔍 System Health Check</h3>
-                  <div class="debug-actions" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
-                    <button class="btn btn-sm" data-debug-run="overview">📋 Overview</button>
-                    <button class="btn btn-sm" data-debug-run="full">🔍 Full Diagnostic</button>
-                    <button class="btn btn-sm" data-debug-run="github">🐙 GitHub Test</button>
-                    <button class="btn btn-sm" data-debug-run="upload">📤 Test Upload</button>
-                    <button class="btn btn-sm" data-debug-run="schema">🗄 Schema Check</button>
-                    <button class="btn btn-sm" data-debug-run="cms">📝 CMS CRUD Test</button>
-                    <button class="btn btn-sm" data-debug-run="performance">⚡ Performance</button>
-                  </div>
-                  <div id="debug-result" style="background:rgba(0,0,0,.4);border-radius:10px;padding:14px;min-height:80px;font-family:'Courier New',monospace;font-size:12px;color:var(--cyan);direction:ltr;text-align:left;max-height:500px;overflow:auto;">
-                    <span style="color:var(--muted)">نتیجه اینجا نمایش داده می‌شه...</span>
-                  </div>
-                  <div id="debug-timing" style="margin-top:8px;font-size:11px;color:var(--yellow);"></div>
-                </div>
-              </div>
-
               <!-- Settings -->
               <div class="admin-tab" data-tab="settings" style="display: none;">
                 <h2 style="margin-bottom: 20px;">⚙️ تنظیمات</h2>
-                <form data-settings-form>
-                  <div class="panel" style="padding: 24px; margin-bottom: 20px;">
-                    <h3 style="margin-bottom: 16px;">🌐 تنظیمات سایت</h3>
+                <div class="panel" style="padding: 24px;">
+                  <h3 style="margin-bottom: 16px;">🌐 تنظیمات سایت</h3>
+                  <form data-settings-form>
                     <div class="editor-field">
                       <label>نام سایت</label>
                       <input type="text" name="site_name" value="Pixoris">
-                    </div>
-                    <div class="editor-field">
-                      <label>URL سایت</label>
-                      <input type="url" name="site_url" dir="ltr">
                     </div>
                     <div class="editor-field">
                       <label>توضیحات سایت</label>
                       <input type="text" name="site_description">
                     </div>
                     <div class="editor-field">
+                      <label>URL سایت</label>
+                      <input type="url" name="site_url" dir="ltr">
+                    </div>
+                    <div class="editor-field">
                       <label>تعداد پست در صفحه</label>
                       <input type="number" name="posts_per_page" min="1" max="100" value="12">
                     </div>
-                  </div>
-                  <div class="panel" style="padding: 24px; margin-bottom: 20px;">
-                    <h3 style="margin-bottom: 16px;">🔍 SEO پیش‌فرض</h3>
                     <div class="editor-field">
                       <label>عنوان SEO پیش‌فرض</label>
                       <input type="text" name="default_seo_title">
@@ -448,9 +548,7 @@
                       <label>توضیحات SEO پیش‌فرض</label>
                       <input type="text" name="default_seo_description">
                     </div>
-                  </div>
-                  <div class="panel" style="padding: 24px; margin-bottom: 20px;">
-                    <h3 style="margin-bottom: 16px;">📱 شبکه‌های اجتماعی</h3>
+                    <h3 style="margin: 20px 0 12px;">📱 شبکه‌های اجتماعی</h3>
                     <div class="editor-field">
                       <label>اینستاگرام</label>
                       <input type="url" name="social_instagram" dir="ltr">
@@ -467,9 +565,9 @@
                       <label>گیت‌هاب</label>
                       <input type="url" name="social_github" dir="ltr">
                     </div>
-                  </div>
-                  <button type="submit" class="btn">💾 ذخیره تنظیمات</button>
-                </form>
+                    <button type="submit" class="btn">💾 ذخیره تنظیمات</button>
+                  </form>
+                </div>
                 <div class="panel" style="padding: 24px; margin-top: 20px;">
                   <h3 style="margin-bottom: 16px;">🔗 API Endpoint</h3>
                   <div class="editor-field">
@@ -478,23 +576,28 @@
                   </div>
                   <button class="btn btn-sm" data-save-api style="margin-top: 10px;">💾 ذخیره</button>
                 </div>
+                <div class="panel" style="padding: 24px; margin-top: 20px; border-color: rgba(255,78,156,.3);">
+                  <h3 style="margin-bottom: 12px; color: var(--pink);">⚠️ Danger Zone</h3>
+                  <button class="btn btn-danger btn-sm" data-clear-cache>🗑 پاک کردن کش و خروج</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+    </main>
 
-      <footer class="footer">
-        <div class="container footer-row">
-          <p>Pixoris CMS v4.5 © 2026</p>
-          <div class="pill-list">
-            <span class="pill">Gaming</span>
-            <span class="pill">Cinema</span>
-            <span class="pill">CMS</span>
-          </div>
+    <footer class="footer">
+      <div class="container footer-row">
+        <p>Pixoris CMS v2.2 © 2026 — Production Ready</p>
+        <div class="pill-list">
+          <span class="pill">Gaming</span>
+          <span class="pill">Cinema</span>
+          <span class="pill">CMS</span>
+          <span class="pill">PBKDF2</span>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
   </div>
 
   <!-- Media Picker Modal -->
@@ -509,7 +612,7 @@
   </div>
 
   <div class="toast" data-toast></div>
-  <script type="module" src="js/script.js"></script>
-  <script type="module" src="js/admin.js"></script>
+  <script src="script.js"></script>
+  <script src="admin.js"></script>
 </body>
 </html>

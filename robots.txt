@@ -7,13 +7,6 @@ Disallow: /admin.html
 Disallow: /admin.js
 Disallow: /login.html
 Disallow: /cart.html
-Disallow: /debug.html
-Disallow: /js/
-Disallow: /css/
 
-# Sitemaps
-Sitemap: https://dev.pixoris.workers.dev/sitemap.xml
+# Sitemap
 Sitemap: https://pixoris.pages.dev/sitemap.xml
-
-# RSS Feed
-# https://dev.pixoris.workers.dev/rss.xml

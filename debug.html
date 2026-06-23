@@ -2,91 +2,130 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg" />
-  <link rel="apple-touch-icon" href="assets/logos/apple-touch-icon.png" />
   <title>Pixoris Debug Dashboard</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .debug-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-top: 20px; }
+    .debug-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      transition: var(--transition);
+    }
+    .debug-card:hover { border-color: rgba(78,229,255,.3); }
+    .debug-card h3 { font-size: 14px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+    .debug-card .status-pill {
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .status-pill.ok { background: rgba(57,243,122,.18); color: var(--green); }
+    .status-pill.fail { background: rgba(255,78,156,.18); color: var(--pink); }
+    .status-pill.skip { background: rgba(255,216,76,.18); color: var(--yellow); }
+    .debug-card pre {
+      background: rgba(0,0,0,.4);
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 11px;
+      max-height: 220px;
+      overflow: auto;
+      direction: ltr;
+      text-align: left;
+      color: var(--cyan);
+    }
+    .debug-actions { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+    .debug-actions button {
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 12px;
+      transition: var(--transition);
+    }
+    .debug-actions button:hover { background: rgba(78,229,255,.1); border-color: var(--cyan); }
+    .debug-actions button.active { background: linear-gradient(135deg, var(--purple), var(--pink)); border-color: transparent; }
+    .timing { color: var(--yellow); font-size: 11px; margin-top: 6px; }
+    .hint { color: var(--muted); font-size: 11px; margin-top: 6px; line-height: 1.6; }
+  </style>
 </head>
 <body data-page="debug">
-  <button class="sidebar-toggle-mobile" data-sidebar-toggle>☰</button>
-  <div class="sidebar-overlay" data-sidebar-overlay></div>
-
   <div class="site-shell">
-    <div class="main-content">
-      <main>
-        <section class="section">
-          <div class="container">
-            <div class="hero-panel reveal" style="padding: 24px; margin-bottom: 20px;">
-              <span class="eyebrow">🔧 System Diagnostic</span>
-              <h2 class="hero-title" style="font-size: 28px;">Pixoris Debug Dashboard</h2>
-              <p class="hero-desc">بررسی کامل سلامت سیستم: Worker، D1، GitHub، Auth، Schema و CMS CRUD.</p>
-              <div class="debug-actions" style="display:flex;gap:8px;flex-wrap:wrap;margin:16px 0;">
-                <button data-debug-action="overview" class="btn btn-sm active">📋 Overview</button>
-                <button data-debug-action="full" class="btn btn-sm">🔍 Full Diagnostic</button>
-                <button data-debug-action="schema" class="btn btn-sm">🗄 Schema</button>
-                <button data-debug-action="database" class="btn btn-sm">📊 Database</button>
-                <button data-debug-action="auth" class="btn btn-sm">🔐 Auth</button>
-                <button data-debug-action="github" class="btn btn-sm">🐙 GitHub</button>
-                <button data-debug-action="upload" class="btn btn-sm">📤 Test Upload</button>
-                <button data-debug-action="cms" class="btn btn-sm">📝 CMS CRUD Test</button>
-                <button data-debug-action="performance" class="btn btn-sm">⚡ Performance</button>
-              </div>
-              <div class="timing" id="last-response-time"></div>
-            </div>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="index.html">
+          <img class="brand-logo" src="assets/logos/logo-pixoris-small.png" alt="Pixoris logo" />
+          <div class="brand-text">
+            <h1>Pixoris</h1>
+            <p>Debug Dashboard v3.0</p>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html">خانه</a>
+          <a href="admin.html">پنل ادمین</a>
+          <a href="debug.html" class="active">دیباگ</a>
+        </nav>
+        <div class="header-actions">
+          <button class="menu-btn" data-menu-btn type="button">☰</button>
+        </div>
+      </div>
+      <div class="container mobile-nav">
+        <a href="index.html">خانه</a>
+        <a href="admin.html">پنل ادمین</a>
+        <a href="debug.html">دیباگ</a>
+      </div>
+    </header>
 
-            <div class="debug-grid" id="debug-output" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;">
-              <div class="panel" style="padding:16px;">
-                <h3 style="font-size:14px;margin-bottom:12px;">آماده‌اید</h3>
-                <p style="color:var(--muted);font-size:13px;">یکی از دکمه‌های بالا رو بزن تا بررسی شروع شه.</p>
-              </div>
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="hero-panel reveal" style="padding: 24px; margin-bottom: 20px;">
+            <span class="eyebrow">🔧 System Diagnostic</span>
+            <h2 class="hero-title" style="font-size: 28px;">Pixoris Debug Dashboard</h2>
+            <p class="hero-desc">بررسی کامل سلامت سیستم: Worker، D1، GitHub، Auth، Schema و CMS CRUD.</p>
+            <div class="debug-actions">
+              <button data-debug-action="overview" class="active">📋 Overview</button>
+              <button data-debug-action="full">🔍 Full Diagnostic</button>
+              <button data-debug-action="schema">🗄 Schema</button>
+              <button data-debug-action="database">📊 Database</button>
+              <button data-debug-action="auth">🔐 Auth</button>
+              <button data-debug-action="github">🐙 GitHub</button>
+              <button data-debug-action="upload">📤 Test Upload</button>
+              <button data-debug-action="cms">📝 CMS CRUD Test</button>
+              <button data-debug-action="performance">⚡ Performance</button>
+            </div>
+            <div class="timing" id="last-response-time"></div>
+          </div>
+
+          <div class="debug-grid" id="debug-output">
+            <div class="debug-card">
+              <h3>آماده‌اید <span class="status-pill skip">waiting</span></h3>
+              <p class="hint">یکی از دکمه‌های بالا رو بزن تا بررسی شروع شه. پیشنهاد: اول "Full Diagnostic".</p>
             </div>
           </div>
-        </section>
-      </main>
-
-      <footer class="footer">
-        <div class="container footer-row">
-          <p>Pixoris Debug v4.5 © 2026</p>
-          <div class="pill-list">
-            <span class="pill">Diagnostic</span>
-            <span class="pill">Health Check</span>
-          </div>
         </div>
-      </footer>
-    </div>
+      </section>
+    </main>
 
-    <aside class="right-sidebar" data-right-sidebar>
-      <a class="sidebar-brand" href="index.html">
-        <img src="assets/logos/logo-pixoris-small.png" alt="Pixoris" />
-        <div class="sidebar-brand-text">
-          <h1>Pixoris</h1>
-          <p>Gaming • Cinema • Shop</p>
+    <footer class="footer">
+      <div class="container footer-row">
+        <p>Pixoris Debug v3.0 © 2026</p>
+        <div class="pill-list">
+          <span class="pill">Diagnostic</span>
+          <span class="pill">Health Check</span>
         </div>
-      </a>
-      <nav>
-        <a href="index.html" data-page="home"><span class="nav-emoji">🏠</span> خانه</a>
-        <a href="news.html" data-page="news"><span class="nav-emoji">📰</span> خبرها</a>
-        <a href="shop.html" data-page="shop"><span class="nav-emoji">🛒</span> فروشگاه</a>
-        <a href="analysis.html" data-page="analysis"><span class="nav-emoji">🎬</span> تحلیل</a>
-        <a href="about.html" data-page="about"><span class="nav-emoji">ℹ️</span> درباره ما</a>
-        <a href="cart.html" data-page="cart"><span class="nav-emoji">🛍️</span> سبد خرید <span class="cart-badge" data-cart-count>0</span></a>
-      </nav>
-      <div class="sidebar-divider"></div>
-      <div class="sidebar-section-title">حساب کاربری</div>
-      <nav>
-        <a href="login.html" data-page="login"><span class="nav-emoji">👤</span> ورود / عضویت</a>
-        <a href="admin.html" data-page="admin"><span class="nav-emoji">⚙️</span> پنل ادمین</a>
-      </nav>
-    </aside>
+      </div>
+    </footer>
   </div>
 
   <div class="toast" data-toast></div>
-  <script type="module" src="js/script.js"></script>
   <script>
     const API_BASE = window.API_BASE || 'https://dev.pixoris.workers.dev';
     const $ = (s) => document.querySelector(s);
@@ -111,29 +150,34 @@
         body += `<p style="color:var(--pink);font-size:12px;margin-bottom:8px">⚠ ${escapeHtml(data.error)}</p>`;
       }
       if (data.hint) {
-        body += `<p style="color:var(--muted);font-size:11px;margin-top:6px;line-height:1.6;">💡 ${escapeHtml(data.hint)}</p>`;
+        body += `<p class="hint">💡 ${escapeHtml(data.hint)}</p>`;
       }
+      // Show a clean summary
       const summary = { ...data };
       delete summary.status; delete summary.ms; delete summary.error; delete summary.hint;
-      body += `<pre style="background:rgba(0,0,0,.4);padding:10px;border-radius:8px;font-size:11px;max-height:220px;overflow:auto;direction:ltr;text-align:left;color:var(--cyan);">${escapeHtml(JSON.stringify(summary, null, 2))}</pre>`;
-      return `<div class="panel" style="padding:16px;">
-        <h3 style="font-size:14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">${escapeHtml(title)} <span style="padding:3px 10px;border-radius:99px;font-size:11px;font-weight:800;background:rgba(57,243,122,.18);color:var(--green);">${status}${ms}</span></h3>
+      body += `<pre>${escapeHtml(JSON.stringify(summary, null, 2))}</pre>`;
+      return `<div class="debug-card">
+        <h3>${escapeHtml(title)} <span class="status-pill ${status}">${status}${ms}</span></h3>
         ${body}
       </div>`;
     };
 
     const runDebug = async (action) => {
       const endpoints = {
-        overview: '/api/debug', full: '/api/debug/full',
-        schema: '/api/debug/schema', database: '/api/debug/database',
-        auth: '/api/debug/auth', github: '/api/debug/github',
-        upload: '/api/debug/upload', cms: '/api/debug/cms',
+        overview: '/api/debug',
+        full: '/api/debug/full',
+        schema: '/api/debug/schema',
+        database: '/api/debug/database',
+        auth: '/api/debug/auth',
+        github: '/api/debug/github',
+        upload: '/api/debug/upload',
+        cms: '/api/debug/cms',
         performance: '/api/debug/performance',
       };
       const endpoint = endpoints[action];
       if (!endpoint) return;
       const output = $('#debug-output');
-      output.innerHTML = '<div class="panel" style="padding:16px;grid-column:1/-1;"><h3 style="font-size:14px;">در حال بارگذاری... <span style="padding:3px 10px;border-radius:99px;font-size:11px;background:rgba(255,216,76,.18);color:var(--yellow);">loading</span></h3><p style="color:var(--muted);font-size:13px;">لطفاً صبر کنید، برخی بررسی‌ها چند ثانیه طول می‌کشن.</p></div>';
+      output.innerHTML = '<div class="debug-card"><h3>در حال بارگذاری... <span class="status-pill skip">loading</span></h3><p class="hint">لطفاً صبر کنید، برخی بررسی‌ها چند ثانیه طول می‌کشن.</p></div>';
 
       const start = Date.now();
       try {
@@ -162,25 +206,17 @@
         }
         showToast('بررسی کامل شد ✅');
       } catch (err) {
-        output.innerHTML = `<div class="panel" style="padding:16px;grid-column:1/-1;"><h3 style="font-size:14px;color:var(--pink);">خطا</h3><p style="color:var(--pink);">${escapeHtml(err.message)}</p></div>`;
+        output.innerHTML = `<div class="debug-card"><h3>خطا <span class="status-pill fail">error</span></h3><p style="color:var(--pink)">${escapeHtml(err.message)}</p><p class="hint">مطمئن شو Worker در حال اجراست و API_BASE درست تنظیم شده.</p></div>`;
       }
     };
 
     document.addEventListener('DOMContentLoaded', () => {
-      const menuBtn = $('[data-sidebar-toggle]');
-      const sidebar = $('[data-right-sidebar]');
-      const overlay = $('[data-sidebar-overlay]');
-      if (menuBtn && sidebar) {
-        menuBtn.addEventListener('click', () => {
-          sidebar.classList.toggle('open');
-          overlay?.classList.toggle('show');
-        });
-      }
-      overlay?.addEventListener('click', () => {
-        sidebar?.classList.remove('open');
-        overlay.classList.remove('show');
-      });
+      // Mobile menu
+      const menuBtn = $('[data-menu-btn]');
+      const mobileNav = document.querySelector('.mobile-nav');
+      if (menuBtn && mobileNav) menuBtn.addEventListener('click', () => mobileNav.classList.toggle('open'));
 
+      // Bind debug actions
       document.querySelectorAll('[data-debug-action]').forEach(btn => {
         btn.addEventListener('click', () => {
           document.querySelectorAll('[data-debug-action]').forEach(b => b.classList.remove('active'));
@@ -189,6 +225,7 @@
         });
       });
 
+      // Auto-run overview on load
       runDebug('overview');
     });
   </script>
