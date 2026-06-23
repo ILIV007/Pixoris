@@ -118,7 +118,13 @@
 
         <label>
           رمز عبور
-          <input type="password" name="password" placeholder="رمز عبور" minlength="4" required>
+          <div class="password-input-wrapper">
+            <input type="password" name="password" placeholder="رمز عبور" minlength="4" required id="user-password-input">
+            <button type="button" class="password-toggle" data-password-toggle="user-password-input" aria-label="نمایش/پنهان رمز">
+              <span class="eye-icon eye-open">👁</span>
+              <span class="eye-icon eye-closed" style="display:none">🙈</span>
+            </button>
+          </div>
         </label>
 
         <button class="btn auth-submit" type="submit">ورود به حساب</button>

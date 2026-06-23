@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" fill="none">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#10353C"/>
+    <stop offset="50%" stop-color="#1D7878"/>
+    <stop offset="100%" stop-color="#3FD1C8"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(280 160) rotate(45) scale(420 280)">
+    <stop stop-color="rgba(255,255,255,0.6)" />
+    <stop offset="1" stop-color="rgba(255,255,255,0)" />
+  </radialGradient>
+</defs>
+<rect width="1200" height="700" rx="40" fill="#090D18"/>
+<rect x="18" y="18" width="1164" height="664" rx="32" fill="url(#bg)" opacity="0.92"/>
+<circle cx="260" cy="180" r="210" fill="url(#glow)" opacity="0.6"/>
+<circle cx="980" cy="620" r="220" fill="#3FD1C8" opacity="0.18"/>
+<g opacity="0.18">
+  <path d="M0 560 C240 470, 390 650, 620 540 S1020 440, 1200 520" stroke="white" stroke-width="3"/>
+  <path d="M0 610 C260 520, 430 700, 700 590 S1040 470, 1200 580" stroke="white" stroke-width="2"/>
+</g>
+<rect x="64" y="72" width="110" height="40" rx="20" fill="rgba(255,255,255,0.14)"/>
+<text x="120" y="98" text-anchor="middle" fill="white" font-size="22" font-family="Arial" font-weight="700">PIXORIS</text>
+<text x="72" y="208" fill="white" font-size="76" font-family="Arial" font-weight="800">Loot Drop</text>
+<text x="74" y="272" fill="rgba(255,255,255,0.84)" font-size="30" font-family="Arial">محصولات گیکی و آیتم‌های کلکسیونی</text>
+<text x="74" y="320" fill="rgba(255,255,255,0.78)" font-size="24" font-family="Arial">Premium merch for fans</text>
+<g transform="translate(760 120)">
+<rect x="48" y="86" width="244" height="264" rx="38" fill="rgba(8,13,28,0.6)" stroke="rgba(255,255,255,0.36)" stroke-width="4"/>
+<path d="M98 134 C98 86, 244 86, 244 134" stroke="white" stroke-width="8"/>
+<rect x="88" y="154" width="164" height="108" rx="18" fill="rgba(255,255,255,0.1)"/>
+<circle cx="171" cy="205" r="44" fill="#A470FF"/>
+<path d="M171 205 L203 177 A44 44 0 1 1 203 233 Z" fill="#090D18"/>
+<rect x="110" y="284" width="122" height="18" rx="8" fill="rgba(255,255,255,0.32)"/>
+<circle cx="338" cy="76" r="24" fill="#FFDB4D"/><circle cx="380" cy="76" r="24" fill="#00E7FF"/>
+<circle cx="359" cy="118" r="24" fill="#FF5E9C"/>
+</g>
+<rect x="74" y="556" width="220" height="52" rx="18" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.25)"/>
+<text x="184" y="590" text-anchor="middle" fill="white" font-size="22" font-family="Arial" font-weight="700">Explore More</text>
+</svg>

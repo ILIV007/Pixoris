@@ -1,18 +1,48 @@
 // =========================================================
-// Pixoris v4 — Admin Panel Entry Point
-// =========================================================
-// Modular admin JS. Uses Pixoris namespace pattern.
+// Pixoris CMS Admin Panel v4.1
+// Based on v3.1 structure (user-preferred layout) but as ES module.
 // Loaded via: <script type="module" src="js/admin.js"></script>
-// (loaded AFTER js/script.js — reuses its API_BASE, toman, etc.)
+// (loaded AFTER js/script.js — reuses its API_BASE)
 // =========================================================
 
-import { adminApiFetch, API_BASE } from './modules/api.js';
-import { showAdminToast } from './modules/toast.js';
+// ============= IMPORTS (ES module) =============
+// We import toman from utils to avoid the v2.2 "duplicate declaration" bug.
+// The rest of this file is the v3.1 admin.js logic, kept intact for UX continuity.
+import { toman } from './modules/utils.js';
 import { escapeHtml as escapeAdminHtml, formatDateTime as formatAdminDate, qs as $a, qsa as $$a } from './modules/utils.js';
-import { Cart } from './modules/cart.js';
+import { showAdminToast } from './modules/toast.js';
+import { API_BASE } from './modules/api.js';
 
-// Use global toman from window (set by script.js utils)
-const toman = window.toman || ((n) => new Intl.NumberFormat('fa-IR').format(Number(n) || 0) + ' ت');
+// ============= API_BASE (idempotent — also set by script.js) =============
+window.API_BASE = window.API_BASE || API_BASE;
+
+// ============= ADMIN API FETCH =============
+const adminApiFetch = async (endpoint, options = {}) => {
+  const url = endpoint.startsWith('http') ? endpoint : `${API_BASE}${endpoint}`;
+  const token = localStorage.getItem('pixorisAdminToken');
+  const headers = {
+    'Content-Type': 'application/json',
+    ...(token && { 'Authorization': `Bearer ${token}` }),
+    ...options.headers
+  };
+  try {
+    const res = await fetch(url, { ...options, headers });
+    if (res.status === 401) {
+      localStorage.removeItem('pixorisAdminToken');
+      showAdminToast('نشست منقضی شده، لطفاً دوباره وارد شوید');
+      setTimeout(() => location.reload(), 1500);
+      return { success: false, error: 'Unauthorized' };
+    }
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    showAdminToast('خطای شبکه: ' + err.message);
+    return { success: false, error: err.message };
+  }
+};
+
+// NOTE: escapeAdminHtml, formatAdminDate, $a, $$a, toman, showAdminToast
+// are all imported from modules/utils.js and modules/toast.js at the top of this file.
 
 // ============= ENHANCED RICH TEXT EDITOR =============
 let rteEditor = null;
@@ -53,10 +83,12 @@ const initRTE = () => {
     });
   });
 
+  // Image insert with media library
   const imgBtn = toolbarEl.querySelector('[data-cmd="insertImage"]');
   if (imgBtn) {
     imgBtn.addEventListener('click', (e) => {
       e.preventDefault();
+      // Open media picker
       const picker = $a('[data-media-picker]');
       if (picker) {
         picker.style.display = 'block';
@@ -69,6 +101,7 @@ const initRTE = () => {
     });
   }
 
+  // Link insert
   const linkBtn = toolbarEl.querySelector('[data-cmd="createLink"]');
   if (linkBtn) {
     linkBtn.addEventListener('click', (e) => {
@@ -78,6 +111,7 @@ const initRTE = () => {
     });
   }
 
+  // Code block insert
   const codeBtn = toolbarEl.querySelector('[data-cmd="insertCodeBlock"]');
   if (codeBtn) {
     codeBtn.addEventListener('click', (e) => {
@@ -87,6 +121,7 @@ const initRTE = () => {
     });
   }
 
+  // Table insert
   const tableBtn = toolbarEl.querySelector('[data-cmd="insertTable"]');
   if (tableBtn) {
     tableBtn.addEventListener('click', (e) => {
@@ -107,6 +142,7 @@ const initRTE = () => {
     });
   }
 
+  // Blockquote
   const quoteBtn = toolbarEl.querySelector('[data-cmd="insertQuote"]');
   if (quoteBtn) {
     quoteBtn.addEventListener('click', (e) => {
@@ -121,7 +157,7 @@ const initRTE = () => {
   rteEditor = {
     getContent: () => editorEl.innerHTML,
     setContent: (html) => { editorEl.innerHTML = html || '<p><br></p>'; syncContent(); },
-    exec,
+    exec
   };
 };
 
@@ -179,8 +215,8 @@ const initLogin = () => {
       method: 'POST',
       body: JSON.stringify({
         username: form.adminUser.value,
-        password: form.adminPass.value,
-      }),
+        password: form.adminPass.value
+      })
     });
     if (submitBtn) {
       submitBtn.disabled = false;
@@ -200,6 +236,7 @@ const initLogin = () => {
 };
 
 const updateAdminUI = (admin) => {
+  // Show/hide role-restricted tabs
   const role = admin.role;
   const isAdmin = ['admin', 'super_admin'].includes(role);
   const isSuperAdmin = role === 'super_admin';
@@ -257,6 +294,7 @@ const loadStats = async () => {
       <p>🖼 ${stats.media?.toLocaleString('fa-IR') || 0} فایل رسانه</p>
     `;
   }
+  // Latest posts table
   const latestHost = $a('[data-dashboard-latest]');
   if (latestHost && result.latestPosts) {
     latestHost.innerHTML = result.latestPosts.map(p => `
@@ -268,6 +306,7 @@ const loadStats = async () => {
       </div>
     `).join('') || '<p class="muted">هنوز مقاله‌ای ثبت نشده</p>';
   }
+  // Top posts
   const topHost = $a('[data-dashboard-top]');
   if (topHost && result.topPosts) {
     topHost.innerHTML = result.topPosts.map((p, i) => `
@@ -302,15 +341,15 @@ const loadPosts = async () => {
       <td style="font-size:12px;color:var(--muted)">${formatAdminDate(post.updated_at)}</td>
       <td>
         <div class="post-actions">
-          <button class="btn btn-sm" onclick="window.PixorisAdmin.editPost(${post.id})">✏️</button>
-          <button class="btn btn-danger btn-sm" onclick="window.PixorisAdmin.deletePost(${post.id})">🗑</button>
+          <button class="btn btn-sm" onclick="window.editPost(${post.id})">✏️</button>
+          <button class="btn btn-danger btn-sm" onclick="window.deletePost(${post.id})">🗑</button>
         </div>
       </td>
     </tr>
   `).join('');
 };
 
-const deletePost = async (id) => {
+window.deletePost = async (id) => {
   if (!confirm('آیا مطمئن هستید؟')) return;
   const result = await adminApiFetch(`/api/admin/post/${id}`, { method: 'DELETE' });
   if (result.success) {
@@ -322,7 +361,7 @@ const deletePost = async (id) => {
   }
 };
 
-const editPost = async (id) => {
+window.editPost = async (id) => {
   const result = await adminApiFetch(`/api/admin/post/${id}`);
   if (!result.success) { showAdminToast('خطا در بارگذاری مقاله'); return; }
   const post = result.post;
@@ -339,6 +378,7 @@ const editPost = async (id) => {
   form.canonical_url.value = post.canonical_url || '';
   form.meta_keywords.value = post.meta_keywords || '';
   form.featured.checked = post.featured === 1;
+  // Status select
   const statusSelect = form.querySelector('[name="status"]');
   if (statusSelect) statusSelect.value = post.status || 'draft';
   if (rteEditor) rteEditor.setContent(post.content || '');
@@ -411,6 +451,12 @@ const initPostForm = () => {
     if (statusSelect) statusSelect.value = 'draft';
     form.dispatchEvent(new Event('submit'));
   });
+
+  $a('[data-publish-now]')?.addEventListener('click', () => {
+    const statusSelect = $a('[name="status"]');
+    if (statusSelect) statusSelect.value = 'published';
+    form.dispatchEvent(new Event('submit'));
+  });
 };
 
 // ============= CATEGORIES =============
@@ -431,8 +477,8 @@ const loadCategories = async () => {
         ${!cat.is_active ? '<span class="tag" style="background:rgba(255,78,156,.2)">غیرفعال</span>' : ''}
         <span class="muted">ترتیب: ${cat.sort_order}</span>
       </div>
-      <button class="btn btn-sm" onclick="window.PixorisAdmin.editCategory(${cat.id})">✏️</button>
-      <button class="btn btn-danger btn-sm" onclick="window.PixorisAdmin.deleteCategory(${cat.id})">🗑</button>
+      <button class="btn btn-sm" onclick="window.editCategory(${cat.id})">✏️</button>
+      <button class="btn btn-danger btn-sm" onclick="window.deleteCategory(${cat.id})">🗑</button>
     </div>
   `).join('');
 };
@@ -450,7 +496,7 @@ const initCategoryForm = () => {
       description: form.cat_description?.value || '',
       sort_order: parseInt(form.cat_sort_order?.value) || 0,
       is_featured: form.cat_featured?.checked || false,
-      is_active: true,
+      is_active: true
     };
     const endpoint = editId ? `/api/admin/category/${editId}` : '/api/admin/category';
     const method = editId ? 'PUT' : 'POST';
@@ -468,7 +514,7 @@ const initCategoryForm = () => {
   });
 };
 
-const editCategory = async (id) => {
+window.editCategory = async (id) => {
   const result = await adminApiFetch('/api/admin/categories');
   if (!result.success) return;
   const cat = result.categories.find(c => c.id === id);
@@ -484,7 +530,7 @@ const editCategory = async (id) => {
   form.querySelector('button[type="submit"]').textContent = '💾 به‌روزرسانی';
 };
 
-const deleteCategory = async (id) => {
+window.deleteCategory = async (id) => {
   if (!confirm('آیا مطمئن هستید؟ مقالات این دسته به "بدون دسته" منتقل می‌شوند.')) return;
   const result = await adminApiFetch(`/api/admin/category/${id}`, { method: 'DELETE' });
   if (result.success) { showAdminToast('حذف شد'); loadCategories(); loadStats(); }
@@ -514,13 +560,16 @@ const loadProducts = async () => {
       <td>${p.active ? '<span class="post-status published">فعال</span>' : '<span class="post-status draft">غیرفعال</span>'}</td>
       <td>
         <div class="post-actions">
-          <button class="btn btn-sm" onclick="window.PixorisAdmin.editProduct(${p.id})">✏️</button>
-          <button class="btn btn-danger btn-sm" onclick="window.PixorisAdmin.deleteProduct(${p.id})">🗑</button>
+          <button class="btn btn-sm" onclick="window.editProduct(${p.id})">✏️</button>
+          <button class="btn btn-danger btn-sm" onclick="window.deleteProduct(${p.id})">🗑</button>
         </div>
       </td>
     </tr>
   `).join('');
 };
+
+// NOTE: `toman` is imported from utils.js at the top of this file.
+// We no longer need the window.toman fallback (v2.2 bug workaround).
 
 const initProductForm = () => {
   const form = $a('[data-product-form]');
@@ -542,7 +591,7 @@ const initProductForm = () => {
       featured: form.p_featured.checked,
       active: form.p_active.checked,
       sort_order: parseInt(form.p_sort_order.value) || 0,
-      gallery: [],
+      gallery: []
     };
     const editId = form.dataset.editId;
     const endpoint = editId ? `/api/admin/product/${editId}` : '/api/admin/product';
@@ -561,7 +610,7 @@ const initProductForm = () => {
   });
 };
 
-const editProduct = async (id) => {
+window.editProduct = async (id) => {
   const result = await adminApiFetch('/api/admin/products');
   if (!result.success) return;
   const p = result.products.find(x => x.id === id);
@@ -583,7 +632,7 @@ const editProduct = async (id) => {
   form.querySelector('button[type="submit"]').textContent = '💾 به‌روزرسانی محصول';
 };
 
-const deleteProduct = async (id) => {
+window.deleteProduct = async (id) => {
   if (!confirm('آیا مطمئن هستید؟')) return;
   const result = await adminApiFetch(`/api/admin/product/${id}`, { method: 'DELETE' });
   if (result.success) { showAdminToast('محصول حذف شد'); loadProducts(); loadStats(); }
@@ -604,14 +653,14 @@ const loadMedia = async () => {
   }
   grid.innerHTML = result.media.map(m => `
     <div class="media-item">
-      <img src="${m.url}" alt="${escapeAdminHtml(m.alt_text || m.filename)}" loading="lazy" onclick="window.PixorisAdmin.selectMedia('${m.url}', '${escapeAdminHtml(m.filename)}')">
+      <img src="${m.url}" alt="${escapeAdminHtml(m.alt_text || m.filename)}" loading="lazy" onclick="window.selectMedia('${m.url}', '${escapeAdminHtml(m.filename)}')">
       <div class="media-name">${escapeAdminHtml(m.original_name || m.filename)}</div>
-      <button class="btn btn-danger btn-sm media-delete-btn" onclick="event.stopPropagation(); window.PixorisAdmin.deleteMedia(${m.id})">🗑</button>
+      <button class="btn btn-danger btn-sm media-delete-btn" onclick="event.stopPropagation(); window.deleteMedia(${m.id})">🗑</button>
     </div>
   `).join('');
 };
 
-const deleteMedia = async (id) => {
+window.deleteMedia = async (id) => {
   if (!confirm('این رسانه حذف شود؟')) return;
   const result = await adminApiFetch(`/api/admin/media/${id}`, { method: 'DELETE' });
   if (result.success) { showAdminToast('حذف شد'); loadMedia(); loadStats(); }
@@ -627,14 +676,14 @@ const loadMediaPicker = async () => {
   const result = await adminApiFetch('/api/admin/media');
   if (!result.success) return;
   grid.innerHTML = result.media.map(m => `
-    <div class="media-item" onclick="window.PixorisAdmin.pickMedia('${m.url}')">
+    <div class="media-item" onclick="window.pickMedia('${m.url}')">
       <img src="${m.url}" alt="${escapeAdminHtml(m.filename)}" loading="lazy">
       <div class="media-name">${escapeAdminHtml(m.filename)}</div>
     </div>
   `).join('') || '<p style="color:var(--muted)">رسانه‌ای موجود نیست</p>';
 };
 
-const pickMedia = (url) => {
+window.pickMedia = (url) => {
   const picker = $a('[data-media-picker]');
   const target = picker?.dataset.target;
   if (target === 'rte' && rteEditor) {
@@ -647,7 +696,7 @@ const pickMedia = (url) => {
   showAdminToast('تصویر انتخاب شد ✅');
 };
 
-const selectMedia = (url, filename) => {
+window.selectMedia = (url, filename) => {
   const input = $a('#featured-image-input');
   if (input) input.value = url;
   showAdminToast('تصویر انتخاب شد ✅');
@@ -667,6 +716,7 @@ const initMediaUpload = () => {
   });
   input.addEventListener('change', () => { if (input.files.length) uploadFile(input.files[0]); });
 
+  // Media search
   const searchInput = $a('[data-media-search]');
   if (searchInput) {
     let timer;
@@ -676,12 +726,11 @@ const initMediaUpload = () => {
     });
   }
 
+  // Picker close
   const pickerClose = $a('[data-picker-close]');
-  if (pickerClose) {
-    pickerClose.addEventListener('click', () => {
-      $a('[data-media-picker]').style.display = 'none';
-    });
-  }
+  if (pickerClose) pickerClose.addEventListener('click', () => {
+    $a('[data-media-picker]').style.display = 'none';
+  });
 };
 
 const uploadFile = async (file) => {
@@ -690,10 +739,10 @@ const uploadFile = async (file) => {
   formData.append('file', file);
   const token = localStorage.getItem('pixorisAdminToken');
   try {
-    const res = await fetch(`${API_BASE}/api/admin/upload`, {
+    const res = await fetch(`${window.API_BASE}/api/admin/upload`, {
       method: 'POST',
       headers: { ...(token && { 'Authorization': `Bearer ${token}` }) },
-      body: formData,
+      body: formData
     });
     const data = await res.json();
     if (data.success) {
@@ -706,7 +755,7 @@ const uploadFile = async (file) => {
   } catch (err) { showAdminToast('خطای شبکه'); }
 };
 
-// ============= USERS =============
+// ============= USERS (super_admin only) =============
 const loadUsers = async () => {
   const list = $a('[data-users-list]');
   if (!list) return;
@@ -725,8 +774,8 @@ const loadUsers = async () => {
       <td>${formatAdminDate(u.last_login) || '-'}</td>
       <td>
         <div class="post-actions">
-          <button class="btn btn-sm" onclick="window.PixorisAdmin.editUser(${u.id})">✏️</button>
-          ${u.id !== 1 ? `<button class="btn btn-danger btn-sm" onclick="window.PixorisAdmin.deleteUser(${u.id})">🗑</button>` : ''}
+          <button class="btn btn-sm" onclick="window.editUser(${u.id})">✏️</button>
+          ${u.id !== 1 ? `<button class="btn btn-danger btn-sm" onclick="window.deleteUser(${u.id})">🗑</button>` : ''}
         </div>
       </td>
     </tr>
@@ -743,7 +792,7 @@ const initUserForm = () => {
       email: form.u_email.value,
       role: form.u_role.value,
       is_active: form.u_active.checked,
-      ...(form.u_password.value && { password: form.u_password.value }),
+      ...(form.u_password.value && { password: form.u_password.value })
     };
     const editId = form.dataset.editId;
     const endpoint = editId ? `/api/admin/user/${editId}` : '/api/admin/user';
@@ -760,7 +809,7 @@ const initUserForm = () => {
   });
 };
 
-const editUser = async (id) => {
+window.editUser = async (id) => {
   const result = await adminApiFetch('/api/admin/users');
   if (!result.success) return;
   const u = result.users.find(x => x.id === id);
@@ -775,7 +824,7 @@ const editUser = async (id) => {
   form.dataset.editId = id;
 };
 
-const deleteUser = async (id) => {
+window.deleteUser = async (id) => {
   if (!confirm('آیا مطمئن هستید؟')) return;
   const result = await adminApiFetch(`/api/admin/user/${id}`, { method: 'DELETE' });
   if (result.success) { showAdminToast('حذف شد'); loadUsers(); }
@@ -866,8 +915,9 @@ const initLogout = () => {
   });
 };
 
-// ============= DEBUG CENTER =============
+// ============= DEBUG CENTER (v3.1) =============
 const initDebugCenter = () => {
+  // Bind debug action buttons (only bind once)
   const buttons = $$a('[data-debug-run]');
   if (!buttons.length) return;
   if (window._debugCenterBound) return;
@@ -895,11 +945,12 @@ const initDebugCenter = () => {
 
       const start = Date.now();
       try {
-        const res = await fetch(`${API_BASE}${endpoint}`);
+        const res = await fetch(`${window.API_BASE}${endpoint}`);
         const elapsed = Date.now() - start;
         const data = await res.json();
         if (timingEl) timingEl.textContent = `⏱ ${elapsed}ms · HTTP ${res.status}`;
         if (resultEl) {
+          // Colorize output
           const json = JSON.stringify(data, null, 2);
           const colorized = json
             .replace(/"status":\s*"ok"/g, '<span style="color:var(--green)">"status": "ok"</span>')
@@ -917,13 +968,6 @@ const initDebugCenter = () => {
       }
     });
   });
-};
-
-// ============= EXPORT TO WINDOW (for inline onclick handlers) =============
-window.PixorisAdmin = {
-  deletePost, editPost, deleteCategory, editCategory,
-  deleteProduct, editProduct, deleteMedia, selectMedia,
-  pickMedia, editUser, deleteUser,
 };
 
 // ============= INIT =============

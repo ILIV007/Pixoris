@@ -10,7 +10,7 @@ import { qs, qsa } from './modules/utils.js';
 import { showToast } from './modules/toast.js';
 import { Cart } from './modules/cart.js';
 import { DynamicContent } from './modules/content.js';
-import { PixelMode, AudioSystem, MobileMenu, ScrollReveal, NavActive, Auth } from './modules/ui.js';
+import { PixelMode, AudioSystem, MobileMenu, ScrollReveal, NavActive, Auth, PasswordToggle } from './modules/ui.js';
 
 // Expose globally for inline onclick handlers
 window.API_BASE = API_BASE;
@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   MobileMenu.init();
   ScrollReveal.init();
   NavActive.init();
+  PasswordToggle.init();
   DynamicContent.init();
   Cart.renderPage();
 

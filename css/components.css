@@ -208,6 +208,83 @@
 .product-price span { color: #fff3b0; font-size: var(--fs-xs); }
 .product-actions { display: flex; gap: var(--space-2); margin-top: var(--space-3); }
 
+/* ============= PASSWORD INPUT (show/hide toggle) ============= */
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.password-input-wrapper input {
+  width: 100%;
+  padding-left: 44px !important; /* space for the toggle button */
+}
+.password-toggle {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: var(--radius-xs);
+  font-size: 16px;
+  line-height: 1;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.password-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--cyan);
+}
+.password-toggle:active { transform: translateY(-50%) scale(0.92); }
+.password-toggle .eye-icon { font-size: 16px; }
+
+/* ============= CATEGORIES STRIP (homepage) ============= */
+.categories-strip {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+.cat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  font-weight: 800;
+  font-size: var(--fs-base);
+  color: var(--text);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.cat-chip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--cat-color, var(--cyan));
+  opacity: 0;
+  transition: opacity var(--transition);
+  z-index: 0;
+}
+.cat-chip > * { position: relative; z-index: 1; }
+.cat-chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--cat-color, var(--cyan));
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+.cat-chip:hover::before { opacity: 0.12; }
+.cat-chip .cat-emoji { font-size: 18px; }
+.cat-chip .cat-name { color: var(--text); }
+.cat-chip:hover .cat-name { color: var(--cat-color, var(--cyan)); }
+
 /* ============= KPI STRIP ============= */
 .kpi-strip {
   display: grid;

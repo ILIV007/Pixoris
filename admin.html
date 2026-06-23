@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/logos/apple-touch-icon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Pixoris | پنل مدیریت v2.2</title>
+  <title>Pixoris | پنل مدیریت v4.1</title>
   <link rel="stylesheet" href="css/main.css" />
 </head>
 <body data-page="admin">
@@ -85,21 +86,28 @@
           <article class="panel auth-panel reveal" style="padding: 40px;">
             <div style="text-align: center; margin-bottom: 24px;">
               <h2 style="font-size: 28px;">🔐 ورود به پنل مدیریت</h2>
-              <p style="color: var(--muted); margin-top: 8px;">Pixoris CMS v2.2 — امن با PBKDF2</p>
+              <p style="color: var(--muted); margin-top: 8px;">Pixoris CMS v4.1 — امن با PBKDF2</p>
             </div>
             <form class="auth-form" data-admin-login-form>
               <label>
                 نام کاربری
-                <input type="text" name="adminUser" placeholder="admin" required autocomplete="username">
+                <input type="text" name="adminUser" placeholder="admin / Iliya / Amirali" required autocomplete="username">
               </label>
               <label>
                 رمز عبور
-                <input type="password" name="adminPass" placeholder="••••••••" required autocomplete="current-password">
+                <div class="password-input-wrapper">
+                  <input type="password" name="adminPass" placeholder="••••••••" required autocomplete="current-password" id="admin-password-input">
+                  <button type="button" class="password-toggle" data-password-toggle="admin-password-input" aria-label="نمایش/پنهان رمز">
+                    <span class="eye-icon eye-open">👁</span>
+                    <span class="eye-icon eye-closed" style="display:none">🙈</span>
+                  </button>
+                </div>
               </label>
               <button class="btn auth-submit" type="submit">ورود به پنل</button>
             </form>
             <p style="color: var(--muted); font-size: 12px; margin-top: 16px; text-align: center;">
-              رمز پیش‌فرض: pixoris2026 (اولین ورود به‌صورت PBKDF2 هش می‌شود)
+              کاربران: <strong>admin</strong> / <strong>Iliya</strong> / <strong>Amirali</strong><br>
+              رمز پیش‌فرض: <code>P!xoris2026</code>
             </p>
           </article>
         </div>

@@ -112,6 +112,28 @@ export const NavActive = {
   }
 };
 
+// ============= PASSWORD TOGGLE (show/hide) =============
+export const PasswordToggle = {
+  init: () => {
+    qsa('[data-password-toggle]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.dataset.passwordToggle;
+        const input = document.getElementById(targetId);
+        if (!input) return;
+        const isPassword = input.type === 'password';
+        input.type = isPassword ? 'text' : 'password';
+        // Toggle eye icons
+        const openEye = btn.querySelector('.eye-open');
+        const closedEye = btn.querySelector('.eye-closed');
+        if (openEye && closedEye) {
+          openEye.style.display = isPassword ? 'none' : '';
+          closedEye.style.display = isPassword ? '' : 'none';
+        }
+      });
+    });
+  }
+};
+
 export const Auth = {
   getUsers: () => {
     try { return JSON.parse(localStorage.getItem('pixorisUsers') || '[]'); }
