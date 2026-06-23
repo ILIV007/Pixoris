@@ -1,0 +1,236 @@
+/* =========================================================
+   Pixoris v4 — Topbar, Navigation, Header Actions
+   ========================================================= */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: rgba(7, 11, 22, 0.78);
+  border-bottom: 1px solid var(--line);
+}
+
+.topbar-inner {
+  min-height: var(--topbar-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  transition: transform var(--transition);
+}
+.brand:hover { transform: translateY(-1px); }
+
+.brand-logo {
+  width: 46px; height: 46px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  box-shadow: 0 0 18px rgba(78, 229, 255, 0.28),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(78, 229, 255, 0.22);
+  background: var(--bg);
+}
+
+.brand-text h1 {
+  font-size: 23px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  background: linear-gradient(90deg, var(--text), var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.brand-text p {
+  color: var(--text-muted);
+  margin-top: 4px;
+  font-size: 11px;
+}
+
+/* Navigation */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.nav-links a {
+  padding: 9px 12px;
+  border-radius: var(--radius-full);
+  color: var(--text-muted);
+  font-weight: 800;
+  font-size: var(--fs-sm);
+  transition: all var(--transition);
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* Header actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+.header-actions > * { direction: rtl; }
+
+/* Pill buttons (auth, pac, sound) */
+.auth-entry, .pac-toggle, .sound-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--line-strong);
+  color: white;
+  font-weight: 900;
+  font-size: var(--fs-sm);
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.auth-entry {
+  background: linear-gradient(135deg, rgba(57, 243, 122, 0.11), rgba(146, 100, 255, 0.16));
+}
+.auth-entry:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.pac-toggle {
+  background: linear-gradient(135deg, rgba(255, 216, 76, 0.18), rgba(146, 100, 255, 0.18));
+}
+.pac-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.sound-toggle {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(78, 229, 255, 0.14));
+  min-width: 118px;
+  justify-content: center;
+}
+.sound-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.sound-toggle.muted { opacity: 0.78; }
+
+/* Pixel icons */
+.auth-pixel {
+  width: 16px; height: 16px;
+  display: inline-block;
+  background:
+    linear-gradient(currentColor 0 0) 4px 0 / 8px 4px no-repeat,
+    linear-gradient(currentColor 0 0) 2px 6px / 12px 6px no-repeat,
+    linear-gradient(currentColor 0 0) 0 14px / 16px 2px no-repeat;
+  color: var(--green);
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 8px rgba(57, 243, 122, 0.42));
+}
+
+.pac-icon {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--yellow);
+  clip-path: polygon(100% 0, 50% 50%, 100% 100%, 0 100%, 0 0);
+  box-shadow: 0 0 15px rgba(255, 216, 76, 0.55);
+}
+
+.speaker-pixel {
+  position: relative;
+  width: 15px; height: 12px;
+  background: currentColor;
+  clip-path: polygon(0 35%, 32% 35%, 60% 5%, 60% 95%, 32% 65%, 0 65%);
+}
+.speaker-pixel::before, .speaker-pixel::after {
+  content: ""; position: absolute; top: 12px;
+  border: 2px solid transparent;
+  border-right-color: currentColor;
+  border-top-color: currentColor;
+  width: 8px; height: 8px;
+  right: -4px;
+  transform: rotate(45deg);
+}
+.speaker-pixel::after { width: 12px; height: 12px; right: -8px; top: 10px; opacity: 0.7; }
+.sound-toggle.muted .speaker-pixel::before,
+.sound-toggle.muted .speaker-pixel::after { opacity: 0.15; }
+.sound-toggle.muted .speaker-pixel { box-shadow: inset 0 0 0 999px rgba(255, 255, 255, 0.9); }
+.sound-toggle.muted::after {
+  content: ""; width: 12px; height: 2px;
+  background: var(--pink);
+  transform: rotate(-30deg);
+  margin-inline-start: -4px;
+}
+
+/* Cart mini */
+.cart-mini {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 46px; height: 46px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.06);
+  transition: all var(--transition);
+}
+.cart-mini:hover { background: rgba(255, 78, 156, 0.1); border-color: var(--pink); }
+
+/* Mobile menu button */
+.menu-btn {
+  display: none;
+  width: 46px; height: 46px;
+  border-radius: var(--radius-sm);
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all var(--transition);
+}
+.menu-btn:hover { background: rgba(255, 255, 255, 0.1); }
+
+/* Cart badges */
+.cart-link span, .cart-mini span {
+  min-width: 20px; height: 20px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: var(--radius-full);
+  background: var(--pink);
+  color: white;
+  font-size: 11px;
+  margin-inline-start: 4px;
+  font-weight: 900;
+}
+
+/* Mobile nav */
+.mobile-nav { display: none; padding-bottom: var(--space-4); }
+.mobile-nav.open { display: grid; gap: var(--space-2); }
+.mobile-nav a {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  color: var(--text-muted);
+  font-weight: 800;
+  transition: all var(--transition);
+}
+.mobile-nav a:hover, .mobile-nav a.active {
+  color: white;
+  background: rgba(78, 229, 255, 0.08);
+  border-color: var(--line-cyan);
+}

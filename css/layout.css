@@ -1,0 +1,107 @@
+/* =========================================================
+   Pixoris v4 — Layout Helpers
+   ========================================================= */
+
+.container {
+  width: min(var(--container-w), calc(100% - 34px));
+  margin: 0 auto;
+}
+
+.site-shell {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-shell::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: radial-gradient(circle at center, black, transparent 95%);
+  z-index: 0;
+}
+
+main { flex: 1; position: relative; z-index: 1; }
+
+/* Sections */
+.section { padding: var(--space-8) 0; }
+.compact-section { padding: var(--space-6) 0; }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+.section-head h2 { font-size: var(--fs-2xl); }
+.section-head p { color: var(--text-muted); margin-top: var(--space-2); line-height: 1.8; font-size: var(--fs-sm); }
+
+/* Grids */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+
+/* Skeleton loaders */
+.skeleton {
+  background: linear-gradient(90deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 75%);
+  background-size: 200% 100%;
+  animation: skeleton 1.5s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+@keyframes skeleton {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Loading spinner */
+.loading-spinner {
+  display: inline-block;
+  width: 20px; height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--cyan);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Empty state */
+.empty-cart, .empty-state {
+  padding: 44px var(--space-5);
+  text-align: center;
+}
+.empty-cart h3, .empty-state h3 { font-size: var(--fs-xl); margin-bottom: var(--space-2); }
+.empty-cart p, .empty-state p { color: var(--text-muted); line-height: 1.8; margin-bottom: var(--space-5); }
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+.breadcrumb a { color: var(--cyan); }
+.breadcrumb a:hover { text-decoration: underline; }
