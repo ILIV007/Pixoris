@@ -3108,3 +3108,72 @@ body.pixel-mode .shine-text {
     display: flex;
   }
 }
+
+/* ============= COLLAPSIBLE SIDEBAR (v4.6) ============= */
+.sidebar-collapse-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  position: absolute;
+  top: 20px;
+  left: -14px;
+  z-index: 31;
+}
+
+.sidebar-collapse-btn:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.right-sidebar {
+  position: relative;
+}
+
+/* Collapsed state */
+.site-shell.sidebar-collapsed {
+  grid-template-columns: 1fr 60px;
+}
+.site-shell.sidebar-collapsed .right-sidebar {
+  padding: 20px 8px;
+}
+.site-shell.sidebar-collapsed .sidebar-brand-text,
+.site-shell.sidebar-collapsed .right-sidebar nav a span:not(.nav-emoji),
+.site-shell.sidebar-collapsed .cart-badge,
+.site-shell.sidebar-collapsed .sidebar-divider,
+.site-shell.sidebar-collapsed .sidebar-section-title,
+.site-shell.sidebar-collapsed .sidebar-footer {
+  display: none;
+}
+.site-shell.sidebar-collapsed .sidebar-brand {
+  justify-content: center;
+  padding: 0 0 18px;
+}
+.site-shell.sidebar-collapsed .right-sidebar nav a {
+  justify-content: center;
+  padding: 11px 8px;
+}
+.site-shell.sidebar-collapsed .sidebar-collapse-btn {
+  left: -14px;
+}
+
+/* Ensure decor is visible on left side */
+.decor-column.decor-left {
+  z-index: 2;
+}
+
+/* Fix decor positioning with sidebar */
+@media (min-width: 901px) {
+  .decor-column.decor-right {
+    right: 250px;
+  }
+}

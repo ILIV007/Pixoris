@@ -84,10 +84,62 @@ export const AudioSystem = {
 
 export const MobileMenu = {
   init: () => {
+    // Legacy mobile nav (topbar)
     const menuBtn = qs('[data-menu-btn]');
     const mobileNav = qs('.mobile-nav');
     if (menuBtn && mobileNav) {
       menuBtn.addEventListener('click', () => mobileNav.classList.toggle('open'));
+    }
+
+    // Right sidebar toggle (mobile drawer)
+    const sidebarToggle = qs('[data-sidebar-toggle]');
+    const sidebar = qs('[data-right-sidebar]');
+    const overlay = qs('[data-sidebar-overlay]');
+    if (sidebarToggle && sidebar) {
+      const openSidebar = () => {
+        sidebar.classList.add('open');
+        overlay?.classList.add('show');
+      };
+      const closeSidebar = () => {
+        sidebar.classList.remove('open');
+        overlay?.classList.remove('show');
+      };
+      sidebarToggle.addEventListener('click', () => {
+        sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+      });
+      overlay?.addEventListener('click', closeSidebar);
+      // Close on nav link click (mobile)
+      sidebar.querySelectorAll('nav a').forEach(a => {
+        a.addEventListener('click', () => {
+          if (window.innerWidth <= 900) closeSidebar();
+        });
+      });
+
+      // Add collapse button (desktop only) — makes sidebar collapsible
+      if (window.innerWidth > 900) {
+        const collapseBtn = document.createElement('button');
+        collapseBtn.className = 'sidebar-collapse-btn';
+        collapseBtn.innerHTML = '⇆';
+        collapseBtn.title = 'جمع/باز کردن سایدبار';
+        collapseBtn.setAttribute('aria-label', 'جمع/باز کردن سایدبار');
+        sidebar.style.position = 'relative';
+        sidebar.appendChild(collapseBtn);
+
+        // Restore collapsed state from localStorage
+        if (localStorage.getItem('sidebarCollapsed') === '1') {
+          document.querySelector('.site-shell')?.classList.add('sidebar-collapsed');
+          collapseBtn.innerHTML = '☰';
+        }
+
+        collapseBtn.addEventListener('click', () => {
+          const shell = document.querySelector('.site-shell');
+          if (!shell) return;
+          shell.classList.toggle('sidebar-collapsed');
+          const collapsed = shell.classList.contains('sidebar-collapsed');
+          localStorage.setItem('sidebarCollapsed', collapsed ? '1' : '0');
+          collapseBtn.innerHTML = collapsed ? '☰' : '⇆';
+        });
+      }
     }
   }
 };
@@ -106,7 +158,7 @@ export const ScrollReveal = {
 export const NavActive = {
   init: () => {
     const page = document.body.dataset.page;
-    qsa('.nav-links a, .mobile-nav a').forEach(link => {
+    qsa('.nav-links a, .mobile-nav a, .right-sidebar nav a').forEach(link => {
       if (link.dataset.page === page) link.classList.add('active');
     });
   }
