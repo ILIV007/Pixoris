@@ -13,10 +13,9 @@ export const DynamicContent = {
   init: () => {
     const page = document.body.dataset.page;
     if (page === 'home') {
-      DynamicContent.loadFeatured();
-      DynamicContent.loadLatest();
+      // Use bootstrap endpoint (1 API call instead of 4)
+      DynamicContent.loadBootstrap();
       DynamicContent.loadShopPreview();
-      DynamicContent.loadTrending();
     }
     if (page === 'news') {
       DynamicContent.loadNews();
@@ -26,6 +25,74 @@ export const DynamicContent = {
     if (page === 'product') DynamicContent.loadProduct();
     if (page === 'article') DynamicContent.loadArticle();
     if (page === 'analysis') DynamicContent.loadAnalysis();
+  },
+
+  // Single API call to load all homepage data (featured + latest + categories + trending)
+  loadBootstrap: async () => {
+    const result = await apiFetch('/api/bootstrap');
+    if (!result.success) {
+      // Fallback to individual calls
+      DynamicContent.loadFeatured();
+      DynamicContent.loadLatest();
+      DynamicContent.loadTrending();
+      return;
+    }
+    const data = result.data || result;
+
+    // Featured posts
+    const featuredHost = qs('[data-featured-posts]');
+    if (featuredHost && data.featured?.length) {
+      featuredHost.innerHTML = data.featured.slice(0, 2).map((post, i) => `
+        <article class="post-card-clean ${i === 0 ? 'post-wide reveal' : 'reveal'}">
+          <a class="post-media" href="article.html?slug=${post.slug}">
+            <img src="${post.image_url || 'assets/svg/card-game.svg'}" alt="${escapeHtml(post.title)}" loading="lazy" decoding="async" width="400" height="200">
+          </a>
+          <div class="post-content">
+            <div class="meta">
+              <span class="tag" style="background:${post.category_color || '#4ee5ff'}">${escapeHtml(post.category_name || 'News')}</span>
+            </div>
+            <h3><a href="article.html?slug=${post.slug}">${escapeHtml(post.title)}</a></h3>
+            <p>${escapeHtml(post.excerpt || '')}</p>
+            ${i === 0 ? `<a class="read-more" href="article.html?slug=${post.slug}">خواندن خبر ←</a>` : ''}
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // Latest posts
+    const latestHost = qs('[data-latest-posts]');
+    if (latestHost && data.latest?.length) {
+      latestHost.innerHTML = data.latest.slice(0, 3).map(post => `
+        <article class="product-tile reveal">
+          <a class="product-media" href="article.html?slug=${post.slug}">
+            <img src="${post.image_url || 'assets/svg/card-game.svg'}" alt="${escapeHtml(post.title)}" loading="lazy" decoding="async" width="300" height="170">
+          </a>
+          <div class="product-tile-body">
+            <span class="tag">${escapeHtml(post.category_name || 'News')}</span>
+            <h3>${escapeHtml(post.title)}</h3>
+            <p>${escapeHtml(post.excerpt || '')}</p>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // Trending
+    const trendingHost = qs('[data-trending]');
+    if (trendingHost && data.trending?.length) {
+      trendingHost.innerHTML = data.trending.map((post, i) => `
+        <a class="trending-item reveal" href="article.html?slug=${post.slug}">
+          <span class="trending-rank">${(i + 1).toLocaleString('fa-IR')}</span>
+          <div>
+            <strong>${escapeHtml(post.title)}</strong>
+            <span class="meta">${(post.views || 0).toLocaleString('fa-IR')} بازدید</span>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    // Re-init scroll reveal
+    const { ScrollReveal } = await import('./ui.js');
+    ScrollReveal.init();
   },
 
   loadFeatured: async () => {
