@@ -2,11 +2,14 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Pixoris Debug Dashboard</title>
-  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="styles.css" />
   <style>
     .debug-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-top: 20px; }
     .debug-card {
@@ -57,33 +60,74 @@
   </style>
 </head>
 <body data-page="debug">
-  <div class="site-shell">
-    <header class="topbar">
-      <div class="container topbar-inner">
-        <a class="brand" href="index.html">
-          <img class="brand-logo" src="assets/logos/logo-pixoris-small.png" alt="Pixoris logo" />
-          <div class="brand-text">
-            <h1>Pixoris</h1>
-            <p>Debug Dashboard v3.0</p>
-          </div>
-        </a>
-        <nav class="nav-links">
-          <a href="index.html">خانه</a>
-          <a href="admin.html">پنل ادمین</a>
-          <a href="debug.html" class="active">دیباگ</a>
-        </nav>
-        <div class="header-actions">
-          <button class="menu-btn" data-menu-btn type="button">☰</button>
+    <button class="sidebar-toggle" data-sidebar-toggle>☰</button>
+    <div class="sidebar-overlay" data-sidebar-overlay></div>
+
+    <aside class="right-sidebar" data-right-sidebar>
+      <a class="right-sidebar-brand" href="index.html">
+        <img src="assets/logos/logo-pixoris-small.png" alt="Pixoris" />
+        <div>
+          <h1>Pixoris</h1>
+          <p>Gaming • Cinema • Shop</p>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html" data-page="home"><span class="nav-emoji">🏠</span> خانه</a>
+        <a href="news.html" data-page="news"><span class="nav-emoji">📰</span> خبرها</a>
+        <a href="shop.html" data-page="shop"><span class="nav-emoji">🛒</span> فروشگاه</a>
+        <a href="analysis.html" data-page="analysis"><span class="nav-emoji">🎬</span> تحلیل</a>
+        <a href="about.html" data-page="about"><span class="nav-emoji">ℹ️</span> درباره ما</a>
+        <a href="cart.html" data-page="cart"><span class="nav-emoji">🛍️</span> سبد خرید <span data-cart-count style="background:var(--accent);color:white;font-size:10px;padding:2px 6px;border-radius:99px;margin-right:auto;">0</span></a>
+      </nav>
+      <div class="right-sidebar-footer">
+        <a href="login.html"><span class="nav-emoji">👤</span> ورود / عضویت</a>
+        <a href="admin.html"><span class="nav-emoji">⚙️</span> پنل ادمین</a>
+        <button class="pac-toggle" data-pac-toggle type="button" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;background:linear-gradient(135deg,rgba(255,216,76,.18),rgba(146,100,255,.18));border:1px solid rgba(255,255,255,.12);color:white;font-size:13px;font-weight:700;cursor:pointer;width:100%;">
+          <span class="pac-icon" style="width:16px;height:16px;border-radius:50%;background:#ffd84c;clip-path:polygon(100% 0,50% 50%,100% 100%,0 100%,0 0);box-shadow:0 0 15px rgba(255,216,76,.55);"></span>
+          <span>Pac Mode</span>
+        </button>
+        <button class="sound-toggle muted" data-sound-toggle type="button" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:white;font-size:13px;font-weight:700;cursor:pointer;width:100%;">
+          <span class="speaker-pixel" style="position:relative;width:15px;height:12px;background:currentColor;clip-path:polygon(0 35%,32% 35%,60% 5%,60% 95%,32% 65%,0 65%);"></span>
+          <span class="sound-label">Music Off</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="main-content">
+      <div class="pixel-decor" aria-hidden="true">
+        <div class="decor-column decor-left">
+          <div class="decor-item d1"><img src="assets/decor/decor-wanda.png" alt="" /></div>
+          <div class="decor-item d2"><img src="assets/decor/decor-kratos.png" alt="" /></div>
+          <div class="decor-item d3"><img src="assets/decor/decor-ghostrider.png" alt="" /></div>
+          <div class="decor-item d4"><img src="assets/decor/decor-samurai.png" alt="" /></div>
+          <div class="decor-item d5"><img src="assets/decor/decor-knight.png" alt="" /></div>
+          <div class="decor-item d6"><img src="assets/decor/decor-frog-dog.png" alt="" /></div>
+          <div class="decor-item d7"><img src="assets/decor/decor-cat-yarn.png" alt="" /></div>
+        </div>
+        <div class="decor-column decor-right">
+          <div class="decor-item d8"><img src="assets/decor/decor-assassin.png" alt="" /></div>
+          <div class="decor-item d9"><img src="assets/decor/decor-luffy.png" alt="" /></div>
+          <div class="decor-item d10"><img src="assets/decor/decor-wolverine.png" alt="" /></div>
+          <div class="decor-item d11"><img src="assets/decor/decor-batman.png" alt="" /></div>
+          <div class="decor-item d12"><img src="assets/decor/decor-luffy-alt.png" alt="" /></div>
+          <div class="decor-item d13"><img src="assets/decor/decor-deadpool.png" alt="" /></div>
+          <div class="decor-item d14"><img src="assets/decor/decor-spiderman.png" alt="" /></div>
         </div>
       </div>
-      <div class="container mobile-nav">
-        <a href="index.html">خانه</a>
-        <a href="admin.html">پنل ادمین</a>
-        <a href="debug.html">دیباگ</a>
+      <audio id="bgAudio" loop preload="auto" src="assets/audio/background-music.mp3"></audio>
+      <div class="pixel-overlay">
+        <div class="scan"></div>
+        <div class="pellet p1"></div>
+        <div class="pellet p2"></div>
+        <div class="pellet p3"></div>
+        <div class="cherry-runner">🍒</div>
+        <div class="pacman-runner"></div>
+        <div class="ghost-runner ghost-1"></div>
+        <div class="ghost-runner ghost-2"></div>
+        <div class="ghost-runner ghost-3"></div>
       </div>
-    </header>
 
-    <main>
+      <main>
       <section class="section">
         <div class="container">
           <div class="hero-panel reveal" style="padding: 24px; margin-bottom: 20px;">
@@ -124,6 +168,8 @@
       </div>
     </footer>
   </div>
+    </div>
+
 
   <div class="toast" data-toast></div>
   <script>
