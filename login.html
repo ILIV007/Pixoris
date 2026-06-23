@@ -5,45 +5,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ورود و عضویت Pixoris" />
+  <link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/logos/apple-touch-icon.png" />
   <title>Pixoris | ورود / عضویت</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body data-page="login">
-    <button class="sidebar-toggle" data-sidebar-toggle>☰</button>
-    <div class="sidebar-overlay" data-sidebar-overlay></div>
+  <button class="sidebar-toggle-mobile" data-sidebar-toggle>☰</button>
+  <div class="sidebar-overlay" data-sidebar-overlay></div>
 
-    <aside class="right-sidebar" data-right-sidebar>
-      <a class="right-sidebar-brand" href="index.html">
-        <img src="assets/logos/logo-pixoris-small.png" alt="Pixoris" />
-        <div>
-          <h1>Pixoris</h1>
-          <p>Gaming • Cinema • Shop</p>
-        </div>
-      </a>
-      <nav>
-        <a href="index.html" data-page="home"><span class="nav-emoji">🏠</span> خانه</a>
-        <a href="news.html" data-page="news"><span class="nav-emoji">📰</span> خبرها</a>
-        <a href="shop.html" data-page="shop"><span class="nav-emoji">🛒</span> فروشگاه</a>
-        <a href="analysis.html" data-page="analysis"><span class="nav-emoji">🎬</span> تحلیل</a>
-        <a href="about.html" data-page="about"><span class="nav-emoji">ℹ️</span> درباره ما</a>
-        <a href="cart.html" data-page="cart"><span class="nav-emoji">🛍️</span> سبد خرید <span data-cart-count style="background:var(--accent);color:white;font-size:10px;padding:2px 6px;border-radius:99px;margin-right:auto;">0</span></a>
-      </nav>
-      <div class="right-sidebar-footer">
-        <a href="login.html"><span class="nav-emoji">👤</span> ورود / عضویت</a>
-        <a href="admin.html"><span class="nav-emoji">⚙️</span> پنل ادمین</a>
-        <button class="pac-toggle" data-pac-toggle type="button" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;background:linear-gradient(135deg,rgba(255,216,76,.18),rgba(146,100,255,.18));border:1px solid rgba(255,255,255,.12);color:white;font-size:13px;font-weight:700;cursor:pointer;width:100%;">
-          <span class="pac-icon" style="width:16px;height:16px;border-radius:50%;background:#ffd84c;clip-path:polygon(100% 0,50% 50%,100% 100%,0 100%,0 0);box-shadow:0 0 15px rgba(255,216,76,.55);"></span>
-          <span>Pac Mode</span>
-        </button>
-        <button class="sound-toggle muted" data-sound-toggle type="button" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:white;font-size:13px;font-weight:700;cursor:pointer;width:100%;">
-          <span class="speaker-pixel" style="position:relative;width:15px;height:12px;background:currentColor;clip-path:polygon(0 35%,32% 35%,60% 5%,60% 95%,32% 65%,0 65%);"></span>
-          <span class="sound-label">Music Off</span>
-        </button>
-      </div>
-    </aside>
-
+  <div class="site-shell">
     <div class="main-content">
       <div class="pixel-decor" aria-hidden="true">
         <div class="decor-column decor-left">
@@ -79,80 +52,108 @@
       </div>
 
       <main>
-<section class="hero compact-hero">
-  <div class="container">
-    <article class="hero-panel reveal auth-hero">
-      <span class="eyebrow">👤 حساب کاربری Pixoris</span>
-      <h2 class="hero-title">ورود / <span class="shine-text">عضویت کاربر</span></h2>
-      <p class="hero-desc">این بخش فقط برای کاربر عادی است. پنل ادمین از صفحه‌ای جدا مدیریت می‌شود و با ورود کاربرها قاطی نیست.</p>
-    </article>
-  </div>
-</section>
-
-<section class="section compact-section">
-  <div class="container auth-grid user-auth-grid">
-    <article class="panel auth-panel reveal">
-      <div class="auth-tabs">
-        <button class="auth-tab active" data-auth-tab="login">ورود</button>
-        <button class="auth-tab" data-auth-tab="register">عضویت</button>
-      </div>
-
-      <form class="auth-form" data-auth-form data-auth-mode="login">
-        <label data-register-only hidden>
-          جیمیل
-          <input type="email" name="email" placeholder="example@gmail.com">
-        </label>
-
-        <label>
-          نام کاربری
-          <input type="text" name="username" placeholder="مثلاً pixoris_user" required>
-        </label>
-
-        <label>
-          رمز عبور
-          <div class="password-input-wrapper">
-            <input type="password" name="password" placeholder="رمز عبور" minlength="4" required id="user-password-input">
-            <button type="button" class="password-toggle" data-password-toggle="user-password-input" aria-label="نمایش/پنهان رمز">
-              <span class="eye-icon eye-open">👁</span>
-              <span class="eye-icon eye-closed" style="display:none">🙈</span>
-            </button>
+        <section class="hero compact-hero">
+          <div class="container">
+            <article class="hero-panel reveal auth-hero">
+              <span class="eyebrow">👤 حساب کاربری Pixoris</span>
+              <h2 class="hero-title">ورود / <span class="shine-text">عضویت کاربر</span></h2>
+              <p class="hero-desc">این بخش فقط برای کاربر عادی است. پنل ادمین از صفحه‌ای جدا مدیریت می‌شود.</p>
+            </article>
           </div>
-        </label>
+        </section>
+        <section class="section compact-section">
+          <div class="container auth-grid user-auth-grid">
+            <article class="panel auth-panel reveal">
+              <div class="auth-tabs">
+                <button class="auth-tab active" data-auth-tab="login">ورود</button>
+                <button class="auth-tab" data-auth-tab="register">عضویت</button>
+              </div>
+              <form class="auth-form" data-auth-form data-auth-mode="login">
+                <label data-register-only hidden>
+                  جیمیل
+                  <input type="email" name="email" placeholder="example@gmail.com">
+                </label>
+                <label>
+                  نام کاربری
+                  <input type="text" name="username" placeholder="مثلاً pixoris_user" required>
+                </label>
+                <label>
+                  رمز عبور
+                  <div class="password-input-wrapper">
+                    <input type="password" name="password" placeholder="رمز عبور" minlength="4" required id="user-password-input">
+                    <button type="button" class="password-toggle" data-password-toggle="user-password-input" aria-label="نمایش/پنهان رمز">
+                      <span class="eye-icon eye-open">👁</span>
+                      <span class="eye-icon eye-closed" style="display:none">🙈</span>
+                    </button>
+                  </div>
+                </label>
+                <button class="btn auth-submit" type="submit">ورود به حساب</button>
+              </form>
+            </article>
+            <aside class="panel auth-panel reveal" data-account-panel>
+              <h2>حساب کاربری عادی</h2>
+              <div class="role-info-card">
+                <h3>کاربر عادی</h3>
+                <p>کاربر می‌تواند خبرها و تحلیل‌ها را ببیند، محصول به سبد خرید اضافه کند و تجربه شخصی‌شده‌تری از Pixoris داشته باشد.</p>
+              </div>
+              <div class="role-info-card">
+                <h3>پنل ادمین جداست</h3>
+                <p>برای مدیریت سایت، محصولات و سفارش‌ها از صفحه مخصوص ادمین استفاده می‌شود.</p>
+                <a class="btn btn-outline" href="admin.html">رفتن به پنل ادمین</a>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </main>
 
-        <button class="btn auth-submit" type="submit">ورود به حساب</button>
-      </form>
-    </article>
+      <footer class="footer">
+        <div class="container footer-row">
+          <p>Pixoris © 2026 — رسانه گیم، سینما و آنلاین‌شاپ گیکی</p>
+          <div class="pill-list">
+            <span class="pill">Gaming</span>
+            <span class="pill">Cinema</span>
+            <span class="pill">Collectibles</span>
+          </div>
+        </div>
+      </footer>
+    </div>
 
-    <aside class="panel auth-panel reveal" data-account-panel>
-      <h2>حساب کاربری عادی</h2>
-      <div class="role-info-card">
-        <h3>کاربر عادی</h3>
-        <p>کاربر می‌تواند خبرها و تحلیل‌ها را ببیند، محصول به سبد خرید اضافه کند و تجربه شخصی‌شده‌تری از Pixoris داشته باشد.</p>
-      </div>
-      <div class="role-info-card">
-        <h3>پنل ادمین جداست</h3>
-        <p>برای مدیریت سایت، محصولات و سفارش‌ها از صفحه مخصوص ادمین استفاده می‌شود.</p>
-        <a class="btn btn-outline" href="admin.html">رفتن به پنل ادمین</a>
+    <aside class="right-sidebar" data-right-sidebar>
+      <a class="sidebar-brand" href="index.html">
+        <img src="assets/logos/logo-pixoris-small.png" alt="Pixoris" />
+        <div class="sidebar-brand-text">
+          <h1>Pixoris</h1>
+          <p>Gaming • Cinema • Shop</p>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html" data-page="home"><span class="nav-emoji">🏠</span> خانه</a>
+        <a href="news.html" data-page="news"><span class="nav-emoji">📰</span> خبرها</a>
+        <a href="shop.html" data-page="shop"><span class="nav-emoji">🛒</span> فروشگاه</a>
+        <a href="analysis.html" data-page="analysis"><span class="nav-emoji">🎬</span> تحلیل</a>
+        <a href="about.html" data-page="about"><span class="nav-emoji">ℹ️</span> درباره ما</a>
+        <a href="cart.html" data-page="cart"><span class="nav-emoji">🛍️</span> سبد خرید <span class="cart-badge" data-cart-count>0</span></a>
+      </nav>
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-section-title">حساب کاربری</div>
+      <nav>
+        <a href="login.html" data-page="login"><span class="nav-emoji">👤</span> ورود / عضویت</a>
+        <a href="admin.html" data-page="admin"><span class="nav-emoji">⚙️</span> پنل ادمین</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="pac-toggle-mini" data-pac-toggle type="button">
+          <span class="nav-emoji">👾</span>
+          <span>Pac Mode</span>
+        </button>
+        <button class="sound-toggle-mini" data-sound-toggle type="button">
+          <span class="nav-emoji">🔇</span>
+          <span>Music Off</span>
+        </button>
       </div>
     </aside>
   </div>
-</section>
-</main>
-    <footer class="footer">
-  <div class="container footer-row">
-    <p>Pixoris © 2026 — رسانه گیم، سینما و آنلاین‌شاپ گیکی</p>
-    <div class="pill-list">
-      <span class="pill">Gaming</span>
-      <span class="pill">Cinema</span>
-      <span class="pill">Collectibles</span>
-    </div>
-  </div>
-</footer>
-  </div>
-    </div>
 
   <div class="toast" data-toast></div>
   <script type="module" src="js/script.js"></script>
-
 </body>
 </html>

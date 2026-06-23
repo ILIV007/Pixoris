@@ -14,792 +14,501 @@
 </head>
 <body data-page="admin">
   <div class="site-shell">
-    <div class="pixel-decor" aria-hidden="true">
-      <div class="decor-column decor-left">
-        <div class="decor-item d1"><img src="assets/decor/decor-wanda.png" alt="" /></div>
-        <div class="decor-item d2"><img src="assets/decor/decor-kratos.png" alt="" /></div>
-        <div class="decor-item d3"><img src="assets/decor/decor-ghostrider.png" alt="" /></div>
-        <div class="decor-item d4"><img src="assets/decor/decor-samurai.png" alt="" /></div>
-        <div class="decor-item d5"><img src="assets/decor/decor-knight.png" alt="" /></div>
-        <div class="decor-item d6"><img src="assets/decor/decor-frog-dog.png" alt="" /></div>
-        <div class="decor-item d7"><img src="assets/decor/decor-cat-yarn.png" alt="" /></div>
-      </div>
-      <div class="decor-column decor-right">
-        <div class="decor-item d8"><img src="assets/decor/decor-assassin.png" alt="" /></div>
-        <div class="decor-item d9"><img src="assets/decor/decor-luffy.png" alt="" /></div>
-        <div class="decor-item d10"><img src="assets/decor/decor-wolverine.png" alt="" /></div>
-        <div class="decor-item d11"><img src="assets/decor/decor-batman.png" alt="" /></div>
-        <div class="decor-item d12"><img src="assets/decor/decor-luffy-alt.png" alt="" /></div>
-        <div class="decor-item d13"><img src="assets/decor/decor-deadpool.png" alt="" /></div>
-        <div class="decor-item d14"><img src="assets/decor/decor-spiderman.png" alt="" /></div>
-      </div>
-    </div>
-    <audio id="bgAudio" loop preload="auto" src="assets/audio/background-music.mp3"></audio>
+    <div class="main-content">
+      <audio id="bgAudio" loop preload="auto" src="assets/audio/background-music.mp3"></audio>
 
-    <header class="topbar">
-      <div class="container topbar-inner">
-        <a class="brand" href="index.html">
-          <img class="brand-logo" src="assets/logos/logo-pixoris-small.png" alt="Pixoris logo" />
-          <div class="brand-text">
-            <h1>Pixoris</h1>
-            <p>CMS v4.3</p>
-          </div>
-        </a>
-        <nav class="nav-links">
-          <a href="index.html" data-page="home">خانه</a>
-          <a href="news.html" data-page="news">خبرها</a>
-          <a href="shop.html" data-page="shop">فروشگاه</a>
-          <a href="admin.html" data-page="admin" class="active">پنل مدیریت</a>
-        </nav>
-        <div class="header-actions">
-          <button class="pac-toggle" data-pac-toggle type="button">
-            <span class="pac-icon"></span>
-            <span class="label">Pac Mode</span>
-          </button>
-          <button class="sound-toggle muted" data-sound-toggle type="button">
-            <span class="speaker-pixel"></span>
-            <span class="sound-label">Music Off</span>
-          </button>
-          <button class="menu-btn" data-menu-btn type="button">☰</button>
-        </div>
-      </div>
-      <div class="container mobile-nav">
-        <a href="index.html">خانه</a>
-        <a href="news.html">خبرها</a>
-        <a href="shop.html">فروشگاه</a>
-        <a href="admin.html">پنل مدیریت</a>
-      </div>
-    </header>
-
-    <main>
-      <!-- Login Screen (v4.3) -->
-      <section class="admin-login-screen-v4" id="admin-login-screen">
-        <div class="admin-login-card-v4">
-          <div class="login-logo">🎮</div>
-          <h2>ورود به پنل مدیریت</h2>
-          <p class="login-subtitle">Pixoris CMS v4.3 — اتاق کنترل رسانه</p>
-          <form data-admin-login-form>
-            <div class="form-field">
-              <label>نام کاربری</label>
-              <input type="text" name="adminUser" placeholder="admin / Iliya / Amirali" required autocomplete="username">
+      <!-- Login Screen -->
+      <section class="section" id="admin-login-screen">
+        <div class="container" style="max-width: 440px;">
+          <article class="panel auth-panel reveal" style="padding: 40px;">
+            <div style="text-align: center; margin-bottom: 24px;">
+              <div style="font-size: 48px; margin-bottom: 12px;">🎮</div>
+              <h2 style="font-size: 24px;">ورود به پنل مدیریت</h2>
+              <p style="color: var(--muted); margin-top: 8px; font-size: 13px;">Pixoris CMS v4.5</p>
             </div>
-            <div class="form-field">
-              <label>رمز عبور</label>
-              <div class="password-input-wrapper">
-                <input type="password" name="adminPass" placeholder="••••••••" required autocomplete="current-password" id="admin-password-input">
-                <button type="button" class="password-toggle" data-password-toggle="admin-password-input" aria-label="نمایش/پنهان رمز">
-                  <span class="eye-icon eye-open">👁</span>
-                  <span class="eye-icon eye-closed" style="display:none">🙈</span>
-                </button>
+            <form data-admin-login-form>
+              <div class="editor-field">
+                <label>نام کاربری</label>
+                <input type="text" name="adminUser" placeholder="admin / Iliya / Amirali" required autocomplete="username">
               </div>
-            </div>
-            <button class="btn btn-primary auth-submit" type="submit" style="width:100%;margin-top:var(--space-3)">ورود به پنل</button>
-          </form>
-          <p style="color: var(--text-muted); font-size: 12px; margin-top: 20px; text-align: center;">
-            کاربران: <strong>admin</strong> / <strong>Iliya</strong> / <strong>Amirali</strong><br>
-            رمز پیش‌فرض: <code style="background:var(--bg-soft);padding:2px 6px;border-radius:4px">P!xoris2026</code>
-          </p>
+              <div class="editor-field">
+                <label>رمز عبور</label>
+                <div class="password-input-wrapper">
+                  <input type="password" name="adminPass" placeholder="••••••••" required autocomplete="current-password" id="admin-password-input">
+                  <button type="button" class="password-toggle" data-password-toggle="admin-password-input" aria-label="نمایش/پنهان رمز">
+                    <span class="eye-icon eye-open">👁</span>
+                    <span class="eye-icon eye-closed" style="display:none">🙈</span>
+                  </button>
+                </div>
+              </div>
+              <button class="btn auth-submit" type="submit" style="width:100%;">ورود به پنل</button>
+            </form>
+            <p style="color: var(--muted); font-size: 12px; margin-top: 16px; text-align: center;">
+              کاربران: <strong>admin</strong> / <strong>Iliya</strong> / <strong>Amirali</strong><br>
+              رمز پیش‌فرض: <code style="background:var(--bg-soft);padding:2px 6px;border-radius:4px">P!xoris2026</code>
+            </p>
+          </article>
         </div>
       </section>
 
-      <!-- CMS Dashboard (v4.3) -->
+      <!-- CMS Dashboard -->
       <section class="admin-cms" id="admin-cms-screen" style="display: none;">
-        <div class="admin-layout" id="admin-layout">
-          <!-- Sidebar -->
-          <aside class="admin-sidebar">
-            <div class="admin-sidebar-header">
+        <div class="container">
+          <div class="admin-layout">
+            <!-- Sidebar -->
+            <aside class="admin-sidebar reveal">
               <h3>🎮 Pixoris CMS</h3>
-              <button class="admin-sidebar-collapse-btn" data-sidebar-collapse title="جمع/باز کردن">⇆</button>
-            </div>
-            <nav>
-              <a href="#" class="active" data-admin-tab="dashboard">
-                <span class="nav-icon">📊</span>
-                <span class="nav-label">داشبورد</span>
-              </a>
-              <a href="#" data-admin-tab="posts">
-                <span class="nav-icon">📝</span>
-                <span class="nav-label">مقالات</span>
-                <span class="nav-badge" data-badge="posts">0</span>
-              </a>
-              <a href="#" data-admin-tab="new-post">
-                <span class="nav-icon">➕</span>
-                <span class="nav-label">مقاله جدید</span>
-              </a>
-              <a href="#" data-admin-tab="categories">
-                <span class="nav-icon">🏷️</span>
-                <span class="nav-label">دسته‌بندی‌ها</span>
-              </a>
-              <a href="#" data-admin-tab="media">
-                <span class="nav-icon">📁</span>
-                <span class="nav-label">رسانه</span>
-              </a>
-              <a href="#" data-admin-tab="products">
-                <span class="nav-icon">🛒</span>
-                <span class="nav-label">محصولات</span>
-              </a>
-              <a href="#" data-admin-tab="seo">
-                <span class="nav-icon">🔍</span>
-                <span class="nav-label">SEO</span>
-              </a>
-              <a href="#" data-admin-tab="analytics">
-                <span class="nav-icon">📈</span>
-                <span class="nav-label">تحلیل‌ها</span>
-              </a>
-              <a href="#" data-admin-tab="audit" data-role-min="admin">
-                <span class="nav-icon">📜</span>
-                <span class="nav-label">لاگ رویدادها</span>
-              </a>
-              <a href="#" data-admin-tab="debug">
-                <span class="nav-icon">🧪</span>
-                <span class="nav-label">دیباگ سنتر</span>
-              </a>
-              <a href="#" data-admin-tab="users" data-role-min="super_admin">
-                <span class="nav-icon">👥</span>
-                <span class="nav-label">کاربران</span>
-              </a>
-              <a href="#" data-admin-tab="settings">
-                <span class="nav-icon">⚙️</span>
-                <span class="nav-label">تنظیمات</span>
-              </a>
-            </nav>
-            <div class="admin-sidebar-footer">
-              <a href="#" data-admin-logout style="display:flex;align-items:center;gap:var(--space-3);padding:10px 14px;border-radius:var(--radius-sm);color:var(--danger);font-size:var(--fs-sm);font-weight:600;">
-                <span class="nav-icon">🚪</span>
-                <span class="nav-label">خروج (<span data-admin-name>admin</span>)</span>
-              </a>
-            </div>
-          </aside>
+              <nav>
+                <a href="#" class="active" data-admin-tab="dashboard"><span>📊</span> داشبورد</a>
+                <a href="#" data-admin-tab="posts"><span>📝</span> مقالات</a>
+                <a href="#" data-admin-tab="new-post"><span>➕</span> مقاله جدید</a>
+                <a href="#" data-admin-tab="categories"><span>📂</span> دسته‌بندی‌ها</a>
+                <a href="#" data-admin-tab="products"><span>🛒</span> محصولات</a>
+                <a href="#" data-admin-tab="media"><span>🖼</span> رسانه</a>
+                <a href="#" data-admin-tab="users" data-role-min="super_admin"><span>👥</span> کاربران</a>
+                <a href="#" data-admin-tab="audit" data-role-min="admin"><span>📜</span> لاگ رویدادها</a>
+                <a href="#" data-admin-tab="debug"><span>🧪</span> دیباگ سنتر</a>
+                <a href="#" data-admin-tab="settings"><span>⚙️</span> تنظیمات</a>
+                <a href="#" data-admin-logout style="color: var(--pink);"><span>🚪</span> خروج (<span data-admin-name>admin</span>)</a>
+              </nav>
+            </aside>
 
-          <!-- Content Area -->
-          <div class="admin-content">
-            <!-- Dashboard -->
-            <div class="admin-tab" data-tab="dashboard">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-5);">
-                <div>
-                  <h2 style="font-size:var(--fs-2xl);">داشبورد</h2>
-                  <p style="color:var(--text-muted);font-size:var(--fs-sm);">نمای کلی وضعیت سایت</p>
+            <!-- Content Area -->
+            <div class="admin-content">
+              <!-- Dashboard -->
+              <div class="admin-tab" data-tab="dashboard">
+                <h2 style="margin-bottom: 20px;">📊 داشبورد</h2>
+                <div class="admin-dashboard">
+                  <article class="admin-stat">
+                    <span>مقالات</span>
+                    <strong data-stat="totalPosts">0</strong>
+                    <p>تعداد کل مقالات</p>
+                  </article>
+                  <article class="admin-stat">
+                    <span>منتشر شده</span>
+                    <strong data-stat="published" style="color: var(--green);">0</strong>
+                    <p>مقالات فعال</p>
+                  </article>
+                  <article class="admin-stat">
+                    <span>پیش‌نویس</span>
+                    <strong data-stat="drafts" style="color: var(--yellow);">0</strong>
+                    <p>در انتظار انتشار</p>
+                  </article>
+                  <article class="admin-stat">
+                    <span>بازدید</span>
+                    <strong data-stat="totalViews">0</strong>
+                    <p>کل بازدیدها</p>
+                  </article>
+                  <article class="admin-stat">
+                    <span>محصولات</span>
+                    <strong data-stat="products" style="color: var(--cyan);">0</strong>
+                    <p>محصولات فعال</p>
+                  </article>
+                  <article class="admin-stat">
+                    <span>رسانه</span>
+                    <strong data-stat="media">0</strong>
+                    <p>فایل‌های آپلود شده</p>
+                  </article>
                 </div>
-                <button class="btn btn-primary" data-admin-tab-trigger="new-post">➕ مقاله جدید</button>
-              </div>
-
-              <!-- Stat Cards -->
-              <div class="admin-dashboard" id="dashboard-stats">
-                <div class="admin-stat" style="--stat-color: var(--primary)">
-                  <div class="admin-stat-header">
-                    <span class="admin-stat-icon" style="background:rgba(124,58,237,.12);color:var(--primary)">📝</span>
-                    <span class="admin-stat-label">کل مقالات</span>
+                <div class="panel" style="margin-top: 20px; padding: 20px;">
+                  <h3 style="margin-bottom: 12px;">📈 آخرین فعالیت‌ها</h3>
+                  <div data-admin-activity style="color: var(--muted); font-size: 13px;">
+                    <p>در حال بارگذاری...</p>
                   </div>
-                  <div class="admin-stat-value" data-stat="totalPosts">0</div>
-                  <div class="admin-stat-trend">↑ این هفته</div>
-                </div>
-                <div class="admin-stat" style="--stat-color: var(--success)">
-                  <div class="admin-stat-header">
-                    <span class="admin-stat-icon" style="background:rgba(16,185,129,.12);color:var(--success)">✅</span>
-                    <span class="admin-stat-label">منتشر شده</span>
-                  </div>
-                  <div class="admin-stat-value" data-stat="published" style="color:var(--success)">0</div>
-                  <div class="admin-stat-trend">فعال</div>
-                </div>
-                <div class="admin-stat" style="--stat-color: var(--warning)">
-                  <div class="admin-stat-header">
-                    <span class="admin-stat-icon" style="background:rgba(245,158,11,.12);color:var(--warning)">📝</span>
-                    <span class="admin-stat-label">پیش‌نویس</span>
-                  </div>
-                  <div class="admin-stat-value" data-stat="drafts" style="color:var(--warning)">0</div>
-                  <div class="admin-stat-trend">در انتظار</div>
-                </div>
-                <div class="admin-stat" style="--stat-color: var(--secondary)">
-                  <div class="admin-stat-header">
-                    <span class="admin-stat-icon" style="background:rgba(6,182,212,.12);color:var(--secondary)">👁</span>
-                    <span class="admin-stat-label">بازدید کل</span>
-                  </div>
-                  <div class="admin-stat-value" data-stat="totalViews">0</div>
-                  <div class="admin-stat-trend">↑ رشد</div>
-                </div>
-                <div class="admin-stat" style="--stat-color: var(--accent)">
-                  <div class="admin-stat-header">
-                    <span class="admin-stat-icon" style="background:rgba(236,72,153,.12);color:var(--accent)">🛒</span>
-                    <span class="admin-stat-label">محصولات</span>
-                  </div>
-                  <div class="admin-stat-value" data-stat="products" style="color:var(--accent)">0</div>
-                  <div class="admin-stat-trend">فعال</div>
-                </div>
-                <div class="admin-stat" style="--stat-color: var(--info)">
-                  <div class="admin-stat-header">
-                    <span class="admin-stat-icon" style="background:rgba(59,130,246,.12);color:var(--info)">🖼️</span>
-                    <span class="admin-stat-label">رسانه</span>
-                  </div>
-                  <div class="admin-stat-value" data-stat="media">0</div>
-                  <div class="admin-stat-trend">فایل</div>
                 </div>
               </div>
 
-              <!-- Recent Activity + System Health -->
-              <div class="admin-dashboard-grid">
-                <div class="admin-section-card">
-                  <div class="admin-section-header">
-                    <h3>🕐 آخرین فعالیت‌ها</h3>
-                    <button class="btn btn-ghost btn-sm" data-admin-tab-trigger="audit">همه</button>
-                  </div>
-                  <div data-activity-feed>
-                    <p style="color:var(--text-muted);text-align:center;padding:var(--space-5);">در حال بارگذاری...</p>
-                  </div>
+              <!-- Posts List -->
+              <div class="admin-tab" data-tab="posts" style="display: none;">
+                <div class="section-head" style="margin-bottom: 20px;">
+                  <h2>📝 مقالات</h2>
+                  <button class="btn" data-admin-tab-trigger="new-post">➕ مقاله جدید</button>
                 </div>
-                <div class="admin-section-card">
-                  <div class="admin-section-header">
-                    <h3>💚 سلامت سیستم</h3>
-                  </div>
-                  <div data-system-health>
-                    <div class="health-item">
-                      <span>Worker</span>
-                      <span class="health-status ok"><span class="admin-statusbar-dot ok"></span> سالم</span>
-                    </div>
-                    <div class="health-item">
-                      <span>Database</span>
-                      <span class="health-status ok"><span class="admin-statusbar-dot ok"></span> متصل</span>
-                    </div>
-                    <div class="health-item">
-                      <span>GitHub</span>
-                      <span class="health-status ok"><span class="admin-statusbar-dot ok"></span> فعال</span>
-                    </div>
-                    <div class="health-item">
-                      <span>Cache</span>
-                      <span class="health-status ok"><span class="admin-statusbar-dot ok"></span> فعال</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Posts Manager -->
-            <div class="admin-tab" data-tab="posts" style="display:none;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-5);">
-                <div>
-                  <h2 style="font-size:var(--fs-2xl);">مقالات</h2>
-                  <p style="color:var(--text-muted);font-size:var(--fs-sm);">مدیریت همه مقالات</p>
-                </div>
-                <button class="btn btn-primary" data-admin-tab-trigger="new-post">➕ مقاله جدید</button>
-              </div>
-
-              <div class="posts-toolbar">
-                <div class="posts-search">
-                  <input type="text" data-posts-search placeholder="جستجو در مقالات...">
-                </div>
-                <div class="posts-filters">
-                  <button class="filter-chip active" data-filter="all">همه</button>
-                  <button class="filter-chip" data-filter="published">منتشر شده</button>
-                  <button class="filter-chip" data-filter="draft">پیش‌نویس</button>
-                  <button class="filter-chip" data-filter="featured">ویژه</button>
-                </div>
-                <div class="view-toggle">
-                  <button class="active" data-view="grid">▦</button>
-                  <button data-view="list">☰</button>
+                <div class="panel" style="padding: 20px; overflow-x: auto;">
+                  <table class="posts-table" style="min-width: 700px;">
+                    <thead>
+                      <tr>
+                        <th>عنوان</th>
+                        <th>دسته‌بندی</th>
+                        <th>وضعیت</th>
+                        <th>بازدید</th>
+                        <th>تاریخ</th>
+                        <th>عملیات</th>
+                      </tr>
+                    </thead>
+                    <tbody data-admin-posts-list>
+                      <tr><td colspan="6" style="text-align: center; color: var(--muted);">در حال بارگذاری...</td></tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
 
-              <div data-posts-container>
-                <p style="color:var(--text-muted);text-align:center;padding:var(--space-8);">در حال بارگذاری...</p>
-              </div>
-            </div>
-
-            <!-- Post Editor -->
-            <div class="admin-tab" data-tab="new-post" style="display:none;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-5);">
-                <div>
-                  <h2 style="font-size:var(--fs-2xl);" id="editor-title">مقاله جدید</h2>
-                  <p style="color:var(--text-muted);font-size:var(--fs-sm);">
-                    <span class="save-indicator saved" id="save-indicator">💾 ذخیره شد</span>
-                  </p>
-                </div>
-                <div style="display:flex;gap:var(--space-2);">
-                  <button class="btn btn-ghost" data-save-draft>📝 پیش‌نویس</button>
-                  <button class="btn btn-primary" data-publish-now>🚀 انتشار</button>
-                </div>
-              </div>
-
-              <div class="post-editor-layout">
-                <!-- Editor Main -->
-                <div class="editor-main">
+              <!-- New Post -->
+              <div class="admin-tab" data-tab="new-post" style="display: none;">
+                <h2 style="margin-bottom: 20px;">➕ مقاله جدید</h2>
+                <div class="panel" style="padding: 24px;">
                   <form data-post-form>
-                    <input type="text" class="editor-title-input" name="title" placeholder="عنوان مقاله..." required>
-                    <input type="text" class="editor-slug-input" name="slug" placeholder="slug-url" required dir="ltr">
-
-                    <div style="margin:var(--space-4) 0;">
-                      <label style="font-size:var(--fs-xs);font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.3px;">خلاصه</label>
-                      <textarea class="editor-excerpt-input" name="excerpt" placeholder="خلاصه کوتاه مقاله..." style="margin-top:6px;"></textarea>
+                    <div class="editor-field">
+                      <label>عنوان مقاله</label>
+                      <input type="text" name="title" placeholder="مثلاً: معرفی بازی جدید..." required>
                     </div>
-
-                    <div style="margin:var(--space-4) 0;">
-                      <label style="font-size:var(--fs-xs);font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.3px;">محتوا</label>
-                      <div class="rte-toolbar" data-rte-toolbar style="margin-top:6px;">
+                    <div class="editor-field">
+                      <label>Slug (URL)</label>
+                      <input type="text" name="slug" placeholder="new-game-intro" required dir="ltr">
+                    </div>
+                    <div class="editor-field">
+                      <label>دسته‌بندی</label>
+                      <select name="category_id" required>
+                        <option value="">انتخاب دسته‌بندی...</option>
+                      </select>
+                    </div>
+                    <div class="editor-field">
+                      <label>تصویر شاخص</label>
+                      <div style="display: flex; gap: 10px; align-items: center;">
+                        <input type="text" name="image_url" placeholder="assets/uploads/image.webp" id="featured-image-input" style="flex: 1;" dir="ltr">
+                        <button type="button" class="btn btn-sm" data-open-media>🖼 انتخاب</button>
+                      </div>
+                    </div>
+                    <div class="editor-field">
+                      <label>خلاصه (Excerpt)</label>
+                      <textarea name="excerpt" rows="3" placeholder="خلاصه کوتاه مقاله..."></textarea>
+                    </div>
+                    <div class="editor-field">
+                      <label>محتوای مقاله</label>
+                      <div class="rte-toolbar" data-rte-toolbar>
                         <button type="button" data-cmd="bold" title="Bold"><b>B</b></button>
                         <button type="button" data-cmd="italic" title="Italic"><i>I</i></button>
-                        <button type="button" data-cmd="underline" title="Underline"><u>U</u></button>
+                        <button type="button" data-cmd="strikeThrough" title="Strike"><s>S</s></button>
                         <span class="toolbar-sep"></span>
-                        <button type="button" data-cmd="formatBlock" data-val="H1">H1</button>
-                        <button type="button" data-cmd="formatBlock" data-val="H2">H2</button>
-                        <button type="button" data-cmd="formatBlock" data-val="H3">H3</button>
+                        <button type="button" data-cmd="formatBlock" data-val="H1" title="Heading 1">H1</button>
+                        <button type="button" data-cmd="formatBlock" data-val="H2" title="Heading 2">H2</button>
                         <span class="toolbar-sep"></span>
-                        <button type="button" data-cmd="insertUnorderedList">• لیست</button>
-                        <button type="button" data-cmd="insertOrderedList">۱. لیست</button>
-                        <button type="button" data-cmd="insertQuote">❝ نقل</button>
-                        <button type="button" data-cmd="insertCodeBlock">&lt;/&gt;</button>
+                        <button type="button" data-cmd="insertUnorderedList" title="Bullet List">• لیست</button>
+                        <button type="button" data-cmd="insertOrderedList" title="Numbered List">۱. لیست</button>
                         <span class="toolbar-sep"></span>
-                        <button type="button" data-cmd="justifyRight">راست</button>
-                        <button type="button" data-cmd="justifyCenter">وسط</button>
+                        <button type="button" data-cmd="justifyRight" title="Align Right">راست</button>
+                        <button type="button" data-cmd="justifyCenter" title="Align Center">وسط</button>
                         <span class="toolbar-sep"></span>
-                        <button type="button" data-cmd="insertImage">🖼</button>
-                        <button type="button" data-cmd="createLink">🔗</button>
+                        <button type="button" data-cmd="insertImage" title="Insert Image">🖼</button>
+                        <button type="button" data-cmd="createLink" title="Insert Link">🔗</button>
                         <span class="toolbar-sep"></span>
-                        <button type="button" data-cmd="undo">↩️</button>
-                        <button type="button" data-cmd="redo">↪️</button>
+                        <button type="button" data-cmd="undo" title="Undo">↩️</button>
+                        <button type="button" data-cmd="redo" title="Redo">↪️</button>
                       </div>
-                      <div id="rich-editor" class="rte-editor" style="min-height:400px;"></div>
+                      <div id="rich-editor" class="rte-editor"></div>
                       <textarea name="content" style="display:none;"></textarea>
+                    </div>
+                    <div class="editor-field">
+                      <label>تگ‌ها (با کاما جدا کنید)</label>
+                      <input type="text" name="tags" placeholder="بازی، سینما، تکنولوژی">
+                    </div>
+                    <div class="editor-field" style="display: flex; gap: 12px; align-items: center;">
+                      <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" name="featured" style="width: auto;">
+                        <span>مقاله ویژه</span>
+                      </label>
+                      <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <span>وضعیت:</span>
+                        <select name="status" style="width: auto;">
+                          <option value="draft">پیش‌نویس</option>
+                          <option value="published" selected>منتشر شود</option>
+                        </select>
+                      </label>
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                      <button type="submit" class="btn">💾 ذخیره و انتشار</button>
+                      <button type="button" class="btn btn-outline" data-save-draft>📝 ذخیره پیش‌نویس</button>
                     </div>
                   </form>
                 </div>
+              </div>
 
-                <!-- Editor Sidebar -->
-                <div class="editor-sidebar">
-                  <div class="editor-sidebar-card">
-                    <h4>📂 دسته‌بندی</h4>
-                    <div class="form-field" style="margin:0;">
-                      <select name="category_id" data-editor-category>
-                        <option value="">انتخاب...</option>
-                      </select>
-                    </div>
+              <!-- Categories -->
+              <div class="admin-tab" data-tab="categories" style="display: none;">
+                <h2 style="margin-bottom: 20px;">📂 دسته‌بندی‌ها</h2>
+                <div class="panel" style="padding: 24px;">
+                  <form data-category-form style="display: grid; grid-template-columns: 1fr 1fr auto auto auto auto; gap: 10px; margin-bottom: 20px;">
+                    <input type="text" name="cat_name" placeholder="نام دسته‌بندی" required>
+                    <input type="text" name="cat_slug" placeholder="slug" required dir="ltr">
+                    <input type="color" name="cat_color" value="#4ee5ff" style="width: 60px; height: 44px; border-radius: 10px; border: 1px solid rgba(255,255,255,.1); background: transparent; cursor: pointer;">
+                    <input type="number" name="cat_sort_order" placeholder="ترتیب" min="0" value="0" style="max-width: 80px;">
+                    <label style="display:flex;align-items:center;gap:6px;font-size:13px;">
+                      <input type="checkbox" name="cat_featured" style="width:auto"> ویژه
+                    </label>
+                    <button type="submit" class="btn btn-sm">➕ افزودن</button>
+                  </form>
+                  <div data-categories-list>
+                    <p style="color: var(--muted);">در حال بارگذاری...</p>
                   </div>
+                </div>
+              </div>
 
-                  <div class="editor-sidebar-card">
-                    <h4>🏷️ تگ‌ها</h4>
-                    <div class="form-field" style="margin:0;">
-                      <input type="text" name="tags" placeholder="بازی، سینما، تکنولوژی">
+              <!-- Products -->
+              <div class="admin-tab" data-tab="products" style="display: none;">
+                <h2 style="margin-bottom: 20px;">🛒 مدیریت محصولات</h2>
+                <div class="panel" style="padding: 20px; overflow-x: auto;">
+                  <table class="posts-table" style="min-width: 800px;">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>عنوان</th>
+                        <th>دسته</th>
+                        <th>قیمت</th>
+                        <th>موجودی</th>
+                        <th>وضعیت</th>
+                        <th>عملیات</th>
+                      </tr>
+                    </thead>
+                    <tbody data-admin-products-list>
+                      <tr><td colspan="7" style="text-align:center;color:var(--muted)">در حال بارگذاری...</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="panel" style="padding: 24px; margin-top: 20px;">
+                  <h3 style="margin-bottom: 16px;">افزودن/ویرایش محصول</h3>
+                  <form data-product-form class="product-form-grid">
+                    <div class="editor-field">
+                      <label>عنوان محصول *</label>
+                      <input type="text" name="p_title" required>
                     </div>
-                  </div>
-
-                  <div class="editor-sidebar-card">
-                    <h4>🖼️ تصویر شاخص</h4>
-                    <div class="form-field" style="margin:0;">
-                      <input type="text" name="image_url" id="featured-image-input" placeholder="URL تصویر" dir="ltr">
-                      <button type="button" class="btn btn-ghost btn-sm" data-open-media style="width:100%;margin-top:6px;">🖼 انتخاب از رسانه</button>
+                    <div class="editor-field">
+                      <label>Slug *</label>
+                      <input type="text" name="p_slug" required dir="ltr">
                     </div>
-                    <div class="form-field" style="margin-top:var(--space-3);">
-                      <label>متن جایگزین (alt)</label>
-                      <input type="text" name="featured_image_alt" placeholder="توضیح تصویر">
+                    <div class="editor-field">
+                      <label>دسته‌بندی</label>
+                      <input type="text" name="p_category" placeholder="Figure, Poster, Merch...">
                     </div>
-                  </div>
-
-                  <div class="editor-sidebar-card">
-                    <h4>⚙️ تنظیمات انتشار</h4>
-                    <div class="form-field" style="margin:0;">
-                      <label>وضعیت</label>
-                      <select name="status">
-                        <option value="draft">پیش‌نویس</option>
-                        <option value="published" selected>منتشر شود</option>
-                        <option value="scheduled">زمان‌بندی شده</option>
-                      </select>
+                    <div class="editor-field">
+                      <label>قیمت (تومان) *</label>
+                      <input type="number" name="p_price" required min="0">
                     </div>
-                    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px solid var(--line);">
-                      <label style="margin:0;font-size:var(--fs-sm);color:var(--text);text-transform:none;font-weight:600;">ویژه</label>
-                      <label class="toggle-switch">
-                        <input type="checkbox" name="featured">
-                        <span class="toggle-slider"></span>
+                    <div class="editor-field">
+                      <label>موجودی</label>
+                      <input type="number" name="p_stock" min="0" value="0">
+                    </div>
+                    <div class="editor-field">
+                      <label>ترتیب نمایش</label>
+                      <input type="number" name="p_sort_order" min="0" value="0">
+                    </div>
+                    <div class="editor-field" style="grid-column: 1/-1">
+                      <label>آدرس تصویر</label>
+                      <input type="text" name="p_image_url" placeholder="assets/svg/card-shop.svg" dir="ltr">
+                    </div>
+                    <div class="editor-field" style="grid-column: 1/-1">
+                      <label>توضیحات</label>
+                      <textarea name="p_description" rows="3"></textarea>
+                    </div>
+                    <div style="display: flex; gap: 16px; align-items: center; grid-column: 1/-1;">
+                      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+                        <input type="checkbox" name="p_featured" style="width:auto"> محصول ویژه
+                      </label>
+                      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+                        <input type="checkbox" name="p_active" style="width:auto" checked> فعال
                       </label>
                     </div>
-                  </div>
-
-                  <div class="editor-sidebar-card">
-                    <h4>🔍 SEO</h4>
-                    <div class="form-field" style="margin:0;">
-                      <label>عنوان SEO</label>
-                      <input type="text" name="seo_title" placeholder="عنوان برای موتور جستجو">
+                    <div style="grid-column: 1/-1;">
+                      <button type="submit" class="btn">➕ افزودن محصول</button>
                     </div>
-                    <div class="form-field" style="margin-top:var(--space-3);">
-                      <label>توضیحات SEO</label>
-                      <textarea name="seo_description" rows="2" placeholder="متا توضیحات"></textarea>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Media -->
+              <div class="admin-tab" data-tab="media" style="display: none;">
+                <h2 style="margin-bottom: 20px;">🖼 کتابخانه رسانه</h2>
+                <div class="search-box" style="margin-bottom: 16px;">
+                  <input type="text" data-media-search placeholder="جستجو در رسانه‌ها...">
+                </div>
+                <div class="upload-zone" data-upload-zone>
+                  <div style="font-size: 40px;">📤</div>
+                  <p>عکس را اینجا بکشید یا کلیک کنید</p>
+                  <input type="file" data-file-input accept="image/*" multiple style="display: none;">
+                </div>
+                <div class="media-grid" data-media-grid style="margin-top: 20px;">
+                  <p style="color: var(--muted); grid-column: 1/-1; text-align: center;">در حال بارگذاری...</p>
+                </div>
+              </div>
+
+              <!-- Users -->
+              <div class="admin-tab" data-tab="users" style="display: none;" data-role-min="super_admin">
+                <h2 style="margin-bottom: 20px;">👥 مدیریت کاربران</h2>
+                <div class="panel" style="padding: 24px; margin-bottom: 20px;">
+                  <h3 style="margin-bottom: 16px;">افزودن/ویرایش کاربر</h3>
+                  <form data-user-form class="product-form-grid">
+                    <div class="editor-field">
+                      <label>نام کاربری *</label>
+                      <input type="text" name="u_username" required dir="ltr">
                     </div>
-                    <div class="form-field" style="margin-top:var(--space-3);">
-                      <label>Canonical URL</label>
-                      <input type="url" name="canonical_url" placeholder="https://..." dir="ltr">
+                    <div class="editor-field">
+                      <label>ایمیل</label>
+                      <input type="email" name="u_email" dir="ltr">
                     </div>
-                    <div class="form-field" style="margin-top:var(--space-3);">
-                      <label>کلمات کلیدی</label>
-                      <input type="text" name="meta_keywords" placeholder="game, news" dir="ltr">
+                    <div class="editor-field">
+                      <label>رمز عبور</label>
+                      <input type="password" name="u_password" placeholder="برای ویرایش خالی بگذارید">
                     </div>
+                    <div class="editor-field">
+                      <label>نقش</label>
+                      <select name="u_role">
+                        <option value="author">Author (نویسنده)</option>
+                        <option value="editor">Editor (ویرایشگر)</option>
+                        <option value="admin">Admin (مدیر)</option>
+                        <option value="super_admin">Super Admin</option>
+                      </select>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+                        <input type="checkbox" name="u_active" style="width:auto" checked> فعال
+                      </label>
+                    </div>
+                    <div>
+                      <button type="submit" class="btn">➕ افزودن کاربر</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="panel" style="padding: 20px; overflow-x: auto;">
+                  <table class="posts-table" style="min-width: 700px;">
+                    <thead>
+                      <tr><th>نام کاربری</th><th>ایمیل</th><th>نقش</th><th>وضعیت</th><th>آخرین ورود</th><th>عملیات</th></tr>
+                    </thead>
+                    <tbody data-users-list>
+                      <tr><td colspan="6" style="text-align:center;color:var(--muted)">در حال بارگذاری...</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Audit Logs -->
+              <div class="admin-tab" data-tab="audit" style="display: none;" data-role-min="admin">
+                <h2 style="margin-bottom: 20px;">📜 لاگ رویدادها</h2>
+                <div class="panel" style="padding: 20px; overflow-x: auto;">
+                  <table class="posts-table" style="min-width: 800px;">
+                    <thead>
+                      <tr><th>رویداد</th><th>کاربر</th><th>موجودیت</th><th>زمان</th><th>جزئیات</th></tr>
+                    </thead>
+                    <tbody data-audit-list>
+                      <tr><td colspan="5" style="text-align:center;color:var(--muted)">در حال بارگذاری...</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Debug Center -->
+              <div class="admin-tab" data-tab="debug" style="display: none;">
+                <h2 style="margin-bottom: 20px;">🧪 دیباگ سنتر</h2>
+                <div class="panel" style="padding: 20px; margin-bottom: 16px;">
+                  <h3 style="margin-bottom: 12px;">🔍 System Health Check</h3>
+                  <div class="debug-actions" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+                    <button class="btn btn-sm" data-debug-run="overview">📋 Overview</button>
+                    <button class="btn btn-sm" data-debug-run="full">🔍 Full Diagnostic</button>
+                    <button class="btn btn-sm" data-debug-run="github">🐙 GitHub Test</button>
+                    <button class="btn btn-sm" data-debug-run="upload">📤 Test Upload</button>
+                    <button class="btn btn-sm" data-debug-run="schema">🗄 Schema Check</button>
+                    <button class="btn btn-sm" data-debug-run="cms">📝 CMS CRUD Test</button>
+                    <button class="btn btn-sm" data-debug-run="performance">⚡ Performance</button>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Categories -->
-            <div class="admin-tab" data-tab="categories" style="display:none;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-5);">
-                <div>
-                  <h2 style="font-size:var(--fs-2xl);">دسته‌بندی‌ها</h2>
-                  <p style="color:var(--text-muted);font-size:var(--fs-sm);">برای جابجایی، بکشید و رها کنید</p>
-                </div>
-                <button class="btn btn-primary" data-add-category>➕ دسته جدید</button>
-              </div>
-              <div class="categories-grid-v4" data-categories-list>
-                <p style="color:var(--text-muted);text-align:center;padding:var(--space-8);">در حال بارگذاری...</p>
-              </div>
-            </div>
-
-            <!-- Media Manager -->
-            <div class="admin-tab" data-tab="media" style="display:none;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-5);">
-                <div>
-                  <h2 style="font-size:var(--fs-2xl);">مدیریت رسانه</h2>
-                  <p style="color:var(--text-muted);font-size:var(--fs-sm);">فایل‌ها را اینجا بکشید یا کلیک کنید</p>
-                </div>
-              </div>
-
-              <div class="upload-zone-large" data-upload-zone>
-                <span class="upload-icon">📤</span>
-                <h3>آپلود فایل</h3>
-                <p>عکس‌ها را بکشید و رها کنید یا کلیک کنید</p>
-                <input type="file" data-file-input accept="image/*" multiple style="display:none;">
-              </div>
-
-              <div class="media-toolbar">
-                <div class="posts-search" style="flex:1;">
-                  <input type="text" data-media-search placeholder="جستجو در فایل‌ها...">
-                </div>
-              </div>
-
-              <div class="media-grid-v4" data-media-grid>
-                <p style="color:var(--text-muted);text-align:center;padding:var(--space-8);grid-column:1/-1;">در حال بارگذاری...</p>
-              </div>
-            </div>
-
-            <!-- Products -->
-            <div class="admin-tab" data-tab="products" style="display:none;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-5);">
-                <div>
-                  <h2 style="font-size:var(--fs-2xl);">محصولات</h2>
-                  <p style="color:var(--text-muted);font-size:var(--fs-sm);">مدیریت فروشگاه</p>
-                </div>
-                <button class="btn btn-primary" data-add-product>➕ محصول جدید</button>
-              </div>
-              <div data-products-container>
-                <p style="color:var(--text-muted);text-align:center;padding:var(--space-8);">در حال بارگذاری...</p>
-              </div>
-            </div>
-
-            <!-- SEO Panel -->
-            <div class="admin-tab" data-tab="seo" style="display:none;">
-              <div style="margin-bottom:var(--space-5);">
-                <h2 style="font-size:var(--fs-2xl);">پنل SEO</h2>
-                <p style="color:var(--text-muted);font-size:var(--fs-sm);">پیش‌نمایش کارت‌های اجتماعی</p>
-              </div>
-
-              <div class="admin-section-card">
-                <h4 style="margin-bottom:var(--space-4);">🔍 پیش‌نمایش گوگل</h4>
-                <div class="seo-preview-card google" id="seo-google-preview">
-                  <div class="preview-thumb"><img src="assets/svg/card-game.svg" alt=""></div>
-                  <div class="preview-content">
-                    <div class="preview-url">https://pixoris.pages.dev/article.html?slug=...</div>
-                    <div class="preview-title">عنوان مقاله اینجا نمایش داده می‌شود</div>
-                    <div class="preview-desc">توضیحات متا اینجا نمایش داده می‌شود. این متن باید بین ۱۵۰ تا ۱۶۰ کاراکتر باشد.</div>
+                  <div id="debug-result" style="background:rgba(0,0,0,.4);border-radius:10px;padding:14px;min-height:80px;font-family:'Courier New',monospace;font-size:12px;color:var(--cyan);direction:ltr;text-align:left;max-height:500px;overflow:auto;">
+                    <span style="color:var(--muted)">نتیجه اینجا نمایش داده می‌شه...</span>
                   </div>
-                  <div style="clear:both;"></div>
+                  <div id="debug-timing" style="margin-top:8px;font-size:11px;color:var(--yellow);"></div>
                 </div>
               </div>
 
-              <div class="admin-section-card" style="margin-top:var(--space-4);">
-                <h4 style="margin-bottom:var(--space-4);">💬 پیش‌نمایش Discord</h4>
-                <div class="seo-preview-card discord" id="seo-discord-preview">
-                  <div class="preview-thumb"><img src="assets/svg/card-game.svg" alt=""></div>
-                  <div class="preview-content">
-                    <div class="preview-site">PIXORIS.PAGES.DEV</div>
-                    <div class="preview-title">عنوان مقاله</div>
-                    <div class="preview-desc">توضیحات مقاله</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="admin-section-card" style="margin-top:var(--space-4);">
-                <h4 style="margin-bottom:var(--space-4);">✈️ پیش‌نمایش Telegram</h4>
-                <div class="seo-preview-card telegram" id="seo-telegram-preview">
-                  <div class="preview-thumb"><img src="assets/svg/card-game.svg" alt=""></div>
-                  <div class="preview-content">
-                    <div class="preview-site">pixoris.pages.dev</div>
-                    <div class="preview-title">عنوان مقاله</div>
-                    <div class="preview-desc">توضیحات مقاله</div>
-                  </div>
-                </div>
-              </div>
-
-              <p style="color:var(--text-muted);font-size:var(--fs-sm);margin-top:var(--space-4);text-align:center;">
-                💡 برای ویرایش SEO یک مقاله، به بخش «مقاله جدید» بروید و تنظیمات SEO را در ستون چپ تغییر دهید.
-              </p>
-            </div>
-
-            <!-- Analytics -->
-            <div class="admin-tab" data-tab="analytics" style="display:none;">
-              <div style="margin-bottom:var(--space-5);">
-                <h2 style="font-size:var(--fs-2xl);">تحلیل‌ها</h2>
-                <p style="color:var(--text-muted);font-size:var(--fs-sm);">نمای کلی عملکرد (داده‌های نمایشی)</p>
-              </div>
-
-              <div class="admin-dashboard">
-                <div class="admin-stat" style="--stat-color: var(--primary)">
-                  <div class="admin-stat-header">
-                    <span class="admin-stat-icon">👁</span>
-                    <span class="admin-stat-label">بازدید ۷ روز</span>
-                  </div>
-                  <div class="admin-stat-value">۱,۲۴۵</div>
-                  <div class="admin-stat-trend">↑ ۱۲٪</div>
-                </div>
-                <div class="admin-stat" style="--stat-color: var(--success)">
-                  <div class="admin-stat-header">
-                    <span class="admin-stat-icon">📝</span>
-                    <span class="admin-stat-label">مقالات جدید</span>
-                  </div>
-                  <div class="admin-stat-value">۸</div>
-                  <div class="admin-stat-trend">↑ ۲</div>
-                </div>
-                <div class="admin-stat" style="--stat-color: var(--secondary)">
-                  <div class="admin-stat-header">
-                    <span class="admin-stat-icon">👥</span>
-                    <span class="admin-stat-label">کاربران جدید</span>
-                  </div>
-                  <div class="admin-stat-value">۳۲</div>
-                  <div class="admin-stat-trend">↑ ۸٪</div>
-                </div>
-                <div class="admin-stat" style="--stat-color: var(--accent)">
-                  <div class="admin-stat-header">
-                    <span class="admin-stat-icon">🛒</span>
-                    <span class="admin-stat-label">سفارشات</span>
-                  </div>
-                  <div class="admin-stat-value">۱۵</div>
-                  <div class="admin-stat-trend">↑ ۲۰٪</div>
-                </div>
-              </div>
-
-              <div class="admin-dashboard-grid">
-                <div class="admin-section-card">
-                  <h4 style="margin-bottom:var(--space-4);">🔥 پربازدیدترین مقالات</h4>
-                  <div data-analytics-top-posts>
-                    <p style="color:var(--text-muted);text-align:center;padding:var(--space-5);">داده‌ای موجود نیست</p>
-                  </div>
-                </div>
-                <div class="admin-section-card">
-                  <h4 style="margin-bottom:var(--space-4);">📊 دسته‌بندی‌های محبوب</h4>
-                  <div data-analytics-top-categories>
-                    <p style="color:var(--text-muted);text-align:center;padding:var(--space-5);">داده‌ای موجود نیست</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Audit Logs -->
-            <div class="admin-tab" data-tab="audit" style="display:none;">
-              <div style="margin-bottom:var(--space-5);">
-                <h2 style="font-size:var(--fs-2xl);">لاگ رویدادها</h2>
-                <p style="color:var(--text-muted);font-size:var(--fs-sm);">تاریخچه همه فعالیت‌ها</p>
-              </div>
-              <div class="posts-toolbar">
-                <div class="posts-filters">
-                  <button class="filter-chip active" data-audit-filter="all">همه</button>
-                  <button class="filter-chip" data-audit-filter="login">ورود</button>
-                  <button class="filter-chip" data-audit-filter="post">مقالات</button>
-                  <button class="filter-chip" data-audit-filter="media">رسانه</button>
-                  <button class="filter-chip" data-audit-filter="settings">تنظیمات</button>
-                </div>
-              </div>
-              <div class="admin-section-card">
-                <div data-audit-list>
-                  <p style="color:var(--text-muted);text-align:center;padding:var(--space-5);">در حال بارگذاری...</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Debug Center -->
-            <div class="admin-tab" data-tab="debug" style="display:none;">
-              <div style="margin-bottom:var(--space-5);">
-                <h2 style="font-size:var(--fs-2xl);">🧪 دیباگ سنتر</h2>
-                <p style="color:var(--text-muted);font-size:var(--fs-sm);">بررسی سلامت سیستم</p>
-              </div>
-              <div class="admin-section-card">
-                <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-bottom:var(--space-4);">
-                  <button class="btn btn-ghost btn-sm" data-debug-run="overview">📋 Overview</button>
-                  <button class="btn btn-ghost btn-sm" data-debug-run="full">🔍 Full Diagnostic</button>
-                  <button class="btn btn-ghost btn-sm" data-debug-run="github">🐙 GitHub</button>
-                  <button class="btn btn-ghost btn-sm" data-debug-run="upload">📤 Test Upload</button>
-                  <button class="btn btn-ghost btn-sm" data-debug-run="schema">🗄 Schema</button>
-                  <button class="btn btn-ghost btn-sm" data-debug-run="cms">📝 CMS CRUD</button>
-                  <button class="btn btn-ghost btn-sm" data-debug-run="performance">⚡ Performance</button>
-                </div>
-                <div id="debug-result" style="background:var(--bg);border-radius:var(--radius-md);padding:var(--space-4);min-height:120px;font-family:var(--font-mono);font-size:12px;color:var(--secondary);direction:ltr;text-align:left;max-height:500px;overflow:auto;">
-                  <span style="color:var(--text-muted)">نتیجه اینجا...</span>
-                </div>
-                <div id="debug-timing" style="margin-top:var(--space-2);font-size:var(--fs-xs);color:var(--warning);"></div>
-              </div>
-            </div>
-
-            <!-- Users -->
-            <div class="admin-tab" data-tab="users" style="display:none;" data-role-min="super_admin">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-5);">
-                <div>
-                  <h2 style="font-size:var(--fs-2xl);">کاربران</h2>
-                  <p style="color:var(--text-muted);font-size:var(--fs-sm);">مدیریت ادمین‌ها</p>
-                </div>
-                <button class="btn btn-primary" data-add-user>➕ کاربر جدید</button>
-              </div>
-              <div class="admin-section-card">
-                <div data-users-list>
-                  <p style="color:var(--text-muted);text-align:center;padding:var(--space-5);">در حال بارگذاری...</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Settings -->
-            <div class="admin-tab" data-tab="settings" style="display:none;">
-              <div style="margin-bottom:var(--space-5);">
-                <h2 style="font-size:var(--fs-2xl);">تنظیمات</h2>
-                <p style="color:var(--text-muted);font-size:var(--fs-sm);">پیکربندی سایت</p>
-              </div>
-              <form data-settings-form>
-                <div class="admin-section-card" style="margin-bottom:var(--space-4);">
-                  <h4 style="margin-bottom:var(--space-4);">🌐 تنظیمات سایت</h4>
-                  <div class="form-row">
-                    <div class="form-field">
+              <!-- Settings -->
+              <div class="admin-tab" data-tab="settings" style="display: none;">
+                <h2 style="margin-bottom: 20px;">⚙️ تنظیمات</h2>
+                <form data-settings-form>
+                  <div class="panel" style="padding: 24px; margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 16px;">🌐 تنظیمات سایت</h3>
+                    <div class="editor-field">
                       <label>نام سایت</label>
                       <input type="text" name="site_name" value="Pixoris">
                     </div>
-                    <div class="form-field">
+                    <div class="editor-field">
                       <label>URL سایت</label>
                       <input type="url" name="site_url" dir="ltr">
                     </div>
+                    <div class="editor-field">
+                      <label>توضیحات سایت</label>
+                      <input type="text" name="site_description">
+                    </div>
+                    <div class="editor-field">
+                      <label>تعداد پست در صفحه</label>
+                      <input type="number" name="posts_per_page" min="1" max="100" value="12">
+                    </div>
                   </div>
-                  <div class="form-field">
-                    <label>توضیحات سایت</label>
-                    <input type="text" name="site_description">
+                  <div class="panel" style="padding: 24px; margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 16px;">🔍 SEO پیش‌فرض</h3>
+                    <div class="editor-field">
+                      <label>عنوان SEO پیش‌فرض</label>
+                      <input type="text" name="default_seo_title">
+                    </div>
+                    <div class="editor-field">
+                      <label>توضیحات SEO پیش‌فرض</label>
+                      <input type="text" name="default_seo_description">
+                    </div>
                   </div>
-                  <div class="form-field">
-                    <label>تعداد پست در صفحه</label>
-                    <input type="number" name="posts_per_page" min="1" max="100" value="12">
-                  </div>
-                </div>
-
-                <div class="admin-section-card" style="margin-bottom:var(--space-4);">
-                  <h4 style="margin-bottom:var(--space-4);">🔍 SEO پیش‌فرض</h4>
-                  <div class="form-field">
-                    <label>عنوان SEO پیش‌فرض</label>
-                    <input type="text" name="default_seo_title">
-                  </div>
-                  <div class="form-field">
-                    <label>توضیحات SEO پیش‌فرض</label>
-                    <input type="text" name="default_seo_description">
-                  </div>
-                </div>
-
-                <div class="admin-section-card" style="margin-bottom:var(--space-4);">
-                  <h4 style="margin-bottom:var(--space-4);">📱 شبکه‌های اجتماعی</h4>
-                  <div class="form-row">
-                    <div class="form-field">
+                  <div class="panel" style="padding: 24px; margin-bottom: 20px;">
+                    <h3 style="margin-bottom: 16px;">📱 شبکه‌های اجتماعی</h3>
+                    <div class="editor-field">
                       <label>اینستاگرام</label>
                       <input type="url" name="social_instagram" dir="ltr">
                     </div>
-                    <div class="form-field">
+                    <div class="editor-field">
                       <label>تلگرام</label>
                       <input type="url" name="social_telegram" dir="ltr">
                     </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-field">
+                    <div class="editor-field">
                       <label>یوتیوب</label>
                       <input type="url" name="social_youtube" dir="ltr">
                     </div>
-                    <div class="form-field">
+                    <div class="editor-field">
                       <label>گیت‌هاب</label>
                       <input type="url" name="social_github" dir="ltr">
                     </div>
                   </div>
+                  <button type="submit" class="btn">💾 ذخیره تنظیمات</button>
+                </form>
+                <div class="panel" style="padding: 24px; margin-top: 20px;">
+                  <h3 style="margin-bottom: 16px;">🔗 API Endpoint</h3>
+                  <div class="editor-field">
+                    <label>آدرس API Worker</label>
+                    <input type="text" data-api-url value="https://dev.pixoris.workers.dev" style="direction: ltr;">
+                  </div>
+                  <button class="btn btn-sm" data-save-api style="margin-top: 10px;">💾 ذخیره</button>
                 </div>
-
-                <button type="submit" class="btn btn-primary">💾 ذخیره تنظیمات</button>
-              </form>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Status Bar -->
-        <div class="admin-statusbar">
-          <div class="admin-statusbar-left">
-            <div class="admin-statusbar-item">
-              <span class="admin-statusbar-dot ok"></span>
-              <span>Worker</span>
-            </div>
-            <div class="admin-statusbar-item">
-              <span class="admin-statusbar-dot ok"></span>
-              <span>D1</span>
-            </div>
-            <div class="admin-statusbar-item">
-              <span class="admin-statusbar-dot ok"></span>
-              <span>GitHub</span>
-            </div>
-            <div class="admin-statusbar-item">
-              <span class="admin-statusbar-dot ok"></span>
-              <span>Cache</span>
-            </div>
-          </div>
-          <div class="admin-statusbar-right">
-            <div class="admin-statusbar-item">
-              <span>Pixoris CMS v4.3</span>
-            </div>
-            <div class="admin-statusbar-item">
-              <span data-admin-role>super_admin</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
-    </main>
 
-    <footer class="footer">
-      <div class="container footer-row">
-        <p>Pixoris CMS v4.3 © 2026 — Production Ready</p>
-        <div class="pill-list">
-          <span class="pill">Gaming</span>
-          <span class="pill">Cinema</span>
-          <span class="pill">CMS</span>
-          <span class="pill">PBKDF2</span>
+      <footer class="footer">
+        <div class="container footer-row">
+          <p>Pixoris CMS v4.5 © 2026</p>
+          <div class="pill-list">
+            <span class="pill">Gaming</span>
+            <span class="pill">Cinema</span>
+            <span class="pill">CMS</span>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </div>
 
   <!-- Media Picker Modal -->
-  <div class="modal-overlay" data-media-picker>
-    <div class="modal-box" style="max-width:800px;">
-      <div class="modal-header">
-        <h3>🖼 انتخاب از رسانه</h3>
-        <button type="button" class="modal-close" data-picker-close>✕</button>
+  <div class="media-picker" data-media-picker style="display: none;">
+    <div class="media-picker-inner">
+      <div class="media-picker-header">
+        <h3>انتخاب از کتابخانه رسانه</h3>
+        <button type="button" class="btn btn-sm" data-picker-close>✕</button>
       </div>
-      <div class="modal-body">
-        <div class="media-grid-v4" data-picker-grid></div>
-      </div>
+      <div class="media-grid" data-picker-grid></div>
     </div>
   </div>
 
-  <!-- Command Palette -->
-  <div class="command-palette" data-command-palette>
-    <div class="command-palette-box">
-      <div class="command-palette-input">
-        <span style="opacity:0.6;">🔍</span>
-        <input type="text" data-command-input placeholder="دستور تایپ کنید یا جستجو کنید...">
-        <span class="kbd-hint">ESC</span>
-      </div>
-      <div class="command-palette-results" data-command-results></div>
-    </div>
-  </div>
-
-  <!-- Toast Container -->
-  <div class="toast-container" data-toast-container></div>
-
+  <div class="toast" data-toast></div>
   <script type="module" src="js/script.js"></script>
   <script type="module" src="js/admin.js"></script>
 </body>

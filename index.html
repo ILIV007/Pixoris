@@ -5,51 +5,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Pixoris - رسانه گیم، سینما و فروشگاه گیکی" />
   <meta property="og:title" content="Pixoris" />
   <meta property="og:description" content="خبر، تحلیل و فروشگاه گیم/سینما" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://pixoris.pages.dev" />
-  <meta name="twitter:card" content="summary" />
+  <link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/logos/apple-touch-icon.png" />
   <title>Pixoris | خانه</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body data-page="home">
-    <button class="sidebar-toggle" data-sidebar-toggle>☰</button>
-    <div class="sidebar-overlay" data-sidebar-overlay></div>
+  <button class="sidebar-toggle-mobile" data-sidebar-toggle>☰</button>
+  <div class="sidebar-overlay" data-sidebar-overlay></div>
 
-    <aside class="right-sidebar" data-right-sidebar>
-      <a class="right-sidebar-brand" href="index.html">
-        <img src="assets/logos/logo-pixoris-small.png" alt="Pixoris" />
-        <div>
-          <h1>Pixoris</h1>
-          <p>Gaming • Cinema • Shop</p>
-        </div>
-      </a>
-      <nav>
-        <a href="index.html" data-page="home"><span class="nav-emoji">🏠</span> خانه</a>
-        <a href="news.html" data-page="news"><span class="nav-emoji">📰</span> خبرها</a>
-        <a href="shop.html" data-page="shop"><span class="nav-emoji">🛒</span> فروشگاه</a>
-        <a href="analysis.html" data-page="analysis"><span class="nav-emoji">🎬</span> تحلیل</a>
-        <a href="about.html" data-page="about"><span class="nav-emoji">ℹ️</span> درباره ما</a>
-        <a href="cart.html" data-page="cart"><span class="nav-emoji">🛍️</span> سبد خرید <span data-cart-count style="background:var(--accent);color:white;font-size:10px;padding:2px 6px;border-radius:99px;margin-right:auto;">0</span></a>
-      </nav>
-      <div class="right-sidebar-footer">
-        <a href="login.html"><span class="nav-emoji">👤</span> ورود / عضویت</a>
-        <a href="admin.html"><span class="nav-emoji">⚙️</span> پنل ادمین</a>
-        <button class="pac-toggle" data-pac-toggle type="button" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;background:linear-gradient(135deg,rgba(255,216,76,.18),rgba(146,100,255,.18));border:1px solid rgba(255,255,255,.12);color:white;font-size:13px;font-weight:700;cursor:pointer;width:100%;">
-          <span class="pac-icon" style="width:16px;height:16px;border-radius:50%;background:#ffd84c;clip-path:polygon(100% 0,50% 50%,100% 100%,0 100%,0 0);box-shadow:0 0 15px rgba(255,216,76,.55);"></span>
-          <span>Pac Mode</span>
-        </button>
-        <button class="sound-toggle muted" data-sound-toggle type="button" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:white;font-size:13px;font-weight:700;cursor:pointer;width:100%;">
-          <span class="speaker-pixel" style="position:relative;width:15px;height:12px;background:currentColor;clip-path:polygon(0 35%,32% 35%,60% 5%,60% 95%,32% 65%,0 65%);"></span>
-          <span class="sound-label">Music Off</span>
-        </button>
-      </div>
-    </aside>
-
+  <div class="site-shell">
+    <!-- Main Content -->
     <div class="main-content">
       <div class="pixel-decor" aria-hidden="true">
         <div class="decor-column decor-left">
@@ -85,147 +57,181 @@
       </div>
 
       <main>
-      <section class="hero home-hero-clean">
-        <div class="container hero-grid hero-grid-clean">
-          <article class="hero-panel reveal">
-            <span class="eyebrow">🎮 رسانه + فروشگاه گیکی</span>
-            <h2 class="hero-title">Pixoris؛ خبر، تحلیل و فروشگاه گیم/سینما در یک تجربه تمیزتر</h2>
-            <p class="hero-desc">جدیدترین اخبار بازی، سینما و تکنولوژی به همراه تحلیل‌های عمیق و فروشگاه تخصصی محصولات گیکی.</p>
-            <div class="hero-actions">
-              <a class="btn" href="news.html">📰 خبرهای جدید</a>
-              <a class="btn btn-outline" href="shop.html">🛒 مشاهده محصولات</a>
-              <a class="btn btn-cyan" href="analysis.html">🎬 تحلیل‌ها</a>
-            </div>
-          </article>
-          <aside class="home-quick-panel reveal">
-            <a href="shop.html" class="quick-tile">
-              <img src="assets/svg/hero-shop.svg" alt="">
-              <span>فروشگاه</span>
-              <strong>اکشن‌فیگور و مرچ</strong>
-            </a>
-            <a href="analysis.html" class="quick-tile">
-              <img src="assets/svg/hero-cinema.svg" alt="">
-              <span>تحلیل</span>
-              <strong>گیم و سینما</strong>
-            </a>
-          </aside>
-        </div>
-      </section>
+        <section class="hero home-hero-clean">
+          <div class="container hero-grid hero-grid-clean">
+            <article class="hero-panel reveal">
+              <span class="eyebrow">🎮 رسانه + فروشگاه گیکی</span>
+              <h2 class="hero-title">Pixoris؛ خبر، تحلیل و فروشگاه گیم/سینما در یک تجربه تمیزتر</h2>
+              <p class="hero-desc">جدیدترین اخبار بازی، سینما و تکنولوژی به همراه تحلیل‌های عمیق و فروشگاه تخصصی محصولات گیکی.</p>
+              <div class="hero-actions">
+                <a class="btn" href="news.html">📰 خبرهای جدید</a>
+                <a class="btn btn-outline" href="shop.html">🛒 مشاهده محصولات</a>
+                <a class="btn btn-cyan" href="analysis.html">🎬 تحلیل‌ها</a>
+              </div>
+            </article>
+            <aside class="home-quick-panel reveal">
+              <a href="shop.html" class="quick-tile">
+                <img src="assets/svg/hero-shop.svg" alt="">
+                <span>فروشگاه</span>
+                <strong>اکشن‌فیگور و مرچ</strong>
+              </a>
+              <a href="analysis.html" class="quick-tile">
+                <img src="assets/svg/hero-cinema.svg" alt="">
+                <span>تحلیل</span>
+                <strong>گیم و سینما</strong>
+              </a>
+            </aside>
+          </div>
+        </section>
 
-      <!-- Categories Quick Access -->
-      <section class="section compact-section">
-        <div class="container">
-          <div class="section-head reveal">
-            <div>
-              <h2>دسته‌بندی‌ها</h2>
-              <p>دسترسی سریع به موضوعات مورد علاقه‌ات</p>
+        <section class="section compact-section">
+          <div class="container">
+            <div class="section-head reveal">
+              <div>
+                <h2>دسته‌بندی‌ها</h2>
+                <p>دسترسی سریع به موضوعات مورد علاقه‌ات</p>
+              </div>
             </div>
-          </div>
-          <div class="categories-strip" data-categories-strip>
-            <a href="news.html?category=games" class="cat-chip" style="--cat-color: #4ee5ff">
-              <span class="cat-emoji">🎮</span>
-              <span class="cat-name">Games</span>
-            </a>
-            <a href="news.html?category=movies" class="cat-chip" style="--cat-color: #ff4e9c">
-              <span class="cat-emoji">🎬</span>
-              <span class="cat-name">Movies</span>
-            </a>
-            <a href="news.html?category=technology" class="cat-chip" style="--cat-color: #9264ff">
-              <span class="cat-emoji">💻</span>
-              <span class="cat-name">Technology</span>
-            </a>
-            <a href="news.html?category=anime" class="cat-chip" style="--cat-color: #ffd84c">
-              <span class="cat-emoji">🎌</span>
-              <span class="cat-name">Anime</span>
-            </a>
-            <a href="news.html?category=reviews" class="cat-chip" style="--cat-color: #39f37a">
-              <span class="cat-emoji">⭐</span>
-              <span class="cat-name">Reviews</span>
-            </a>
-            <a href="news.html?category=guides" class="cat-chip" style="--cat-color: #ff7b4e">
-              <span class="cat-emoji">📚</span>
-              <span class="cat-name">Guides</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section compact-section">
-        <div class="container">
-          <div class="section-head reveal">
-            <div>
-              <h2>خبرهای منتخب</h2>
-              <p>آخرین اخبار دنیای گیم و سینما</p>
-            </div>
-            <a class="btn btn-outline" href="news.html">همه خبرها</a>
-          </div>
-          <div class="featured-posts" data-featured-posts>
-            <div class="skeleton" style="height:200px"></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section compact-section">
-        <div class="container">
-          <div class="section-head reveal">
-            <div>
-              <h2>محصولات منتخب فروشگاه</h2>
-              <p>به‌صورت داینامیک از API بارگذاری می‌شود</p>
-            </div>
-            <a class="btn btn-outline" href="shop.html">رفتن به فروشگاه</a>
-          </div>
-          <div class="product-showcase-grid" data-shop-preview>
-            <div class="skeleton" style="height:240px"></div>
-            <div class="skeleton" style="height:240px"></div>
-            <div class="skeleton" style="height:240px"></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section compact-section">
-        <div class="container">
-          <div class="section-head reveal">
-            <div>
-              <h2>پربازدیدترین‌ها</h2>
-              <p>محبوب‌ترین مطالب هفته</p>
+            <div class="categories-strip" data-categories-strip>
+              <a href="news.html?category=games" class="cat-chip" style="--cat-color: #4ee5ff">
+                <span class="cat-emoji">🎮</span>
+                <span class="cat-name">Games</span>
+              </a>
+              <a href="news.html?category=movies" class="cat-chip" style="--cat-color: #ff4e9c">
+                <span class="cat-emoji">🎬</span>
+                <span class="cat-name">Movies</span>
+              </a>
+              <a href="news.html?category=technology" class="cat-chip" style="--cat-color: #9264ff">
+                <span class="cat-emoji">💻</span>
+                <span class="cat-name">Technology</span>
+              </a>
+              <a href="news.html?category=anime" class="cat-chip" style="--cat-color: #ffd84c">
+                <span class="cat-emoji">🎌</span>
+                <span class="cat-name">Anime</span>
+              </a>
+              <a href="news.html?category=reviews" class="cat-chip" style="--cat-color: #39f37a">
+                <span class="cat-emoji">⭐</span>
+                <span class="cat-name">Reviews</span>
+              </a>
+              <a href="news.html?category=guides" class="cat-chip" style="--cat-color: #ff7b4e">
+                <span class="cat-emoji">📚</span>
+                <span class="cat-name">Guides</span>
+              </a>
             </div>
           </div>
-          <div class="trending-list" data-trending>
-            <div class="skeleton" style="height:60px"></div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="section compact-section">
-        <div class="container">
-          <div class="section-head reveal">
-            <div>
-              <h2>آخرین مطالب</h2>
-              <p>تازه‌ترین مقالات پیکسوریس</p>
+        <section class="section compact-section">
+          <div class="container">
+            <div class="section-head reveal">
+              <div>
+                <h2>خبرهای منتخب</h2>
+                <p>آخرین اخبار دنیای گیم و سینما</p>
+              </div>
+              <a class="btn btn-outline" href="news.html">همه خبرها</a>
             </div>
-            <a class="btn btn-outline" href="news.html">همه مطالب</a>
+            <div class="featured-posts" data-featured-posts>
+              <div class="skeleton" style="height:200px"></div>
+            </div>
           </div>
-          <div class="product-showcase-grid" data-latest-posts>
-            <div class="skeleton" style="height:240px"></div>
-            <div class="skeleton" style="height:240px"></div>
-            <div class="skeleton" style="height:240px"></div>
-          </div>
-        </div>
-      </section>
-    </main>
+        </section>
 
-    <footer class="footer">
-      <div class="container footer-row">
-        <p>Pixoris © 2026 — رسانه گیم، سینما و آنلاین‌شاپ گیکی</p>
-        <div class="pill-list">
-          <span class="pill">Gaming</span>
-          <span class="pill">Cinema</span>
-          <span class="pill">Collectibles</span>
+        <section class="section compact-section">
+          <div class="container">
+            <div class="section-head reveal">
+              <div>
+                <h2>محصولات منتخب فروشگاه</h2>
+                <p>به‌صورت داینامیک از API بارگذاری می‌شود</p>
+              </div>
+              <a class="btn btn-outline" href="shop.html">رفتن به فروشگاه</a>
+            </div>
+            <div class="product-showcase-grid" data-shop-preview>
+              <div class="skeleton" style="height:240px"></div>
+              <div class="skeleton" style="height:240px"></div>
+              <div class="skeleton" style="height:240px"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section compact-section">
+          <div class="container">
+            <div class="section-head reveal">
+              <div>
+                <h2>پربازدیدترین‌ها</h2>
+                <p>محبوب‌ترین مطالب هفته</p>
+              </div>
+            </div>
+            <div class="trending-list" data-trending>
+              <div class="skeleton" style="height:60px"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section compact-section">
+          <div class="container">
+            <div class="section-head reveal">
+              <div>
+                <h2>آخرین مطالب</h2>
+                <p>تازه‌ترین مقالات پیکسوریس</p>
+              </div>
+              <a class="btn btn-outline" href="news.html">همه مطالب</a>
+            </div>
+            <div class="product-showcase-grid" data-latest-posts>
+              <div class="skeleton" style="height:240px"></div>
+              <div class="skeleton" style="height:240px"></div>
+              <div class="skeleton" style="height:240px"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container footer-row">
+          <p>Pixoris © 2026 — رسانه گیم، سینما و آنلاین‌شاپ گیکی</p>
+          <div class="pill-list">
+            <span class="pill">Gaming</span>
+            <span class="pill">Cinema</span>
+            <span class="pill">Collectibles</span>
+          </div>
         </div>
-      </div>
-    </footer>
-  </div>
+      </footer>
     </div>
+
+    <!-- Right Sidebar -->
+    <aside class="right-sidebar" data-right-sidebar>
+      <a class="sidebar-brand" href="index.html">
+        <img src="assets/logos/logo-pixoris-small.png" alt="Pixoris" />
+        <div class="sidebar-brand-text">
+          <h1>Pixoris</h1>
+          <p>Gaming • Cinema • Shop</p>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html" data-page="home"><span class="nav-emoji">🏠</span> خانه</a>
+        <a href="news.html" data-page="news"><span class="nav-emoji">📰</span> خبرها</a>
+        <a href="shop.html" data-page="shop"><span class="nav-emoji">🛒</span> فروشگاه</a>
+        <a href="analysis.html" data-page="analysis"><span class="nav-emoji">🎬</span> تحلیل</a>
+        <a href="about.html" data-page="about"><span class="nav-emoji">ℹ️</span> درباره ما</a>
+        <a href="cart.html" data-page="cart"><span class="nav-emoji">🛍️</span> سبد خرید <span class="cart-badge" data-cart-count>0</span></a>
+      </nav>
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-section-title">حساب کاربری</div>
+      <nav>
+        <a href="login.html" data-page="login"><span class="nav-emoji">👤</span> ورود / عضویت</a>
+        <a href="admin.html" data-page="admin"><span class="nav-emoji">⚙️</span> پنل ادمین</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="pac-toggle-mini" data-pac-toggle type="button">
+          <span class="nav-emoji">👾</span>
+          <span>Pac Mode</span>
+        </button>
+        <button class="sound-toggle-mini" data-sound-toggle type="button">
+          <span class="nav-emoji">🔇</span>
+          <span>Music Off</span>
+        </button>
+      </div>
+    </aside>
+  </div>
 
   <div class="toast" data-toast></div>
   <script type="module" src="js/script.js"></script>
